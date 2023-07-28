@@ -35,6 +35,7 @@ public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
 		String result = Controller.getInstance().inputNumLogic(no);
 		System.out.println(result);
 	}
+	
 
 }
 

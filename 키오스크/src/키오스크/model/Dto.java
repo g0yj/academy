@@ -18,6 +18,16 @@ public class Dto {
 		
 		
 	}
+	
+	
+
+
+	public Dto(String name, int price, int stock) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+	}
 
 
 	public String getName() {
