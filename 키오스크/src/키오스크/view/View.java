@@ -23,10 +23,10 @@ public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
 	public void view() {
 	   while(true) { // 무한루프
 	      System.out.println("\n\n--------- 제품번호 ---------");
-	      System.out.print("1.음료 고르기");
+	      System.out.print("1.음료 고르기 2.결제");
 	      int ch = sc.nextInt();
 	      if( ch == 1 ) { inputNumber(); }
-	     
+	      if( ch == 2 ) { inputMoney(); }
 	   } // while e 
 	} // f end 
 	
@@ -36,8 +36,16 @@ public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
 		System.out.println(result);
 	}
 
+	public void inputMoney() {
+		System.out.println("금액을 투입하세요."); int money =sc.nextInt();
+		
+		Controller.getInstance().inputNumLogic(money);
+		
+		
+	}
+	
+	
+	
+	
 }
-
-
-
 
