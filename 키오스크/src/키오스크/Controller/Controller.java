@@ -18,6 +18,11 @@ public class Controller {
 		
 	}
 	
+	public void basketLogic(int no) {
+		Dto dto = Dao.drinkList[no];
+		dto.setStock( dto.getStock() -1  );
+		dto.setBasket( dto.getBasket() +1  );
+	}
 	
 	
 	
