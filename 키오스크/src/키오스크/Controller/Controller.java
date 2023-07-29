@@ -9,7 +9,7 @@ public class Controller {
 	
 	public static Controller getInstance() {return controller;}
 	
-	private Controller() {}
+	private Controller() {} 
 
 //-----------------------------------------------------------------
 	public String inputNumLogic( int no ) {
