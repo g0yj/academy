@@ -1,8 +1,10 @@
 package 키오스크.view;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import 키오스크.Controller.Controller;
+import 키오스크.model.Dao;
 
 
 public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
@@ -23,21 +25,35 @@ public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
 	public void view() {
 	   while(true) { // 무한루프
 	      System.out.println("\n\n--------- 제품번호 ---------");
-	      System.out.print("1.음료 고르기");
+	      System.out.print("1.음료 고르기 2.결제");
 	      int ch = sc.nextInt();
 	      if( ch == 1 ) { inputNumber(); }
-	     
+	      if( ch == 2 ) { inputMoney(); }
 	   } // while e 
 	} // f end 
 	
 	public void inputNumber() {
+		System.out.println( Arrays.toString( Dao.drinkList ) );
 		System.out.println("0.콜라 1.사이다 2.환타"); int no=sc.nextInt();
 		String result = Controller.getInstance().inputNumLogic(no);
 		System.out.println(result);
+		
+		System.out.println("장바구니에 담겠습니까?  1.예 2.아니요 : " );
+		int ch = sc.nextInt();
+		if( ch == 1 ) Controller.getInstance().basketLogic(no);
+		
 	}
 
+	public void inputMoney() {
+		System.out.println("금액을 투입하세요."); int money =sc.nextInt();
+		
+		Controller.getInstance().inputNumLogic(money);
+		
+		
+	}
+	
+	
+	
+	
 }
-
-
-
 
