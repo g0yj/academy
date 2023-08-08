@@ -22,6 +22,8 @@ public class StudentDao extends Dao {
 			
 			return true;
 		} catch (Exception e) {System.out.println("Dao 학생등록 실패이유: "+e) ;}
+		
+		
 		return false;
 
 	}//studentJoin()
