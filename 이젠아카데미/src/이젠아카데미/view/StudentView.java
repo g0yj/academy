@@ -18,7 +18,7 @@ public class StudentView {
 		System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제");
 		System.out.println("선택: "); int ch= sc.nextInt();
 		if(ch==1) {studentJoin();}//학생등록
-	//	else if (ch==2) {StudentCheck();}//학생d조회
+	//	else if (ch==2) {StudentCheck();}//학생조회
 	//	else if(ch==3) {StudentUpdate();}//학생수정
 	//	else if(ch==4) {StudentDelete();}//학생삭제
 		}//while
