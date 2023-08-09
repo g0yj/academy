@@ -2,6 +2,7 @@ package 이젠아카데미.model.dto;
 
 public class StudentDto {
 	
+	int sno;
 	String sname;
 	int sage;
 	String saddress;
@@ -9,6 +10,18 @@ public class StudentDto {
 	public StudentDto() {
 	}
 	
+	
+	
+	public StudentDto(int sno, String sname, int sage, String saddress) {
+		super();
+		this.sno = sno;
+		this.sname = sname;
+		this.sage = sage;
+		this.saddress = saddress;
+	}
+
+
+
 	public StudentDto(String sname, int sage, String saddress) {
 		super();
 		this.sname = sname;

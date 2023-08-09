@@ -20,4 +20,17 @@ public class StudentController {
 	}//studentJoin()
 	
 	
+	public StudentDto[] studentAllSelect() {
+		StudentDto[] result = StudentDao.getInstance().studentAllSelect();
+		
+		return result;
+	}
+	
+	public boolean studentDelete() {
+		return StudentDao.getInstance().studentDelete(1231231);
+		
+	}
+	
+
+	
 }//class
