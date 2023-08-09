@@ -16,19 +16,11 @@ public class Controller {
 		
 		return Dao.drinkList[no].getName() + " 의 제품 "+Dao.drinkList[no].getPrice()+" 원 입니다.";
 		
-	}
+	} 
 	
 	public void basketLogic(int no) {
 		Dto dto = Dao.drinkList[no];
 		dto.setStock( dto.getStock() -1  );
 		dto.setBasket( dto.getBasket() +1  );
 	}
-	
-	 
-	
-	
-	
-	
-	
-	
 }
