@@ -43,6 +43,7 @@ public class View {// 입출력 담당하는 클래스 // view -> HTML/JS
 		if( ch == 1 ) Controller.getInstance().basketLogic(no);
 		
 	}
+	
 
 	public void inputMoney() {
 		System.out.println("금액을 투입하세요."); int money =sc.nextInt();
