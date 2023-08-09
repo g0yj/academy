@@ -10,8 +10,8 @@ public class StudentController {
 	private StudentController() {}
 
 //메소드-----------------------------------------------
-	public boolean studentJoin(String sname, int sage, String saddress) {
-		StudentDto dto = new StudentDto(sname, sage, saddress);
+	public boolean studentJoin(String sname, String saddress, String sphone,int lno) {
+		StudentDto dto = new StudentDto(sname, saddress,sphone,lno);
 		
 		boolean result=
 				StudentDao.getInstance().studentJoin(dto);

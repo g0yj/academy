@@ -3,7 +3,6 @@ package 이젠아카데미.view;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
 import 이젠아카데미.controller.StudentController;
 import 이젠아카데미.model.dto.StudentDto;
 
@@ -32,11 +31,12 @@ public class StudentView {
 	
 	public void studentJoin() {
 		System.out.println("이름: "); String sname =sc.next();
-		System.out.println("나이: "); int sage =sc.nextInt();
 		System.out.println("주소: "); String saddress =sc.next();
+		System.out.println("번호: "); String sphone =sc.next();
+		System.out.println("수업코드: "); int lno =sc.nextInt();
 		
 		boolean result= 
-				StudentController.getInstance().studentJoin(sname,sage,saddress);
+				StudentController.getInstance().studentJoin(sname,saddress,sphone,lno);
 		
 		if(result) {
 			System.out.println("학생 등록");

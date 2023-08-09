@@ -10,13 +10,14 @@ public class StudentDao extends Dao {
 	
 	// 학생등록----------------------------------------
 	public boolean studentJoin(StudentDto dto) {
-		String sql = "insert into student(sname,sage,saddress)values(?,?,?)";
+		String sql = "insert into student(sname,saddress,sphone,lno)values(?,?,?,?)";
 		
 		try {
 			ps=conn.prepareCall(sql);
 			ps.setString(1,dto.getSname());
-			ps.setInt(2,dto.getSage());
-			ps.setString(3,dto.getSaddress());
+			ps.setString(2,dto.getSaddress());
+			ps.setString(3,dto.getSphone());
+			ps.setInt(4,dto.getLno());
 			
 			ps.executeUpdate();
 			
