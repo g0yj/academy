@@ -1,5 +1,7 @@
 package 이젠아카데미.controller;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dao.StudentDao;
 import 이젠아카데미.model.dto.StudentDto;
 
@@ -17,25 +19,26 @@ public class StudentController {
 				StudentDao.getInstance().studentJoin(dto);
 		return true;
 		
-	}//studentJoin()
+	}//studentJoin() 
 	
 
 	
 	
 //2. 학생정보조회(이진형)-----------------------------------------------------	
-	public StudentDto[] studentAllSelect() {
-		StudentDto[] result = StudentDao.getInstance().studentAllSelect();
+	public ArrayList<StudentDto >studentAllSelect() {
 		
-		return result;
+		
+		return StudentDao.getInstance().studentAllSelect();
 	}
 
 
 //3. 학생수정업데이트(고연진)---------------------------------------------------	
-	public StudentDto studentUpdate(int mno) {
-		StudentDto result=StudentDao.getInstance().studentUpdate(mno);
-		}
+public StudentDto studentUpdate(int sno ) {
+
+		return true  ;
+}
 	
-	
+
 	
 //4. 학생삭제(이진형)-----------------------------------------------------	
 	public boolean studentDelete() {

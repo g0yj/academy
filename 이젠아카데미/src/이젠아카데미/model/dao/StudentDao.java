@@ -12,14 +12,15 @@ public class StudentDao extends Dao {
 	
 //1. 학생등록(고연진)----------------------------------------
 	public boolean studentJoin(StudentDto dto) {
-		String sql = "insert into student(sname,saddress,sphone,lno)values(?,?,?,?)";
+		String sql = "insert into student(sno,sname,saddress,sphone,lno)values(?,?,?,?,?)";
 		
 		try {
-			ps=conn.prepareCall(sql);
-			ps.setString(1,dto.getSname());
-			ps.setString(2,dto.getSaddress());
-			ps.setString(3,dto.getSphone());
-			ps.setInt(4,dto.getLno());
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,dto.getSno());
+			ps.setString(2,dto.getSname());
+			ps.setString(3,dto.getSaddress());
+			ps.setString(4,dto.getSphone());
+			ps.setInt(5,dto.getLno());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {System.out.println("Dao 학생등록 실패이유: "+e) ;}
@@ -27,29 +28,31 @@ public class StudentDao extends Dao {
 	}//studentJoin()
 
 // 2. 학생정보조회(이진형)------------------------------------------------------------
-	public StudentDto[] studentAllSelect() {
+	public ArrayList<StudentDto> studentAllSelect() {
+		ArrayList<StudentDto> list = new ArrayList<>();
 		try {
-			String sql = "select * from ezenacademy";
+			String sql = "select * from student"; 
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			rs.last();
-			int row = rs.getRow();
-			rs.first();
-			StudentDto[] dtoList = new StudentDto[row]; int i = 0;
+			
+			
 			while(rs.next()) {
-				
+				 StudentDto dto = new StudentDto(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4),
+						   rs.getInt(5));
+				   
+				   list.add(dto);
 			}
 
 		}catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Dao 학생관리 실패 사유"+e);
 			}
-		return null;
+		return list;
 	}
 
 //3. 학생정보수정(고연진)------------------------------------------------------------------	
 	public StudentDto studentUpdate(int mno) {
 		try {
-			String sql = ""
+			String sql = "update student set sname="sname" ";
 		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
 		}
 		return null;

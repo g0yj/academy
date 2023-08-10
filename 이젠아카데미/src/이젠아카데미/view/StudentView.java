@@ -1,6 +1,6 @@
 package 이젠아카데미.view;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import 이젠아카데미.controller.StudentController;
@@ -47,21 +47,41 @@ public class StudentView {
 	
 //2. 학생정보조회(이진형)-------------------------------------------	
 	public void studentAllSelect() {
-		StudentDto[] select =StudentController.getInstance().studentAllSelect();
-		for(int i = 0; i<select.length; i++) {
-			if(select[i] != null) {
-				System.out.println(Arrays.toString(select));
-			}
-		}
+		ArrayList<StudentDto> result = StudentController.getInstance().studentAllSelect();
+		
+		System.out.println("\n\n ===== 학생 관리 =====");
+		
+		System.out.printf("%-3s %-4s %-15s %-10s %s \n","학생번호", "이름","주소","전화번호","수업코드");
+		   for(int i = 0; i<result.size(); i++) {
+			   StudentDto dto = result.get(i);	// i번째 객체를 호출
+			   
+			   System.out.printf("%-3s %-4s %-15s %-10s %s \n", dto.getSno(), dto.getSname() , dto.getSaddress(), dto.getSphone(),dto.getLno());
+		   }
 		
 	}
 
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
-	public void studentUpdate() {
-		System.out.println("학생넘버선택: "); int mno=sc.nextInt();
+	public boolean studentUpdate() {
+/*1. 수정학생번호 받기
+  2. d에서 수정 학생에 정보를 가져옴
+  3. 내용수정
+  4. d 업데이트
+  5. v에 성공여부알려줌
+*/
+		System.out.print("수정학생넘버(sno): "); int sno=sc.nextInt();
+		StudentController.getInstance().studentUpdate(sno);
 		
-		return;
+		System.out.println("학생번호: "); int mno=sc.nextInt();
+		System.out.println("이름: "); String sname=sc.next();
+		System.out.println("주소: "); String saddress=sc.next();
+		System.out.println("전화번호: "); String sphone=sc.next();
+		System.out.println("수업코드: "); int lno=sc.nextInt();
+		
+		boolean result = 
+				StudentController.getInstance().studentUpdate(sno);
+		if(result) {System.out.println("학생정보수정성공");}
+		
 	}//f()
 	
 	
