@@ -30,8 +30,10 @@ public class StudentController {
 	}
 
 
-//3. 학생업데이트(고연진)---------------------------------------------------	
-	public void studentUpdate() {return;}
+//3. 학생수정업데이트(고연진)---------------------------------------------------	
+	public StudentDto studentUpdate(int mno) {
+		StudentDto result=StudentDao.getInstance().studentUpdate(mno);
+		}
 	
 	
 	

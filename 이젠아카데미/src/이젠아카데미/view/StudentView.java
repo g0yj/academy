@@ -10,7 +10,7 @@ public class StudentView {
 	
 	
 
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 
 	
 	private static StudentView v= new StudentView();
@@ -59,6 +59,8 @@ public class StudentView {
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
 	public void studentUpdate() {
+		System.out.println("학생넘버선택: "); int mno=sc.nextInt();
+		
 		return;
 	}//f()
 	

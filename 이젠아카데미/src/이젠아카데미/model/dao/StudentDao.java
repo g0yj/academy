@@ -1,5 +1,7 @@
 package 이젠아카데미.model.dao;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dto.StudentDto;
 
 public class StudentDao extends Dao {
@@ -44,8 +46,14 @@ public class StudentDao extends Dao {
 		return null;
 	}
 
-//3. 학생업데이트(고연진)------------------------------------------------------------------	
-	
+//3. 학생정보수정(고연진)------------------------------------------------------------------	
+	public StudentDto studentUpdate(int mno) {
+		try {
+			String sql = ""
+		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
+		}
+		return null;
+		}//f()
 	
 	
 //4. 학생삭제(이진형)---------------------------------------------------------------------
