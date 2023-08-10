@@ -17,7 +17,7 @@ public class MainPage {
 			System.out.println("======================");
 			
 			System.out.print("선택:  "); int ch= sc. nextInt();
-		try {
+		try { 
 			if(ch==1) {
 				System.out.println(">>>>>1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리<<<<<");
 				System.out.print("선택: "); int select=sc.nextInt();
