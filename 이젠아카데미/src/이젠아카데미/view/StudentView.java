@@ -51,7 +51,7 @@ public class StudentView {
 	public void studentAllSelect() {
 		ArrayList<StudentDto> result = StudentController.getInstance().studentAllSelect();
 		
-		System.out.println("\n\n ===== 학생 관리 =====");
+		System.out.println("\n\n ===== 학생 조회 =====");
 		
 		System.out.printf("%-3s %-4s %-15s %-10s %s \n","학생번호", "이름","주소","전화번호","수업코드");
 		   for(int i = 0; i<result.size(); i++) {
@@ -72,20 +72,22 @@ public class StudentView {
 	
 //4. 학생삭제(이진형)----------------------------------------------------------------------
 	public void studentDelete() {
-		System.out.println("\n\n ===== student Delete =====");
-			System.out.print("선택 ㄱ(숫자로 눌러) >");
+		
+			studentAllSelect();
+			System.out.println("\n\n ===== 학생 삭제 =====");
+			System.out.print("삭제할 학생을 선택하세요. >"); int sno = sc.nextInt();
 		   
-		   int ch = sc.nextInt();
+		  
 		  
 		   
-		   System.out.print("해당 학생 진짜로 정말 삭제하시겠습니까? 1.예 2.아니요 :");
+		   System.out.print("해당 학생을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
 		   if(ch ==1) {
-			   boolean result = StudentController.getInstance().studentDelete();
+			   boolean result = StudentController.getInstance().studentDelete(sno);
 			   if(result) {
 				   System.out.println("안내] 학생삭제성공");
 				   
 			   } else {
-				   System.out.println("경고] 학생삭제실패");
+				   System.out.println("경고] 학생삭제취소");
 			   }
 		   }
 	}
