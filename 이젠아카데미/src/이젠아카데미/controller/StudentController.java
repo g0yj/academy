@@ -9,7 +9,7 @@ public class StudentController {
 	public static StudentController getInstance() {return c;}
 	private StudentController() {}
 
-//메소드-----------------------------------------------
+//1.학생등록(고연진)-----------------------------------------------
 	public boolean studentJoin(String sname, String saddress, String sphone,int lno) {
 		StudentDto dto = new StudentDto(sname, saddress,sphone,lno);
 		
@@ -19,13 +19,23 @@ public class StudentController {
 		
 	}//studentJoin()
 	
+
 	
+	
+//2. 학생정보조회(이진형)-----------------------------------------------------	
 	public StudentDto[] studentAllSelect() {
 		StudentDto[] result = StudentDao.getInstance().studentAllSelect();
 		
 		return result;
 	}
+
+
+//3. 학생업데이트(고연진)---------------------------------------------------	
+	public void studentUpdate() {return;}
 	
+	
+	
+//4. 학생삭제(이진형)-----------------------------------------------------	
 	public boolean studentDelete() {
 		return StudentDao.getInstance().studentDelete(1231231);
 		
