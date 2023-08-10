@@ -19,7 +19,7 @@ public class StudentController {
 				StudentDao.getInstance().studentJoin(dto);
 		return true;
 		
-	}//studentJoin()
+	}//studentJoin() 
 	
 
 	
