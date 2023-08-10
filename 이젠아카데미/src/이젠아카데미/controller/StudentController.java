@@ -33,9 +33,12 @@ public class StudentController {
 
 
 //3. 학생수정업데이트(고연진)---------------------------------------------------	
-public StudentDto studentUpdate(int sno ) {
-
-		return true  ;
+public boolean studentUpdate(int sno, String sname,String saddress, String sphone, int lno ) {
+		StudentDto dto = new StudentDto(sno,sname, saddress, sphone, lno);
+		boolean result= StudentDao.getInstance().studentUpdate(dto);
+		
+		return result;
+		
 }
 	
 

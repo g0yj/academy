@@ -50,12 +50,21 @@ public class StudentDao extends Dao {
 	}
 
 //3. 학생정보수정(고연진)------------------------------------------------------------------	
-	public StudentDto studentUpdate(int mno) {
+	public boolean studentUpdate(StudentDto dto) {
 		try {
-			String sql = "update student set sname="sname" ";
+			// v
+			String sql = "update student set sname = ?, saddress = ? , sphone = ?, lno = ? , where sno = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getSname());
+			ps.setString(2, dto.getSaddress());
+			ps.setString(3, dto.getSphone());
+			ps.setInt(4, dto.getLno());
+			ps.setInt(5, dto.getSno());
+			ps.executeUpdate();
+			return true;
 		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
 		}
-		return null;
+		return false;
 		}//f()
 	
 	

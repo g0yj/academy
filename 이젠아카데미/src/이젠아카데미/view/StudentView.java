@@ -62,24 +62,23 @@ public class StudentView {
 
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
-	public boolean studentUpdate() {
+	public void studentUpdate() {
 /*1. 수정학생번호 받기
   2. d에서 수정 학생에 정보를 가져옴
   3. 내용수정
   4. d 업데이트
   5. v에 성공여부알려줌
 */
-		System.out.print("수정학생넘버(sno): "); int sno=sc.nextInt();
-		StudentController.getInstance().studentUpdate(sno);
-		
-		System.out.println("학생번호: "); int mno=sc.nextInt();
+		System.out.println("학생번호: "); int sno=sc.nextInt();
 		System.out.println("이름: "); String sname=sc.next();
 		System.out.println("주소: "); String saddress=sc.next();
 		System.out.println("전화번호: "); String sphone=sc.next();
 		System.out.println("수업코드: "); int lno=sc.nextInt();
-		
+			
 		boolean result = 
-				StudentController.getInstance().studentUpdate(sno);
+				StudentController.getInstance().studentUpdate(sno,sname,saddress,sphone,lno);
+		
+		
 		if(result) {System.out.println("학생정보수정성공");}
 		
 	}//f()
