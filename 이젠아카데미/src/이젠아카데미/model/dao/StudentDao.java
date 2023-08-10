@@ -8,7 +8,7 @@ public class StudentDao extends Dao {
 	public static StudentDao getInstance() {return d;}
 	private StudentDao() {}
 	
-	// 학생등록----------------------------------------
+//1. 학생등록(고연진)----------------------------------------
 	public boolean studentJoin(StudentDto dto) {
 		String sql = "insert into student(sname,saddress,sphone,lno)values(?,?,?,?)";
 		
@@ -18,17 +18,13 @@ public class StudentDao extends Dao {
 			ps.setString(2,dto.getSaddress());
 			ps.setString(3,dto.getSphone());
 			ps.setInt(4,dto.getLno());
-			
 			ps.executeUpdate();
-			
 			return true;
 		} catch (Exception e) {System.out.println("Dao 학생등록 실패이유: "+e) ;}
-		
-		
 		return false;
-
 	}//studentJoin()
-	
+
+// 2. 학생정보조회(이진형)------------------------------------------------------------
 	public StudentDto[] studentAllSelect() {
 		try {
 			String sql = "select * from ezenacademy";
@@ -47,7 +43,12 @@ public class StudentDao extends Dao {
 			}
 		return null;
 	}
+
+//3. 학생업데이트(고연진)------------------------------------------------------------------	
 	
+	
+	
+//4. 학생삭제(이진형)---------------------------------------------------------------------
 	public boolean studentDelete(int sno) {
 		try {
 			String sql = "delete from ezenacademy where sno = ?";
