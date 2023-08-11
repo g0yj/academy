@@ -70,12 +70,8 @@ public class StudentDao extends Dao {
 	
 //4. 학생삭제(이진형)---------------------------------------------------------------------
 	public boolean studentDelete(int sno) {
-		try {
-<<<<<<< HEAD
+		try {			
 			String sql = "delete from student where sno = ?";
-=======
-			String sql = " delete from ezenacademy where sno = ? ";
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,sno);
 
