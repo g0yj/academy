@@ -7,23 +7,22 @@ public class LessonDto {
 	private String lname;
 	private String ltname;
 	private	String ltotalday;
+	private String lopenday;
 	
 	// 2. 생성자
-<<<<<<< HEAD
 	public LessonDto() {}
-=======
-	public LessonDto() {
-	}
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
 
-	public LessonDto(String lname, String ltname, String ltotalday) {
+	public LessonDto(String lname, String ltname, String ltotalday, String lopenday) {
 		super();
 		this.lname = lname;
 		this.ltname = ltname;
 		this.ltotalday = ltotalday;
+		this.lopenday = lopenday;
 	}
-<<<<<<< HEAD
-
+	
+	
+	
+	
 	// 3. 매소드
 	public String getLname() {
 		return lname;
@@ -49,15 +48,23 @@ public class LessonDto {
 		this.ltotalday = ltotalday;
 	}
 
+	public String getLopenday() {
+		return lopenday;
+	}
+
+	public void setLopenday(String lopenday) {
+		this.lopenday = lopenday;
+	}
+
 	@Override
 	public String toString() {
-		return "LessonDto [lname=" + lname + ", ltname=" + ltname + ", ltotalday=" + ltotalday + "]";
+		return "LessonDto [lname=" + lname + ", ltname=" + ltname + ", ltotalday=" + ltotalday + ", lopenday="
+				+ lopenday + "]";
 	}
-	
-	// 3. 매소드
 
 	
-=======
+
+
 	
 	
 	
@@ -67,4 +74,3 @@ public class LessonDto {
 	
 	
 }
->>>>>>> branch 'main' of https://github.com/g0yj/2ji

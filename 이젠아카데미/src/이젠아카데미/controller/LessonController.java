@@ -9,28 +9,19 @@ public class LessonController {
 	public static LessonController getInstance() { return LessonController; }
 	private LessonController() {}
 	
-	public boolean lessonWriteView(String lname,String ltname,String ltdate) {
+	public boolean lessonWriteView(String lname,String ltname,String ltdate,String lopenday) {
 		
-<<<<<<< HEAD
-		LessonDto lessonDto = new LessonDto(0,lname,ltname,ltdate);
-=======
-		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate);
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
+		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate, lopenday);
 		
-<<<<<<< HEAD
-		boolean result = LessonDao.getInstance().lessonWriteView(dto);
-=======
 
-		LessonDto result = LessonDao.getInstance().lessonWriteView();
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
+		boolean result = LessonDao.getInstance().lessonWriteView(lessonDto);
+
+
+
 		
-<<<<<<< HEAD
+
 		if(result) {return true;}
 		else{return false;}
 	}
-=======
-	//}
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
-	
 	
 }

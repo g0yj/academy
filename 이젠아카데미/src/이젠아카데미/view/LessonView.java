@@ -28,36 +28,25 @@ public class LessonView {
 
 		}// while e
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
-	public boolean lessonwriteView() {
+
+	public void lessonwriteView() {
+		sc.nextLine();
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
-		sc.nextLine();
 		System.out.println("강사명 : ");		String ltname = sc.nextLine(); 
-		sc.nextLine();
 		System.out.println("총수강일 : ");		String ltdate = sc.nextLine();
-	
-<<<<<<< HEAD
-		//boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
+		System.out.println("개강일 : ");		String lopenday = sc.nextLine();
 	
 	
 	
+
+		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate,lopenday);
+
+	
+		if(result) {System.out.println("수업등록 성공");}
+		else {System.out.println("수업등록 실패");}
 	
 	
-=======
-		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
-<<<<<<< HEAD
-	
-		if(result) {System.out.println("수업등록 성공"); return true;}
-		else {System.out.println("수업등록 실패"); return false;}
-	
-	
-=======
-		return true;
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
->>>>>>> branch 'main' of https://github.com/g0yj/2ji
+
 	
 	}
 	
