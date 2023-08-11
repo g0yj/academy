@@ -19,10 +19,10 @@ public class LessonView {
 		System.out.println("선택>>>");
 		int ch = sc.nextInt();
 		
-		if(ch==1) {lessonWriteView();}//수업등록
-		if(ch==2) {lessonPrintView();}//수업조회
-		if(ch==3) {lessonUpdateView();}//수업수정
-		if(ch==4) {lessonDeleteView();}//수업삭제
+		//if(ch==1) {lessonWriteView();}//수업등록
+		//if(ch==2) {lessonPrintView();}//수업조회
+		//if(ch==3) {lessonUpdateView();}//수업수정
+		//if(ch==4) {lessonDeleteView();}//수업삭제
 
 		}// while e
 	}
@@ -33,7 +33,7 @@ public class LessonView {
 		sc.nextLine();
 		System.out.println("총수강일 : ");		String ltdate = sc.nextLine();
 	
-		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
+		//boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
 	
 	
 	
