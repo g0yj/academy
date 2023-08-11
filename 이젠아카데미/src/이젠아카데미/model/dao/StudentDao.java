@@ -49,14 +49,33 @@ public class StudentDao extends Dao {
 		return list;
 	}
 
-//3. 학생업데이트(고연진)------------------------------------------------------------------	
-	
+//3. 학생정보수정(고연진)------------------------------------------------------------------	
+	public boolean studentUpdate(StudentDto dto) {
+		try {
+			// v
+			String sql = "update student set sname = ? , saddress = ? , sphone = ? , lno = ?  where sno = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getSname());
+			ps.setString(2, dto.getSaddress());
+			ps.setString(3, dto.getSphone());
+			ps.setInt(4, dto.getLno());
+			ps.setInt(5, dto.getSno());
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
+		}
+		return false;
+		}//f()
 	
 	
 //4. 학생삭제(이진형)---------------------------------------------------------------------
 	public boolean studentDelete(int sno) {
 		try {
+<<<<<<< HEAD
 			String sql = "delete from student where sno = ?";
+=======
+			String sql = " delete from ezenacademy where sno = ? ";
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,sno);
 

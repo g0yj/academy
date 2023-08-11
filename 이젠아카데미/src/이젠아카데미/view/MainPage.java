@@ -8,7 +8,7 @@ public class MainPage {
 	public static MainPage getInstance() {return mainpage;}
 	private MainPage() {}
 	
-	Scanner sc= new Scanner(System.in);
+	private Scanner sc= new Scanner(System.in);
 // 메인페이지-------------------------------------------------------------------
 	public void mainPage() {
 		while(true) {

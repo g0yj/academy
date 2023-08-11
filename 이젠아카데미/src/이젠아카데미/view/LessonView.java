@@ -19,46 +19,59 @@ public class LessonView {
 		System.out.println("선택>>>");
 		int ch = sc.nextInt();
 		
+<<<<<<< HEAD
 		//if(ch==1) {lessonWriteView();}//수업등록
 		//if(ch==2) {lessonPrintView();}//수업조회
 		//if(ch==3) {lessonUpdateView();}//수업수정
 		//if(ch==4) {lessonDeleteView();}//수업삭제
+=======
+		if(ch==1) {lessonwriteView();}//수업등록
+		if(ch==2) {lessonwriteView();}//수업조회
+		if(ch==3) {lessonwriteView();}//수업수정
+		if(ch==4) {lessondeleteView();}//수업삭제
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 
 		}// while e
 	}
-	public void lessonwriteView() {
+	
+	public boolean lessonwriteView() {
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
 		sc.nextLine();
 		System.out.println("강사명 : ");		String ltname = sc.nextLine(); 
 		sc.nextLine();
 		System.out.println("총수강일 : ");		String ltdate = sc.nextLine();
 	
+<<<<<<< HEAD
 		//boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
 	
 	
 	
 	
 	
+=======
+		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate);
+		return true;
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	
 	}
 	
 	
 	
 	
-	public void lessonprintView() {
+	public boolean lessonprintView() {
 		
-		
+		return true;
 		
 	}
 	
-	public void lessonupdateView() {
+	public boolean lessonupdateView() {
 	
 	
-	
+		return true;
 	}
-	public void lessondeleteView() {
+	public boolean lessondeleteView() {
 	
-	
+		return true;
 	
 	}
 	
