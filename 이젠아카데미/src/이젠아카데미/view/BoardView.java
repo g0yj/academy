@@ -53,11 +53,22 @@ public class BoardView {
 		System.out.printf("content : %s \n ",result.getBcontent());
 		System.out.println("--------------------------------------");
 		System.out.print("1.글삭제 2.뒤로가기"); int ch= sc.nextInt();
-		if(ch==1) {boardDelete(); }
+		if(ch==1) {boardDelete(bno); }
 		if(ch==2) {boardPrint();}
 		
 	}
-	public void boardDelete() {
-		System.out.println("게시물번호: "); int bno = sc.nextInt();
-	}
+	public void boardDelete(int bno) {
+			System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
+			
+			if( ch == 1) {
+			boolean result = BoardController.getInstance().boardDelete(bno);
+			
+				if(result) System.out.println("삭제 성공");
+				else {System.out.println("삭제 실패");}
+			} else if ( ch == 2) {
+				return;
+			}
+			
+			
+		}
 }
