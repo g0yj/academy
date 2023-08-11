@@ -10,6 +10,8 @@ public class StudentController {
 	private static StudentController c = new StudentController();
 	public static StudentController getInstance() {return c;}
 	private StudentController() {}
+	
+	
 
 //1.학생등록(고연진)-----------------------------------------------
 	public boolean studentJoin(String sname, String saddress, String sphone,int lno) {
@@ -32,15 +34,22 @@ public class StudentController {
 	}
 
 
-//3. 학생업데이트(고연진)---------------------------------------------------	
-	public void studentUpdate() {return;}
+//3. 학생수정업데이트(고연진)---------------------------------------------------	
+public boolean studentUpdate(int sno, String sname,String saddress, String sphone, int lno ) {
+		StudentDto dto = new StudentDto(sno,sname, saddress, sphone, lno);
+		boolean result= StudentDao.getInstance().studentUpdate(dto);
+		
+		return result;
+		
+}
 	
-	
+
 	
 //4. 학생삭제(이진형)-----------------------------------------------------	
-	public boolean studentDelete() {
-		return StudentDao.getInstance().studentDelete(1231231);
+	public boolean studentDelete(int sno) {
 		
+				  boolean result =StudentDao.getInstance().studentDelete(sno);
+				  return result; 
 	}
 	
 

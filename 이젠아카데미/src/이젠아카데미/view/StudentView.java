@@ -1,9 +1,7 @@
 package 이젠아카데미.view;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-
 
 import 이젠아카데미.controller.StudentController;
 import 이젠아카데미.model.dto.StudentDto;
@@ -12,7 +10,7 @@ public class StudentView {
 	
 	
 
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 
 	
 	private static StudentView v= new StudentView();
@@ -51,7 +49,7 @@ public class StudentView {
 	public void studentAllSelect() {
 		ArrayList<StudentDto> result = StudentController.getInstance().studentAllSelect();
 		
-		System.out.println("\n\n ===== 학생 관리 =====");
+		System.out.println("\n\n ===== 학생 조회 =====");
 		
 		System.out.printf("%-3s %-4s %-15s %-10s %s \n","학생번호", "이름","주소","전화번호","수업코드");
 		   for(int i = 0; i<result.size(); i++) {
@@ -65,27 +63,48 @@ public class StudentView {
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
 	public void studentUpdate() {
-		return;
+/*1. 수정학생번호 받기
+  2. d에서 수정 학생에 정보를 가져옴
+  3. 내용수정
+  4. d 업데이트
+  5. v에 성공여부알려줌
+*/		
+		studentAllSelect();
+		
+		System.out.println("학생번호: "); int sno=sc.nextInt();
+		System.out.println("이름: "); String sname=sc.next();
+		System.out.println("주소: "); String saddress=sc.next();
+		System.out.println("전화번호: "); String sphone=sc.next();
+		System.out.println("수업코드: "); int lno=sc.nextInt();
+			
+		boolean result = 
+				StudentController.getInstance().studentUpdate(sno,sname,saddress,sphone,lno);
+		
+		if(result) {System.out.println("학생정보수정성공");}
+		
+		studentAllSelect();
 	}//f()
 	
 	
 	
 //4. 학생삭제(이진형)----------------------------------------------------------------------
 	public void studentDelete() {
-		System.out.println("\n\n ===== student Delete =====");
-			System.out.print("선택 ㄱ(숫자로 눌러) >");
+		
+			studentAllSelect();
+			System.out.println("\n\n ===== 학생 삭제 =====");
+			System.out.print("삭제할 학생을 선택하세요. >"); int sno = sc.nextInt();
 		   
-		   int ch = sc.nextInt();
+		  
 		  
 		   
-		   System.out.print("해당 학생 진짜로 정말 삭제하시겠습니까? 1.예 2.아니요 :");
+		   System.out.print("해당 학생을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
 		   if(ch ==1) {
-			   boolean result = StudentController.getInstance().studentDelete();
+			   boolean result = StudentController.getInstance().studentDelete(sno);
 			   if(result) {
 				   System.out.println("안내] 학생삭제성공");
 				   
 			   } else {
-				   System.out.println("경고] 학생삭제실패");
+				   System.out.println("경고] 학생삭제취소");
 			   }
 		   }
 	}

@@ -8,7 +8,7 @@ public class MainPage {
 	public static MainPage getInstance() {return mainpage;}
 	private MainPage() {}
 	
-	Scanner sc= new Scanner(System.in);
+	private Scanner sc= new Scanner(System.in);
 // 메인페이지-------------------------------------------------------------------
 	public void mainPage() {
 		while(true) {
@@ -23,14 +23,16 @@ public class MainPage {
 				System.out.print("선택: "); int select=sc.nextInt();
 					if(select==1) {StudentView.getStudentView().studentMain();}
 					else if(select==2){}
-					else if(select==3){}
+					else if(select==3){BoardView.getInstance().BoardMain();}
 					else if(select==4){}
 				}
 			else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
 							//유효성 검사 필요. sql만들기
 							System.out.print("회원이름입력: ");} // 
 			
-		} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);return ;}	
+		} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
+			return ;
+		}	
 			
 		}//while
 		

@@ -9,7 +9,12 @@ public class LessonDto {
 	private	String ltotalday;
 	
 	// 2. 생성자
+<<<<<<< HEAD
 	public LessonDto() {}
+=======
+	public LessonDto() {
+	}
+>>>>>>> branch 'main' of https://github.com/g0yj/2ji
 
 	public LessonDto(String lname, String ltname, String ltotalday) {
 		super();
@@ -17,6 +22,7 @@ public class LessonDto {
 		this.ltname = ltname;
 		this.ltotalday = ltotalday;
 	}
+<<<<<<< HEAD
 
 	// 3. 매소드
 	public String getLname() {
@@ -51,3 +57,14 @@ public class LessonDto {
 	// 3. 매소드
 
 	
+=======
+	
+	
+	
+
+	
+	
+	
+	
+}
+>>>>>>> branch 'main' of https://github.com/g0yj/2ji
