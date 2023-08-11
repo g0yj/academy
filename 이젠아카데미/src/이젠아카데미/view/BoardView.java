@@ -18,13 +18,13 @@ public class BoardView {
 	public void BoardMain() {
 		while(true) {
 			boardPrint(); 
-			System.out.println("1.글조회 2.글삭제 3. 뒤로가기");int ch = sc.nextInt();
+			System.out.println("1.글조회 2. 뒤로가기");int ch = sc.nextInt();
 			if(ch==1) {boardView();}
-			if(ch==2) { boardDelete();}
-			if(ch==3) {}
-			
+			if(ch==2) {MainPage.getInstance().mainPage();}
 		}
 	}
+	
+	// 글 조회
 	public void boardPrint() {
 		
 		ArrayList<BoardDto> result=
@@ -52,6 +52,9 @@ public class BoardView {
 		System.out.printf("title : %s \n",result.getBtitle());
 		System.out.printf("content : %s \n ",result.getBcontent());
 		System.out.println("--------------------------------------");
+		System.out.print("1.글삭제 2.뒤로가기"); int ch= sc.nextInt();
+		if(ch==1) {boardDelete(); }
+		if(ch==2) {boardPrint();}
 		
 	}
 	public void boardDelete() {
