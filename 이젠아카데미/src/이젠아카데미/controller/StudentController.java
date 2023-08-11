@@ -43,7 +43,7 @@ public class StudentController {
 	public boolean studentDelete(int sno) {
 		
 				  boolean result =StudentDao.getInstance().studentDelete(sno);
-				  return result;
+				  return result; 
 	}
 	
 
