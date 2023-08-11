@@ -18,9 +18,10 @@ public class BoardView {
 	public void BoardMain() {
 		while(true) {
 			boardPrint(); 
-			System.out.println("1.글조회 2.글삭제");int ch = sc.nextInt();
+			System.out.println("1.글조회 2.글삭제 3. 뒤로가기");int ch = sc.nextInt();
 			if(ch==1) {boardView();}
 			if(ch==2) { boardDelete();}
+			if(ch==3) {}
 			
 		}
 	}
@@ -28,13 +29,14 @@ public class BoardView {
 		
 		ArrayList<BoardDto> result=
 				BoardController.getInstance().boardPrint();
-		System.out.println("----- POST LIST -------");
-		System.out.printf("%-3s %-3s %-19s  %s \n","bno","sno","title","day");
+		System.out.println("---------------------------------------- POST LIST -------------------------------------");
+		System.out.printf("%13s %13s %10s %26s %32s \n","bno","sno","title","day","view");
 		for(int i =0; i<result.size(); i++) {
 			BoardDto dto = result.get(i);
 			
-			System.out.printf("%-3s %-3s %-19s %s \n",
-					dto.getBno(),dto.getSno(),dto.getBtitle(),dto.getBday());
+			System.out.printf("%13s %13s %10s %30s %17s\n",
+					dto.getBno(),dto.getSno(),dto.getBtitle(),dto.getBday(),dto.getBview());
+			System.out.println("------------------------------------------------------------------------------------------");
 			
 		}
 	}
@@ -45,13 +47,14 @@ public class BoardView {
 		
 		BoardDto result = BoardController.getInstance().boardView(bno);
 		
-		System.out.printf("bno : %-3s view : %-3s title : %-10s day : %-19s \n" , 	result.getBno() , result.getBview() , result.getBtitle() , result.getBday() );
+		System.out.printf("bno : %-3s view : %-3s day : %-19s \n" , 	result.getBno() , result.getBview() , result.getBday() );
 		
 		System.out.printf("title : %s \n",result.getBtitle());
 		System.out.printf("content : %s \n ",result.getBcontent());
+		System.out.println("--------------------------------------");
 		
 	}
 	public void boardDelete() {
-		
+		System.out.println("게시물번호: "); int bno = sc.nextInt();
 	}
 }

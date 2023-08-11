@@ -19,6 +19,7 @@ public class BoardDto {
 		this.bview = bview;
 	}
 	
+	
 	public int getBno() {
 		return bno;
 	}

@@ -39,10 +39,28 @@ public class BoardDao extends Dao{
 				BoardDto dto = new BoardDto(
 						rs.getInt(1),rs.getInt(2),rs.getString(3),
 						 rs.getString(4),rs.getString(5),rs.getInt(6));
+				boardViewCount(dto.getBno());
 				return dto;
 			}
 
 		}catch (Exception e) {System.out.println(e);}
 		return null;
+	}
+	  // 11-2. 조회수 증가 함수
+    public boolean boardViewCount(int bno) {
+       try {
+	          String sql = "update board set bview =bview + 1 where bno = ?";
+	          ps = conn.prepareStatement(sql);
+	          ps.setInt(1, bno);
+	          ps.executeUpdate();
+       		}catch (Exception e) {System.out.println(e);}
+       
+       
+       return false;
+       
+    }
+	// 게시글 번호 받아서 삭제
+	public void boardDelete() {
+		
 	}
 }
