@@ -9,14 +9,19 @@ public class LessonController {
 	public static LessonController getInstance() { return LessonController; }
 	private LessonController() {}
 	
-	public boolean lessonWriteView(String lname,String ltname,String ltdate) {
+	public boolean lessonWriteView(String lname,String ltname,String ltdate,String lopenday) {
 		
-		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate);
+		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate, lopenday);
 		
 
-		LessonDto result = LessonDao.getInstance().lessonWriteView();
+		boolean result = LessonDao.getInstance().lessonWriteView(lessonDto);
+
+
+
 		
-	//}
-	
+
+		if(result) {return true;}
+		else{return false;}
+	}
 	
 }

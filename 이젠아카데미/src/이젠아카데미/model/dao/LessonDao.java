@@ -7,17 +7,24 @@ public class LessonDao extends Dao{
 	private static LessonDao LessonDao = new LessonDao();
 	public static LessonDao getInstance() { return LessonDao; }
 	private LessonDao() {}
+				
+				
+	public boolean lessonWriteView(LessonDto lessonDto) {
 	
-	public LessonDto lessonWriteView(LessonDto lessonDto) {
-		String sql = "insert  into student (sname,saddress,sphone,lno) values( ?,?,?,?)";
 		try {
+			String sql = "insert into lesson(lname,ltname,ltotalday,lopenday) values(?,?,?,?)";
 			ps=conn.prepareStatement(sql);
-			ps.
+			ps.setString(1, lessonDto.getLname());
+			ps.setString(2, lessonDto.getLtname());
+			ps.setString(3, lessonDto.getLtotalday());
+			ps.setString(4, lessonDto.getLopenday());
+			
+			int row = ps.executeUpdate();
+			if(row ==1) return true; 
 					
 			
-		}catch (Exception e) {System.out.println("dao오류: "+e);
-		}
-		return result;
+		}catch (Exception e) {System.out.println("dao오류: "+e);}
+		return false;
 	}
 	
 	
