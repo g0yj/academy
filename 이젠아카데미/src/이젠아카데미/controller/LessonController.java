@@ -9,13 +9,13 @@ public class LessonController {
 	public static LessonController getInstance() { return LessonController; }
 	private LessonController() {}
 	
-	public boolean lessonWriteView(String lname,String ltname,String ltdate) {
+	//public boolean lessonWriteView(String lname,String ltname,String ltdate) {
 		
-		LessonDto lessonDto = new LessonDto(0,String lname,String ltname,String ltdate)
+		//LessonDto lessonDto = new LessonDto(0,String lname,String ltname,String ltdate)
 		
-		boolean result = LessonDao.getInstance().lessonWriteView();
+		//boolean result = LessonDao.getInstance().lessonWriteView();
 		
-	}
+	//}
 	
 	
 }

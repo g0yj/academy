@@ -56,11 +56,11 @@ public class StudentDao extends Dao {
 //4. 학생삭제(이진형)---------------------------------------------------------------------
 	public boolean studentDelete(int sno) {
 		try {
-			String sql = "delete from ezenacademy where sno = ?";
+			String sql = "delete from student where sno = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,sno);
-			ps.executeUpdate();
-			int row = ps.executeUpdate(); // 삭제한 레코드 반환 (mno은 pk라서 2개 이상 나오면 이상한거)
+
+			int row = ps.executeUpdate(); 
 			if(row == 1) return true;
 		   }catch (Exception e) {
 			   System.out.println(e);
