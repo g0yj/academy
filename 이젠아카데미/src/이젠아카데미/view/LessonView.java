@@ -29,41 +29,38 @@ public class LessonView {
 		}// while e
 	}
 
+//1.수업등록-------------------------------------------------------------------	
 	public void lessonwriteView() {
 		sc.nextLine();
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
 		System.out.println("강사명 : ");		String ltname = sc.nextLine(); 
 		System.out.println("총수강일 : ");		String ltdate = sc.nextLine();
 		System.out.println("개강일 : ");		String lopenday = sc.nextLine();
-	
-	
-	
 
 		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate,lopenday);
 
-	
 		if(result) {System.out.println("수업등록 성공");}
 		else {System.out.println("수업등록 실패");}
 	
-	
-
-	
 	}
 	
-	
-	
-	
+//2.수업조회-----------------------------------------------------------------	
 	public boolean lessonprintView() {
 		
 		return true;
 		
 	}
+
 	
+//3. 수업 상세조회--------------------------------------------------------------	
 	public boolean lessonupdateView() {
 	
 	
 		return true;
 	}
+	
+
+//4. 수업삭제------------------------------------------------------------------
 	public boolean lessondeleteView() {
 	
 		return true;
