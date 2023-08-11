@@ -53,7 +53,7 @@ public class StudentDao extends Dao {
 	public boolean studentUpdate(StudentDto dto) {
 		try {
 			// v
-			String sql = "update student set sname = ?, saddress = ? , sphone = ?, lno = ? , where sno = ?";
+			String sql = "update student set sname = ? , saddress = ? , sphone = ? , lno = ?  where sno = ?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, dto.getSname());
 			ps.setString(2, dto.getSaddress());
@@ -71,7 +71,7 @@ public class StudentDao extends Dao {
 //4. 학생삭제(이진형)---------------------------------------------------------------------
 	public boolean studentDelete(int sno) {
 		try {
-			String sql = "delete from ezenacademy where sno = ?";
+			String sql = " delete from ezenacademy where sno = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,sno);
 			ps.executeUpdate();

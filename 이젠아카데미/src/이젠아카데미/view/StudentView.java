@@ -68,7 +68,9 @@ public class StudentView {
   3. 내용수정
   4. d 업데이트
   5. v에 성공여부알려줌
-*/
+*/		
+		studentAllSelect();
+		
 		System.out.println("학생번호: "); int sno=sc.nextInt();
 		System.out.println("이름: "); String sname=sc.next();
 		System.out.println("주소: "); String saddress=sc.next();
@@ -81,6 +83,7 @@ public class StudentView {
 		
 		if(result) {System.out.println("학생정보수정성공");}
 		
+		studentAllSelect();
 	}//f()
 	
 	
