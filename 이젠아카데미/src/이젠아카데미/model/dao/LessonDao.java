@@ -6,8 +6,8 @@ public class LessonDao {
 	public static LessonDao getInstance() { return LessonDao; }
 	private LessonDao() {}
 	
-	public void lessonWriteView() {
-		
+	public void lessonWriteView(LessonDto dto ) {
+		ps = conn.prepareStatement 
 		
 		return;
 	}
