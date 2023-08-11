@@ -11,9 +11,9 @@ public class LessonController {
 	
 	public boolean lessonWriteView(String lname,String ltname,String ltdate) {
 		
-		LessonDto lessonDto = new LessonDto(0,String lname,String ltname,String ltdate)
+		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate);
 		
-		boolean result = LessonDao.getInstance().lessonWriteView();
+		LessonDto result = LessonDao.getInstance().lessonWriteView();
 		
 	}
 	
