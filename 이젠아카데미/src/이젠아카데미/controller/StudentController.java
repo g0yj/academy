@@ -52,6 +52,17 @@ public boolean studentUpdate(int sno, String sname,String saddress, String sphon
 				  return result; 
 	}
 	
-
+// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
+	int loginSession = 0;
+	
+	public boolean studentLogin(int sno, String sname) {
+			StudentDto dto = new StudentDto(sno, sname);
+			int result= StudentDao.getInstance().studentLogin(dto);
+			if(result>=1) {this.loginSession=result ; return true;}
+			else {return false;}
+		
+		
+	
+	}
 	
 }//class

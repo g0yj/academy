@@ -20,12 +20,14 @@ public class StudentView {
 // 0. 메인페이지--------------------------------------------------------------------	
 	public void studentMain() {
 		while(true) {
-		System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제");
+		System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.로그인");
 		System.out.print("선택: "); int ch= sc.nextInt();
 		if(ch==1) {studentJoin();}//학생등록
 		else if (ch==2) {studentAllSelect();}//학생조회
 		else if(ch==3) {studentUpdate();}//학생수정
 		else if(ch==4) {studentDelete();}//학생삭제
+		else if(ch==5) {MainPage.getInstance().mainPage();}
+		else if(ch==6) {studentLogin();}
 		}//while
 	}
 	
@@ -63,12 +65,7 @@ public class StudentView {
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
 	public void studentUpdate() {
-/*1. 수정학생번호 받기
-  2. d에서 수정 학생에 정보를 가져옴
-  3. 내용수정
-  4. d 업데이트
-  5. v에 성공여부알려줌
-*/		
+	
 		studentAllSelect();
 		
 		System.out.println("학생번호: "); int sno=sc.nextInt();
@@ -94,20 +91,20 @@ public class StudentView {
 			System.out.println("\n\n ===== 학생 삭제 =====");
 			System.out.print("삭제할 학생을 선택하세요. >"); int sno = sc.nextInt();
 		   
-		  
-		  
-		   
 		   System.out.print("해당 학생을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
 		   if(ch ==1) {
 			   boolean result = StudentController.getInstance().studentDelete(sno);
-			   if(result) {
-				   System.out.println("안내] 학생삭제성공");
-				   
-			   } else {
-				   System.out.println("경고] 학생삭제취소");
-			   }
-		   }
-	}
-//--------------------------------------------------------------------	
+			   	if(result) { System.out.println("안내] 학생삭제성공");} 
+			   	else { System.out.println("경고] 학생삭제취소");}
+		   }//if
+	}//f()
+// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
+	public void studentLogin() {
+		System.out.print("학생코드: "); int sno = sc.nextInt();
+		System.out.print("학생이름: "); String sname = sc.next();
+		boolean result = StudentController.getInstance().studentLogin(sno,sname);
+		if(result) {System.out.println("학생확인성공\n" +"학생코드: "+sno +"\n학생이름:"+sname);}
+		else {System.out.println("[학생확인실패] 학생코드와 이름을 확인해주세요");}
+	}//f()
 	
 }//class

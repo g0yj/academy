@@ -82,7 +82,27 @@ public class StudentDao extends Dao {
 		   }
 		return false;
 		}
-	
-	}
+
+// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
+		public int studentLogin(StudentDto dto) {
+			try {
+				String sql = "select ?, ? from student";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, dto.getSno());
+				ps.setString(2, dto.getSname());
+				rs=ps.executeQuery();
+				if(rs.next()) {
+					return rs.getInt(1);
+					}
+			} catch (Exception e) {System.out.println("dao실패이유: "+e);
+			}
+			return 0;
+			
+		}	
+
+
+
+}//class
+
 
 
