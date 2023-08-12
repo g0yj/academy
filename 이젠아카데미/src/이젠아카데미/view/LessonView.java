@@ -1,8 +1,10 @@
 package 이젠아카데미.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import 이젠아카데미.controller.LessonController;
+import 이젠아카데미.model.dto.LessonDto;
 
 public class LessonView {
 	// 0. 싱글톤
@@ -28,7 +30,9 @@ public class LessonView {
 
 		}// while e
 	}
-
+	
+	//수업등록--------------------------------------------------------------------------
+	
 	public void lessonwriteView() {
 		sc.nextLine();
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
@@ -45,28 +49,66 @@ public class LessonView {
 		if(result) {System.out.println("수업등록 성공");}
 		else {System.out.println("수업등록 실패");}
 	
+	}
 	
+	//수업조회--------------------------------------------------------------------------
+	
+	public void lessonprintView() {
+		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();
+		
+		System.out.println("\n\n================수업조회================");
+		
+		System.out.printf("%3s %1s %1s %3s %5s \n","수업코드", "수업명", "선생님이름","총수강일","개강일");
+			for(int i = 0; i<result.size(); i++) {
+				LessonDto dto = result.get(i);	
+				
+				System.out.printf("%3s %5s %5s %6s %13s \n", dto.getLno(), dto.getLname(),dto.getLtname(),dto.getLtotalday(),dto.getLopenday());
+			}
+		
+		
+	}
+	
+	//수업수정--------------------------------------------------------------------------
+	
+	public void lessonupdateView() {
+	
+		lessonprintView();
+		System.out.println("수업코드 : "); 	int lno = sc.nextInt();
+		sc.nextLine();
+		System.out.println("수업명 : ");		String lname = sc.nextLine();
+		System.out.println("강사명 : ");		String ltname = sc.nextLine(); 
+		System.out.println("총수강일 : ");	String ltdate = sc.nextLine();
+		System.out.println("개강일 : ");		String lopenday = sc.nextLine();
+		
+		boolean result = 
+				LessonController.getInstance().lessonupdateView(lno,lname,ltname,ltdate,lopenday);
+		
+		if(result) {System.out.println("수업정보 수정 성공");}
+		
+		lessonprintView();
+	}
+	
+	
+	//수업삭제--------------------------------------------------------------------------
+	
+	public void lessondeleteView() {
+	
+		lessonprintView();
+		System.out.println("\n\n================수업삭제================");
+		System.out.println("삭제할 수업을 선택하세요."); int lno = sc.nextInt();
+		
+		sc.nextLine();
+		System.out.println("해당 수업을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
+		if(ch==1) {
+			boolean result = LessonController.getInstance().lessondeleteView(lno);
+			if(result) {
+				System.out.println(" 안내] 수업 삭제성공");
+			} else {
+				System.out.println(" 안내] 수업 삭제실패");
+			}
+			
+		}
 
-	
-	}
-	
-	
-	
-	
-	public boolean lessonprintView() {
-		
-		return true;
-		
-	}
-	
-	public boolean lessonupdateView() {
-	
-	
-		return true;
-	}
-	public boolean lessondeleteView() {
-	
-		return true;
 	
 	}
 	
