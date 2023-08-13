@@ -16,7 +16,6 @@ public class BoardView {
 	private Scanner sc = new Scanner(System.in);
 	
 	public void BoardMain() {
-		StudentView.getStudentView().studentLogin();
 		while(true) {
 			
 			System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");

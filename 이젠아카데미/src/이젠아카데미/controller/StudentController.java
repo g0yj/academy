@@ -26,14 +26,19 @@ public class StudentController {
 
 	
 	
-//2. 학생정보조회(이진형)-----------------------------------------------------	
+//2-1 전체 학생 정보조회(이진형)-----------------------------------------------------	
 	public ArrayList<StudentDto >studentAllSelect() {
 		
 		
 		return StudentDao.getInstance().studentAllSelect();
 	}
 
-
+//2-2. 학생별 상세 조회(고연진)------------------------------
+	public void studentInfo() {
+		
+	}
+	
+	
 //3. 학생수정업데이트(고연진)---------------------------------------------------	
 public boolean studentUpdate(int sno, String sname,String saddress, String sphone, int lno ) {
 		StudentDto dto = new StudentDto(sno,sname, saddress, sphone, lno);
@@ -50,19 +55,6 @@ public boolean studentUpdate(int sno, String sname,String saddress, String sphon
 		
 				  boolean result =StudentDao.getInstance().studentDelete(sno);
 				  return result; 
-	}
-	
-// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
-	int loginSession = 0;
-	
-	public boolean studentLogin(int sno, String sname) {
-			StudentDto dto = new StudentDto(sno, sname);
-			int result= StudentDao.getInstance().studentLogin(dto);
-			if(result>=1) {this.loginSession=result ; return true;}
-			else {return false;}
-		
-		
-	
 	}
 	
 }//class

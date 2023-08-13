@@ -8,11 +8,8 @@ import 이젠아카데미.model.dto.StudentDto;
 
 public class StudentView {
 	
-	
-
 	private Scanner sc = new Scanner(System.in);
 
-	
 	private static StudentView v= new StudentView();
 	public static StudentView getStudentView() {return v;}
 	private StudentView() {}
@@ -20,14 +17,18 @@ public class StudentView {
 // 0. 메인페이지--------------------------------------------------------------------	
 	public void studentMain() {
 		while(true) {
-		System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.로그인");
-		System.out.print("선택: "); int ch= sc.nextInt();
-		if(ch==1) {studentJoin();}//학생등록
-		else if (ch==2) {studentAllSelect();}//학생조회
-		else if(ch==3) {studentUpdate();}//학생수정
-		else if(ch==4) {studentDelete();}//학생삭제
-		else if(ch==5) {MainPage.getInstance().mainPage();}
-		else if(ch==6) {studentLogin();}
+			try {
+			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.학생회원가입");
+			System.out.print("선택: "); int ch= sc.nextInt();
+			if(ch==1) {studentJoin();}//학생등록
+			else if (ch==2) {studentAllSelect();}//학생조회
+			else if(ch==3) {studentUpdate();}//학생수정
+			else if(ch==4) {studentDelete();}//학생삭제
+			else if(ch==5) {MainPage.getInstance().mainPage();}
+			else if(ch==6) {SignupView.getInstance().signup();}
+			} catch (Exception e) {
+				System.out.println("숫자로 입력해주세요");
+				sc= new Scanner(System.in);}
 		}//while
 	}
 	
@@ -38,6 +39,10 @@ public class StudentView {
 		System.out.print("번호: "); String sphone =sc.next();
 		System.out.print("수업코드: "); int lno =sc.nextInt();
 		
+		//유효성검사
+		//1. 등록되지 않은 학생
+		
+		
 		boolean result= 
 				StudentController.getInstance().studentJoin(sname,saddress,sphone,lno);
 		
@@ -47,7 +52,7 @@ public class StudentView {
 	}//studentJoin()
 
 	
-//2. 학생정보조회(이진형)-------------------------------------------	
+//2-1 전체 학생 정보조회(이진형)-------------------------------------------	
 	public void studentAllSelect() {
 		ArrayList<StudentDto> result = StudentController.getInstance().studentAllSelect();
 		
@@ -61,6 +66,11 @@ public class StudentView {
 		   }
 		
 	}
+	
+//2-2. 학생별 상세 조회(고연진)------------------------------
+	public void studentInfo() {
+			
+		}	
 
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
@@ -98,13 +108,7 @@ public class StudentView {
 			   	else { System.out.println("경고] 학생삭제취소");}
 		   }//if
 	}//f()
-// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
-	public void studentLogin() {
-		System.out.print("학생코드: "); int sno = sc.nextInt();
-		System.out.print("학생이름: "); String sname = sc.next();
-		boolean result = StudentController.getInstance().studentLogin(sno,sname);
-		if(result) {System.out.println("학생확인성공\n" +"학생코드: "+sno +"\n학생이름:"+sname);}
-		else {System.out.println("[학생확인실패] 학생코드와 이름을 확인해주세요");}
-	}//f()
+	
+	
 	
 }//class

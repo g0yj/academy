@@ -27,7 +27,9 @@ public class StudentDao extends Dao {
 		return false;
 	}//studentJoin()
 
-// 2. 학생정보조회(이진형)------------------------------------------------------------
+	
+	
+//2-1 전체 학생 정보조회(이진형)------------------------------------------------------------
 	public ArrayList<StudentDto> studentAllSelect() {
 		ArrayList<StudentDto> list = new ArrayList<>();
 		try {
@@ -48,6 +50,12 @@ public class StudentDao extends Dao {
 			}
 		return list;
 	}
+	
+//2-2. 학생별 상세 조회(고연진)------------------------------
+	public void studentInfo() {
+			
+		}	
+	
 
 //3. 학생정보수정(고연진)------------------------------------------------------------------	
 	public boolean studentUpdate(StudentDto dto) {
@@ -83,22 +91,6 @@ public class StudentDao extends Dao {
 		return false;
 		}
 
-// 5. 학생로그인 (고연진)--------------------------------------------------------------------	
-		public int studentLogin(StudentDto dto) {
-			try {
-				String sql = "select ?, ? from student";
-				ps=conn.prepareStatement(sql);
-				ps.setInt(1, dto.getSno());
-				ps.setString(2, dto.getSname());
-				rs=ps.executeQuery();
-				if(rs.next()) {
-					return rs.getInt(1);
-					}
-			} catch (Exception e) {System.out.println("dao실패이유: "+e);
-			}
-			return 0;
-			
-		}	
 
 
 

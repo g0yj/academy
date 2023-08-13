@@ -21,7 +21,9 @@ public class MainPage {
 				if(ch==1) {manager();}
 				else if(ch==2) {student();} // 
 				
-				}catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);}
+				}catch (Exception e) {
+					System.out.println("숫자로 입력하세요\n오류사유: "+e);
+					sc = new Scanner(System.in);}
 			return ;
 		}//w
 	}//f()
