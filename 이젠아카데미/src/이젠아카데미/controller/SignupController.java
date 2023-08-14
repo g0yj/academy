@@ -10,9 +10,9 @@ public class SignupController {
 	private SignupController() {}
 	
 	
-// 1.학생회원가입-----------------------------------------------
-	public boolean signup(String jname, String jid, String jpw) {
-		SignupDto dto = new SignupDto(jname, jid, jpw);
+// 1.강사회원가입-----------------------------------------------
+	public boolean signup(int eno, String jid, String jpw) {
+		SignupDto dto = new SignupDto(eno, jid, jpw);
 		
 		
 		boolean result =SignupDao.getInstance().signup(dto);

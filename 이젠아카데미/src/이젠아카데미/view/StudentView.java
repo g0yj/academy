@@ -27,7 +27,7 @@ public class StudentView {
 			else if(ch==3) {studentUpdate();}//학생수정
 			else if(ch==4) {studentDelete();}//학생삭제
 			else if(ch==5) {MainPage.getInstance().mainPage();}
-
+			
 			} catch (Exception e) {
 				System.out.println("숫자로 입력해주세요");
 				sc= new Scanner(System.in);}
