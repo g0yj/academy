@@ -20,14 +20,35 @@ public class LessonDao extends Dao{
 			ps.setString(2, lessonDto.getLtname());
 			ps.setString(3, lessonDto.getLtotalday());
 			ps.setString(4, lessonDto.getLopenday());
-			
 			int row = ps.executeUpdate();
 			if(row ==1) return true; 
-					
-			
 		}catch (Exception e) {System.out.println("dao오류: "+e);}
 		return false;
 	}
+
+//2.수업조회-----------------------------------------------------------------	
+		public boolean lessonprintView() {
+			
+			return true;
+			
+		}
+
+		
+//3. 수업 상세조회--------------------------------------------------------------	
+		public boolean lessonupdateView() {
+		
+		
+			return true;
+		}
+		
+
+//4. 수업삭제------------------------------------------------------------------
+		public boolean lessondeleteView() {
+		
+			return true;
+		
+		}	
+	
 	
 // 수업조회------------------------------------------------------------------
 	

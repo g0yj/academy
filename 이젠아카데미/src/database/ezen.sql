@@ -38,8 +38,17 @@ create table attendance(
     primary key(ano),
     foreign key( sno) references student (sno)
 );
-select * from lesson;
-select*from student;
+
+create table signup(
+	jno int auto_increment,
+    jname varchar(10) not null,
+    jid varchar(20) unique not null,
+    jpw varchar(20) not null,
+    sno int,
+    primary key(jno),
+    foreign key(sno) references student(sno)
+    );
+
 
 insert into lesson (lname,ltname,ltotalday,lopenday) values('자바','황태웅','120','2023-01-23');
 insert  into lesson (lname,ltname,ltotalday,lopenday) values('파이썬','이환희','80','2023-02-24');
@@ -60,7 +69,14 @@ insert into attendance(sno,aday )values ('1','2023-11-23 20:20:20');
 insert into attendance(sno,aday )values ('2','2023-12-23 19:19:19');
 insert into attendance(sno,aday )values ('2','2023-11-25 12:12:12');
 
+insert into signup(jname,jid,jpw,sno) values ('정희락','희락','1234',2);
+insert into signup(jname,jid,jpw,sno) values ('고연진','연진','1234',1);
+insert into signup(jname,jid,jpw,sno) values ('황기준','김규리','1234',3);
+
+
+
 select*from student;
 select*from lesson;
 select*from board;
 select*from attendance;
+select*from signup;

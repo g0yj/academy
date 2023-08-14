@@ -17,6 +17,9 @@ public class BoardView {
 	
 	public void BoardMain() {
 		while(true) {
+			
+			System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
+			// 내정보,쓴글 페이지에서 다음으로 안 넘어가서 주석처리해봄
 			boardPrint(); 
 			System.out.println("1.글조회 2. 뒤로가기");int ch = sc.nextInt();
 			if(ch==1) {boardView();}

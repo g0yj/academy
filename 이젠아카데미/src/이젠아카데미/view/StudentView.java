@@ -8,11 +8,8 @@ import 이젠아카데미.model.dto.StudentDto;
 
 public class StudentView {
 	
-	
-
 	private Scanner sc = new Scanner(System.in);
 
-	
 	private static StudentView v= new StudentView();
 	public static StudentView getStudentView() {return v;}
 	private StudentView() {}
@@ -20,12 +17,18 @@ public class StudentView {
 // 0. 메인페이지--------------------------------------------------------------------	
 	public void studentMain() {
 		while(true) {
-		System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제");
-		System.out.print("선택: "); int ch= sc.nextInt();
-		if(ch==1) {studentJoin();}//학생등록
-		else if (ch==2) {studentAllSelect();}//학생조회
-		else if(ch==3) {studentUpdate();}//학생수정
-		else if(ch==4) {studentDelete();}//학생삭제
+			try {
+			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.학생회원가입");
+			System.out.print("선택: "); int ch= sc.nextInt();
+			if(ch==1) {studentJoin();}//학생등록
+			else if (ch==2) {studentAllSelect();}//학생조회
+			else if(ch==3) {studentUpdate();}//학생수정
+			else if(ch==4) {studentDelete();}//학생삭제
+			else if(ch==5) {MainPage.getInstance().mainPage();}
+			else if(ch==6) {SignupView.getInstance().signup();}
+			} catch (Exception e) {
+				System.out.println("숫자로 입력해주세요");
+				sc= new Scanner(System.in);}
 		}//while
 	}
 	
@@ -36,6 +39,10 @@ public class StudentView {
 		System.out.print("번호: "); String sphone =sc.next();
 		System.out.print("수업코드: "); int lno =sc.nextInt();
 		
+		//유효성검사
+		//1. 등록되지 않은 학생
+		
+		
 		boolean result= 
 				StudentController.getInstance().studentJoin(sname,saddress,sphone,lno);
 		
@@ -45,7 +52,7 @@ public class StudentView {
 	}//studentJoin()
 
 	
-//2. 학생정보조회(이진형)-------------------------------------------	
+//2-1 전체 학생 정보조회(이진형)-------------------------------------------	
 	public void studentAllSelect() {
 		ArrayList<StudentDto> result = StudentController.getInstance().studentAllSelect();
 		
@@ -59,16 +66,16 @@ public class StudentView {
 		   }
 		
 	}
+	
+//2-2. 학생별 상세 조회(고연진)------------------------------
+	public void studentInfo() {
+			
+		}	
 
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------
 	public void studentUpdate() {
-/*1. 수정학생번호 받기
-  2. d에서 수정 학생에 정보를 가져옴
-  3. 내용수정
-  4. d 업데이트
-  5. v에 성공여부알려줌
-*/		
+	
 		studentAllSelect();
 		
 		System.out.println("학생번호: "); int sno=sc.nextInt();
@@ -94,20 +101,14 @@ public class StudentView {
 			System.out.println("\n\n ===== 학생 삭제 =====");
 			System.out.print("삭제할 학생을 선택하세요. >"); int sno = sc.nextInt();
 		   
-		  
-		  
-		   
 		   System.out.print("해당 학생을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
 		   if(ch ==1) {
 			   boolean result = StudentController.getInstance().studentDelete(sno);
-			   if(result) {
-				   System.out.println("안내] 학생삭제성공");
-				   
-			   } else {
-				   System.out.println("경고] 학생삭제취소");
-			   }
-		   }
-	}
-//--------------------------------------------------------------------	
+			   	if(result) { System.out.println("안내] 학생삭제성공");} 
+			   	else { System.out.println("경고] 학생삭제취소");}
+		   }//if
+	}//f()
+	
+	
 	
 }//class

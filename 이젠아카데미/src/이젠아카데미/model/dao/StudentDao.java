@@ -27,7 +27,9 @@ public class StudentDao extends Dao {
 		return false;
 	}//studentJoin()
 
-// 2. 학생정보조회(이진형)------------------------------------------------------------
+	
+	
+//2-1 전체 학생 정보조회(이진형)------------------------------------------------------------
 	public ArrayList<StudentDto> studentAllSelect() {
 		ArrayList<StudentDto> list = new ArrayList<>();
 		try {
@@ -48,6 +50,12 @@ public class StudentDao extends Dao {
 			}
 		return list;
 	}
+	
+//2-2. 학생별 상세 조회(고연진)------------------------------
+	public void studentInfo() {
+			
+		}	
+	
 
 //3. 학생정보수정(고연진)------------------------------------------------------------------	
 	public boolean studentUpdate(StudentDto dto) {
@@ -82,7 +90,11 @@ public class StudentDao extends Dao {
 		   }
 		return false;
 		}
-	
-	}
+
+
+
+
+}//class
+
 
 

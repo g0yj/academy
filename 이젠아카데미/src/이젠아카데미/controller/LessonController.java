@@ -11,6 +11,7 @@ public class LessonController {
 	private static LessonController LessonController = new LessonController();
 	public static LessonController getInstance() { return LessonController; }
 	private LessonController() {}
+<<<<<<< HEAD
 	
 	//수업 등록--------------------------------------------------------------------
 	public boolean lessonWriteView(String lname,String ltname,String ltdate,String lopenday) {
@@ -20,12 +21,16 @@ public class LessonController {
 
 		boolean result = LessonDao.getInstance().lessonWriteView(lessonDto);
 
+=======
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 
-
-		
-
+//1. 수업등록(황기준)---------------------------------------------------------------------------	
+	public boolean lessonWriteView(String lname,String ltname,String ltdate,String lopenday) {
+		LessonDto lessonDto = new LessonDto(lname, ltname, ltdate, lopenday);
+		boolean result = LessonDao.getInstance().lessonWriteView(lessonDto);
 		if(result) {return true;}
 		else{return false;}
+<<<<<<< HEAD
 	}
 	
 	//수업 조회-------------------------------------------------------------------
@@ -61,5 +66,35 @@ public class LessonController {
 	
 	
 	
+=======
+	}//f()
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	
-}
+	//2.수업조회-----------------------------------------------------------------	
+		public boolean lessonprintView() {
+			
+			return true;
+			
+		}
+
+		
+	//3. 수업 상세조회--------------------------------------------------------------	
+		public boolean lessonupdateView() {
+		
+		
+			return true;
+		}
+		
+
+	//4. 수업삭제------------------------------------------------------------------
+		public boolean lessondeleteView() {
+		
+			return true;
+		
+		}	
+	
+	
+	
+	
+	
+}//class

@@ -30,31 +30,41 @@ public class LessonView {
 
 		}// while e
 	}
+<<<<<<< HEAD
 	
 	//수업등록--------------------------------------------------------------------------
 	
+=======
+
+//1.수업등록-------------------------------------------------------------------	
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	public void lessonwriteView() {
 		sc.nextLine();
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
 		System.out.println("강사명 : ");		String ltname = sc.nextLine(); 
 		System.out.println("총수강일 : ");		String ltdate = sc.nextLine();
 		System.out.println("개강일 : ");		String lopenday = sc.nextLine();
-	
-	
-	
 
 		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate,lopenday);
 
-	
 		if(result) {System.out.println("수업등록 성공");}
+<<<<<<< HEAD
 		else {System.out.println("수업등록 실패");}
+=======
+		else {System.out.println("수업등록 실패");}
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	
 	}
 	
+<<<<<<< HEAD
 	//수업조회--------------------------------------------------------------------------
 	
 	public void lessonprintView() {
 		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();
+=======
+//2.수업조회-----------------------------------------------------------------	
+	public boolean lessonprintView() {
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 		
 		System.out.println("\n\n================수업조회================");
 		
@@ -67,8 +77,14 @@ public class LessonView {
 		
 		
 	}
+
 	
+<<<<<<< HEAD
 	//수업수정--------------------------------------------------------------------------
+=======
+//3. 수업 상세조회--------------------------------------------------------------	
+	public boolean lessonupdateView() {
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	
 	public void lessonupdateView() {
 	
@@ -87,6 +103,13 @@ public class LessonView {
 		
 		lessonprintView();
 	}
+<<<<<<< HEAD
+=======
+	
+
+//4. 수업삭제------------------------------------------------------------------
+	public boolean lessondeleteView() {
+>>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	
 	
 	//수업삭제--------------------------------------------------------------------------

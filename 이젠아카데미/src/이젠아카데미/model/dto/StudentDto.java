@@ -7,29 +7,12 @@ public class StudentDto {
 	String saddress;
 	String sphone;
 	int lno;
+
+// 생성자-------------------------------------------------------------------------	
+	// 1.기본생성자
 	public StudentDto() {
 	}
-	
-	public StudentDto(int sno, String sname, String saddress, String sphone) {
-		super();
-		this.sno = sno;
-		this.sname = sname;
-		this.saddress = saddress;
-		this.sphone = sphone;
-	}
-
-	
-	
-	
-
-	public StudentDto(String sname, String saddress, String sphone, int lno) {
-		super();
-		this.sname = sname;
-		this.saddress = saddress;
-		this.sphone = sphone;
-		this.lno = lno;
-	}
-
+	// 2.풀생성자
 	public StudentDto(int sno, String sname, String saddress, String sphone, int lno) {
 		super();
 		this.sno = sno;
@@ -39,15 +22,29 @@ public class StudentDto {
 		this.lno = lno;
 	}
 
-	public int getSno() {
-		return sno;
-	}
 
-	public StudentDto(String sname, String saddress, String sphone) {
+	// 3.로그인 생성자
+	
+	public StudentDto(int sno, String sname) {
+		super();
+		this.sno = sno;
+		this.sname = sname;
+	}
+	
+	
+	// 4. 학생정보수정을 위한 생성자
+	public StudentDto(String sname, String saddress, String sphone, int lno) {
 		super();
 		this.sname = sname;
 		this.saddress = saddress;
 		this.sphone = sphone;
+		this.lno = lno;
+	}
+
+
+// 메소드-------------------------------------------------------------
+	public int getSno() {
+		return sno;
 	}
 
 
