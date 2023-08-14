@@ -60,7 +60,17 @@ public class BoardDao extends Dao{
        
     }
 	// 게시글 번호 받아서 삭제
-	public void boardDelete() {
+	public boolean boardDelete(int bno) {
+		try {
+			String sql = "delete from board where bno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			int row = ps.executeUpdate();
+			if(row == 1) return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
+		return false;
 	}
 }

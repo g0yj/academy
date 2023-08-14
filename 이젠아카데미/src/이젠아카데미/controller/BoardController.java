@@ -21,8 +21,9 @@ public class BoardController {
 	}
 	
 	// 4. 게시글 번호 받아서 삭제
-	public void boardDelete(int bno) {
+	public boolean boardDelete(int bno) {
 		
-		
+		boolean result = BoardDao.getInstance().boardDelete(bno);
+		return result;
 	}
 }
