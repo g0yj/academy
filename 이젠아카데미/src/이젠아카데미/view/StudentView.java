@@ -76,7 +76,7 @@ public class StudentView {
 	public void studentUpdate() {
 	
 		studentAllSelect();
-		
+		 
 		System.out.println("학생번호: "); int sno=sc.nextInt();
 		System.out.println("이름: "); String sname=sc.next();
 		System.out.println("주소: "); String saddress=sc.next();
