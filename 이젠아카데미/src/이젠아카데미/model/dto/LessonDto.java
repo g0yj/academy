@@ -3,7 +3,7 @@ package 이젠아카데미.model.dto;
 public class LessonDto {
 	
 	// 1. 필드
-	
+	private int lno;
 	private String lname;
 	private String ltname;
 	private	String ltotalday;
@@ -12,18 +12,25 @@ public class LessonDto {
 	// 2. 생성자
 	public LessonDto() {}
 
-	public LessonDto(String lname, String ltname, String ltotalday, String lopenday) {
+	public LessonDto(int lno, String lname, String ltname, String ltotalday, String lopenday) {
 		super();
+		this.lno = lno;
 		this.lname = lname;
 		this.ltname = ltname;
 		this.ltotalday = ltotalday;
 		this.lopenday = lopenday;
 	}
-	
-	
-	
+
 	
 	// 3. 매소드
+	public int getLno() {
+		return lno;
+	}
+
+	public void setLno(int lno) {
+		this.lno = lno;
+	}
+
 	public String getLname() {
 		return lname;
 	}
@@ -61,10 +68,9 @@ public class LessonDto {
 		return "LessonDto [lname=" + lname + ", ltname=" + ltname + ", ltotalday=" + ltotalday + ", lopenday="
 				+ lopenday + "]";
 	}
-
 	
 
-
+	
 	
 	
 	

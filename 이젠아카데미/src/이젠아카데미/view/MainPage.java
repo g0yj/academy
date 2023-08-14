@@ -17,7 +17,22 @@ public class MainPage {
 			System.out.println("======================");
 			
 			System.out.print("선택:  "); int ch= sc. nextInt();
+<<<<<<< HEAD
 	
+=======
+		try { 
+			if(ch==1) {
+				System.out.println(">>>>>1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리<<<<<");
+				System.out.print("선택: "); int select=sc.nextInt();
+					if(select==1) {StudentView.getStudentView().studentMain();}
+					else if(select==2){LessonView.getInstance().LessonMain();}
+					else if(select==3){BoardView.getInstance().BoardMain();}
+					//else if(select==4){AttendanceView.getInstance().AttendanceMain();}
+				}
+			else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
+							//유효성 검사 필요. sql만들기
+							System.out.print("회원이름입력: ");} // 
+>>>>>>> branch '황기준' of https://github.com/g0yj/2ji
 			
 			try { 
 				if(ch==1) {

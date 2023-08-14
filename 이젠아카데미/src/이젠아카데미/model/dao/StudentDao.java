@@ -60,7 +60,7 @@ public class StudentDao extends Dao {
 			ps.setString(3, dto.getSphone());
 			ps.setInt(4, dto.getLno());
 			ps.setInt(5, dto.getSno());
-			ps.executeUpdate();
+			ps.executeUpdate(); 
 			return true;
 		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
 		}
