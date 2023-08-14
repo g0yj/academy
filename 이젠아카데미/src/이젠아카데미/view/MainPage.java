@@ -17,8 +17,6 @@ public class MainPage {
 			System.out.println("======================");
 			
 			System.out.print("선택:  "); int ch= sc. nextInt();
-<<<<<<< HEAD
-
 			
 			try { 
 				if(ch==1) {
@@ -40,18 +38,10 @@ public class MainPage {
 		}//while
 		
 	}//MainPage()
-=======
-			try { 
-				if(ch==1) {manager();}
-				else if(ch==2) {student();} // 
-				
-				}catch (Exception e) {
-					System.out.println("숫자로 입력하세요\n오류사유: "+e);
-					sc = new Scanner(System.in);}
-			return ;
-		}//w
-	}//f()
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
+
+			
+	
+
 	
 // 학생 눌렀을 때 선택되는 창 (고연진)--------------------------------------------------------	
 	public void student() {

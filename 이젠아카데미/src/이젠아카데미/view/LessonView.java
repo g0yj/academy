@@ -30,14 +30,8 @@ public class LessonView {
 
 		}// while e
 	}
-<<<<<<< HEAD
-	
-	//수업등록--------------------------------------------------------------------------
-	
-=======
+//1.수업등록-----------------------------------------------------------------	
 
-//1.수업등록-------------------------------------------------------------------	
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
 	public void lessonwriteView() {
 		sc.nextLine();
 		System.out.println("수업명 : ");		String lname = sc.nextLine();
@@ -48,24 +42,20 @@ public class LessonView {
 		boolean result = LessonController.getInstance().lessonWriteView(lname,ltname,ltdate,lopenday);
 
 		if(result) {System.out.println("수업등록 성공");}
-<<<<<<< HEAD
+
 		else {System.out.println("수업등록 실패");}
-=======
-		else {System.out.println("수업등록 실패");}
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
+
+
+
 	
 	}
 	
-<<<<<<< HEAD
-	//수업조회--------------------------------------------------------------------------
+
 	
-	public void lessonprintView() {
-		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();
-=======
+
 //2.수업조회-----------------------------------------------------------------	
-	public boolean lessonprintView() {
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-		
+public void lessonprintView() {
+		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();		
 		System.out.println("\n\n================수업조회================");
 		
 		System.out.printf("%3s %1s %1s %3s %5s \n","수업코드", "수업명", "선생님이름","총수강일","개강일");
@@ -78,14 +68,7 @@ public class LessonView {
 		
 	}
 
-	
-<<<<<<< HEAD
-	//수업수정--------------------------------------------------------------------------
-=======
 //3. 수업 상세조회--------------------------------------------------------------	
-	public boolean lessonupdateView() {
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-	
 	public void lessonupdateView() {
 	
 		lessonprintView();
@@ -103,16 +86,9 @@ public class LessonView {
 		
 		lessonprintView();
 	}
-<<<<<<< HEAD
-=======
-	
+
 
 //4. 수업삭제------------------------------------------------------------------
-	public boolean lessondeleteView() {
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-	
-	
-	//수업삭제--------------------------------------------------------------------------
 	
 	public void lessondeleteView() {
 	

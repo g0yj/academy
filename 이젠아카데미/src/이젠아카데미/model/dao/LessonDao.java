@@ -26,28 +26,7 @@ public class LessonDao extends Dao{
 		return false;
 	}
 
-//2.수업조회-----------------------------------------------------------------	
-		public boolean lessonprintView() {
-			
-			return true;
-			
-		}
 
-		
-//3. 수업 상세조회--------------------------------------------------------------	
-		public boolean lessonupdateView() {
-		
-		
-			return true;
-		}
-		
-
-//4. 수업삭제------------------------------------------------------------------
-		public boolean lessondeleteView() {
-		
-			return true;
-		
-		}	
 	
 	
 // 수업조회------------------------------------------------------------------
