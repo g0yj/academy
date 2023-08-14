@@ -24,9 +24,6 @@ public class LessonController {
 	
 //2. 수업 조회-------------------------------------------------------------------
 	public ArrayList<LessonDto> lessonprintView() {
-	
-		
-		
 		
 		return LessonDao.getInstance().lessonprintView();
 
