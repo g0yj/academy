@@ -32,6 +32,7 @@ public class StudentDto {
 	}
 	
 	
+	
 	// 4. 학생정보수정을 위한 생성자
 	public StudentDto(String sname, String saddress, String sphone, int lno) {
 		super();
@@ -42,7 +43,12 @@ public class StudentDto {
 	}
 
 
-// 메소드-------------------------------------------------------------
+public StudentDto(String sname, String sphone) {
+		super();
+		this.sname = sname;
+		this.sphone = sphone;
+	}
+	// 메소드-------------------------------------------------------------
 	public int getSno() {
 		return sno;
 	}

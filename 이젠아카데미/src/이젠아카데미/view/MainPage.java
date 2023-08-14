@@ -2,6 +2,10 @@ package 이젠아카데미.view;
 
 import java.util.Scanner;
 
+
+import 이젠아카데미.controller.BoardController;
+import 이젠아카데미.model.dto.StudentDto;
+
 public class MainPage {
 
 	private static MainPage mainpage= new MainPage();
@@ -27,9 +31,10 @@ public class MainPage {
 						else if(select==3){BoardView.getInstance().BoardMain();}
 						else if(select==4){}
 					}
-				else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-								//유효성 검사 필요. sql만들기
-								System.out.print("회원이름입력: ");} // 
+				else if(ch==2) {
+					information();
+				}
+								
 				
 			} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
 				return ;
@@ -59,6 +64,17 @@ public class MainPage {
 			else if(select==2){LessonView.getInstance().LessonMain();}
 			else if(select==3){BoardView.getInstance().BoardMain();}
 			else if(select==4){}
+	}
+	public void information() {
+		System.out.println("회원이름 : "); String name = sc.next();
+		System.out.println("회원전화번호 : "); String phone = sc.next();
+		boolean result=BoardController.getInstance().information(name,phone);
+		
+		if(result) {
+			System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
+			InfoMation.getInstance().InfoMationMenu();
+			}
+		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
 	}
 
 }//class
