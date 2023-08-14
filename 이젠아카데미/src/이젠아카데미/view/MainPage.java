@@ -2,9 +2,7 @@ package 이젠아카데미.view;
 
 import java.util.Scanner;
 
-
 import 이젠아카데미.controller.BoardController;
-import 이젠아카데미.model.dto.StudentDto;
 
 public class MainPage {
 
@@ -65,6 +63,8 @@ public class MainPage {
 			else if(select==3){BoardView.getInstance().BoardMain();}
 			else if(select==4){}
 	}
+	
+
 	public void information() {
 		System.out.println("회원이름 : "); String name = sc.next();
 		System.out.println("회원전화번호 : "); String phone = sc.next();
