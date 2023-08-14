@@ -15,32 +15,29 @@ public class MainPage {
 			System.out.println("======================");
 			System.out.println("1. 직원 2. 학생");
 			System.out.println("======================");
-			
-			System.out.print("선택:  "); int ch= sc. nextInt();
+			try {
+				System.out.print("선택:  "); int ch= sc.nextInt();
+				if( ch != 1 || ch !=2) {System.out.println("1,2번 중에 선택해주세요!!");} 
+			} catch (Exception e) {
+				System.out.println("숫자로 입력하세요\n오류사유: "+e);
+				sc = new Scanner(System.in);
+				
+			}
+
 			
 			try { 
-				if(ch==1) {
-					System.out.println(">>>>>1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리<<<<<");
-					System.out.print("선택: "); int select=sc.nextInt();
-						if(select==1) {StudentView.getStudentView().studentMain();}
-						else if(select==2){}
-						else if(select==3){BoardView.getInstance().BoardMain();}
-						else if(select==4){}
-					}
-				else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-								//유효성 검사 필요. sql만들기
-								System.out.print("회원이름입력: ");} // 
-				
-			} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
-				return ;
+				int ch = sc.nextInt();
+				if(ch==1) {manager();}
+				else if(ch==2) {student();}
+			} catch (Exception e) {
+				System.out.println("숫자로 입력하세요\n오류사유: "+e);
+				sc = new Scanner(System.in);
+		
 			}	
 			
 		}//while
 		
 	}//MainPage()
-
-			
-	
 
 	
 // 학생 눌렀을 때 선택되는 창 (고연진)--------------------------------------------------------	
@@ -55,10 +52,17 @@ public class MainPage {
 	public void manager() {
 		System.out.println(">>>>>1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리<<<<<");
 		System.out.print("선택: "); int select=sc.nextInt();
+		
+		System.out.println("이름을 입력: ");String name = sc.next();
+		System.out.println("패스워드 입력: ");String pw = sc.next();
+		if(name.equals("박상빈") && pw.equals("1234")) {manager();}
+		else{System.out.println("다시 입력");
+			sc = new Scanner(System.in);
+		}
 			if(select==1) {StudentView.getStudentView().studentMain();}
 			else if(select==2){LessonView.getInstance().LessonMain();}
 			else if(select==3){BoardView.getInstance().BoardMain();}
-			else if(select==4){}
+			else if(select==4){AttendanceView.getInstance().attendanceMain();}
 	}
 
 }//class

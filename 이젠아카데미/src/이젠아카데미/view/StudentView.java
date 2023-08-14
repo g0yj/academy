@@ -18,14 +18,14 @@ public class StudentView {
 	public void studentMain() {
 		while(true) {
 			try {
-			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.학생회원가입");
+			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면");
 			System.out.print("선택: "); int ch= sc.nextInt();
 			if(ch==1) {studentJoin();}//학생등록
 			else if (ch==2) {studentAllSelect();}//학생조회
 			else if(ch==3) {studentUpdate();}//학생수정
 			else if(ch==4) {studentDelete();}//학생삭제
 			else if(ch==5) {MainPage.getInstance().mainPage();}
-			else if(ch==6) {SignupView.getInstance().signup();}
+		
 			} catch (Exception e) {
 				System.out.println("숫자로 입력해주세요");
 				sc= new Scanner(System.in);}
