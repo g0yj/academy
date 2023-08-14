@@ -3,6 +3,7 @@ package 이젠아카데미.model.dao;
 import java.util.ArrayList;
 
 import 이젠아카데미.model.dto.BoardDto;
+import 이젠아카데미.model.dto.StudentDto;
 
 
 
@@ -15,7 +16,7 @@ public class BoardDao extends Dao{
 	public ArrayList<BoardDto> boardPrint() {
 		 ArrayList<BoardDto> list = new ArrayList<>();
 		 try {
-			 String sql = "select b.*,s.sno from student s natural join board b   order by b.bday desc;";
+			 String sql = "select b.*,s.sno from student s natural join board b order by b.bday asc;";
 			 ps = conn.prepareStatement(sql);
 			 rs=ps.executeQuery();
 			 
@@ -73,4 +74,5 @@ public class BoardDao extends Dao{
 		
 		return false;
 	}
+	
 }

@@ -32,6 +32,7 @@ public class StudentView {
 		}//while
 	}
 	
+	
 //1. 학생등록(고연진)---------------------------------------------------------------------	
 	public void studentJoin() {
 		System.out.print("이름: "); String sname =sc.next();

@@ -25,7 +25,7 @@ public class MainPage {
 						if(select==1) {StudentView.getStudentView().studentMain();}
 						else if(select==2){}
 						else if(select==3){BoardView.getInstance().BoardMain();}
-						else if(select==4){}
+						else if(select==4){AttendanceView.getInstance().attendancePrint();}
 					}
 				else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
 								//유효성 검사 필요. sql만들기
@@ -58,7 +58,7 @@ public class MainPage {
 			if(select==1) {StudentView.getStudentView().studentMain();}
 			else if(select==2){LessonView.getInstance().LessonMain();}
 			else if(select==3){BoardView.getInstance().BoardMain();}
-			else if(select==4){}
+			else if(select==4){AttendanceView.getInstance().attendancePrint();}
 	}
 
 }//class

@@ -8,6 +8,7 @@ public class StudentDto {
 	String sphone;
 	int lno;
 
+
 // 생성자-------------------------------------------------------------------------	
 	// 1.기본생성자
 	public StudentDto() {
@@ -22,7 +23,7 @@ public class StudentDto {
 		this.lno = lno;
 	}
 
-
+	
 	// 3.로그인 생성자
 	
 	public StudentDto(int sno, String sname) {

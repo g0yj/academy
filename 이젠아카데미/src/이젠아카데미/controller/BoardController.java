@@ -26,4 +26,5 @@ public class BoardController {
 		boolean result = BoardDao.getInstance().boardDelete(bno);
 		return result;
 	}
+	
 }
