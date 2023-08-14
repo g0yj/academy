@@ -69,9 +69,6 @@ public class BoardView {
 				if(result) System.out.println("삭제 성공");
 				else {System.out.println("삭제 실패");}
 			} else if ( ch == 2) {
-			
-			}
-			
-			
+			}	
 		}
 }

@@ -20,6 +20,18 @@ public class BoardDto {
 	}
 	
 	
+	public BoardDto(int sno, String btitle, String bcontent) {
+		super();
+		this.sno = sno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+	}
+	
+	public BoardDto(String btitle, String bcontent) {
+		super();
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+	}
 	public int getBno() {
 		return bno;
 	}
