@@ -30,7 +30,7 @@ public class LessonView {
 
 		}// while e
 	}
-//1.수업등록-----------------------------------------------------------------	
+//1. 수업등록-----------------------------------------------------------------	
 
 	public void lessonwriteView() {
 		sc.nextLine();
@@ -53,7 +53,7 @@ public class LessonView {
 
 	
 
-//2.수업조회-----------------------------------------------------------------	
+//2. 수업조회-----------------------------------------------------------------	
 public void lessonprintView() {
 		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();		
 		System.out.println("\n\n================수업조회================");
@@ -68,7 +68,7 @@ public void lessonprintView() {
 		
 	}
 
-//3. 수업 상세조회--------------------------------------------------------------	
+//3. 수업수정--------------------------------------------------------------	
 	public void lessonupdateView() {
 	
 		lessonprintView();
