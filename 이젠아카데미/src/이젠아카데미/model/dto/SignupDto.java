@@ -17,12 +17,20 @@ public class SignupDto {
 		this.jpw = jpw;
 	}
 
+	//3. 로그인 생성자
+	
+	public SignupDto(String jid, String jpw) {
+		super();
+		this.jid = jid;
+		this.jpw = jpw;
+	}
 	
 	
 //메소드-------------------------------------	
 	public int getEno() {
 		return eno;
 	}
+
 
 	public void setEno(int eno) {
 		this.eno = eno;

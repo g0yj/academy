@@ -34,7 +34,8 @@ public class StudentController {
 	}
 
 //2-2. 학생별 상세 조회(고연진)------------------------------
-	public void studentInfo() {
+	public  StudentDto studentInfo(int sno) {
+		return StudentDao.getInstance().studentInfo(sno);
 		
 	}
 	

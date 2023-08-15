@@ -24,5 +24,26 @@ public class SignupDao extends Dao {
 		return false;
 	}//f()	
 	
+//2. 로그인---------------------------------------------
+	public int login(SignupDto dto) {
+		try {
+			String sql = "select * from signup where jid= ?  and jpw= ? ";
+			ps= conn.prepareStatement(sql);
+			ps.setString(1, dto.getJid());
+			ps.setString(2, dto.getJpw());
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		}catch (Exception e) {System.out.println("doa쪽 오류: "+e);}
+		
+		return 0;
+			
+		}//f()	
+	
+	
+	
+	
 	
 }//c
