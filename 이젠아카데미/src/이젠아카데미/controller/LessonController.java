@@ -22,17 +22,14 @@ public class LessonController {
 
 	}
 	
-	//수업 조회-------------------------------------------------------------------
+//2. 수업 조회-------------------------------------------------------------------
 	public ArrayList<LessonDto> lessonprintView() {
-	
-		
-		
 		
 		return LessonDao.getInstance().lessonprintView();
 
 	}
 	
-	//수업수정--------------------------------------------------------------------------
+//3. 수업수정--------------------------------------------------------------------------
 	
 	public boolean lessonupdateView(int lno,String lname,String ltname,String ltdate,String lopenday) {
 		
@@ -43,7 +40,7 @@ public class LessonController {
 	}
 	
 	
-	//수업삭제--------------------------------------------------------------------------
+//4. 수업삭제--------------------------------------------------------------------------
 	
 	public boolean lessondeleteView(int lno) {
 		

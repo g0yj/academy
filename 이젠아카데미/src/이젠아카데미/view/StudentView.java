@@ -18,14 +18,16 @@ public class StudentView {
 	public void studentMain() {
 		while(true) {
 			try {
-			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면 6.학생회원가입");
+
+			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면");
+
 			System.out.print("선택: "); int ch= sc.nextInt();
 			if(ch==1) {studentJoin();}//학생등록
 			else if (ch==2) {studentAllSelect();}//학생조회
 			else if(ch==3) {studentUpdate();}//학생수정
 			else if(ch==4) {studentDelete();}//학생삭제
 			else if(ch==5) {MainPage.getInstance().mainPage();}
-			else if(ch==6) {SignupView.getInstance().signup();}
+
 			} catch (Exception e) {
 				System.out.println("숫자로 입력해주세요");
 				sc= new Scanner(System.in);}
@@ -39,10 +41,7 @@ public class StudentView {
 		System.out.print("주소: "); String saddress =sc.next();
 		System.out.print("번호: "); String sphone =sc.next();
 		System.out.print("수업코드: "); int lno =sc.nextInt();
-		
-		//유효성검사
-		//1. 등록되지 않은 학생
-		
+
 		
 		boolean result= 
 				StudentController.getInstance().studentJoin(sname,saddress,sphone,lno);
@@ -78,7 +77,7 @@ public class StudentView {
 	public void studentUpdate() {
 	
 		studentAllSelect();
-		
+		 
 		System.out.println("학생번호: "); int sno=sc.nextInt();
 		System.out.println("이름: "); String sname=sc.next();
 		System.out.println("주소: "); String saddress=sc.next();

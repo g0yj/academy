@@ -3,7 +3,6 @@ package 이젠아카데미.model.dao;
 import java.util.ArrayList;
 
 import 이젠아카데미.model.dto.BoardDto;
-import 이젠아카데미.model.dto.StudentDto;
 
 
 
@@ -75,4 +74,35 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	
+	public int information(String name, String phone) {
+		try {
+			String sql = "select * from student where sname=? and sphone=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, phone);
+			
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+		}catch (Exception e) {System.out.println(e);}
+		return 0;
+	}
+	public boolean boardWrite(BoardDto boardDto) {
+		try {
+			String sql = "insert into board(btitle,bcontent) values(?,?)";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,boardDto.getBtitle());
+			ps.setString(2,boardDto.getBcontent());
+			
+			int row = ps.executeUpdate();
+			if(row==1) return true;
+		
+			
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
 }

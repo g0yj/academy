@@ -10,7 +10,7 @@ public class LessonDao extends Dao{
 	public static LessonDao getInstance() { return LessonDao; }
 	private LessonDao() {}
 				
-// 수업등록------------------------------------------------------------------			
+//1. 수업등록------------------------------------------------------------------			
 	public boolean lessonWriteView(LessonDto lessonDto) {
 	
 		try {
@@ -29,7 +29,7 @@ public class LessonDao extends Dao{
 
 	
 	
-// 수업조회------------------------------------------------------------------
+//2-1. 수업전체조회------------------------------------------------------------------
 	
 	public ArrayList<LessonDto> lessonprintView() {
 		ArrayList<LessonDto> list = new ArrayList<>();
@@ -53,19 +53,46 @@ public class LessonDao extends Dao{
 		
 	}
 	
+//2-2. 수업개별조회------------------------------------------------------------------
 	
-// 수업수정------------------------------------------------------------------
+		public LessonDto lessondetailView(int lno) {
+				
+				
+			try{
+				String sql = "select * from lesson where lno = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, lno);
+				rs = ps.executeQuery();
+					
+					
+				if(rs.next()) {
+					LessonDto dto = new LessonDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+						
+					return dto;
+				}// while e
+					
+			}catch(Exception e) {
+				System.out.println("Dao 수업관리 실패 사유"+e);
+			}
+			return null;
+				
+		}	
+	
+	
+//3. 수업수정------------------------------------------------------------------
 	
 	public boolean lessonupdateView(LessonDto dto ) {
-			
+		
+		LessonDto oldDto = lessondetailView( dto.getLno() );
+		
 		try {
 			String sql = "update lesson set lname = ? , ltname = ? , ltotalday = ? , lopenday = ? where lno = ?";
 			ps=conn.prepareStatement(sql);
 			ps.getConnection().prepareStatement(sql);
-			ps.setString(1, dto.getLname());
-			ps.setString(2,dto.getLtname());
-			ps.setString(3, dto.getLtotalday());
-			ps.setString(4, dto.getLopenday());
+			ps.setString(1, dto.getLname().equals("") ? oldDto.getLname() : dto.getLname());
+			ps.setString(2, dto.getLtname().equals("") ? oldDto.getLtname() : dto.getLtname() );
+			ps.setString(3, dto.getLtotalday().equals("") ? oldDto.getLtotalday() : dto.getLtotalday());
+			ps.setString(4, dto.getLopenday().equals("") ? oldDto.getLopenday() : dto.getLopenday());
 			ps.setInt(5, dto.getLno());	
 			ps.executeUpdate();
 			return true;
@@ -77,7 +104,7 @@ public class LessonDao extends Dao{
 
 
 
-// 수업삭제------------------------------------------------------------------
+//4. 수업삭제------------------------------------------------------------------
 
 	public boolean lessondeleteView(int lno) {
 	
