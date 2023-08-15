@@ -110,6 +110,7 @@ select *from employee;
 insert into signup(jid,jpw,eno) values ('아이디1','1234',1);
 insert into signup(jid,jpw,eno) values ('아이디2','1234',2);
 insert into signup(jid,jpw,eno) values ('아이디3','1234',3);
+insert into signup(jid,jpw,eno) values ('아이디4','1234',4);
 
 insert into message(mcontent,sno) value ('문자내용1',1);
 insert into message(mcontent,sno) value ('문자내용2',1);
@@ -124,4 +125,7 @@ select*from attendance;
 select*from employee;
 select*from signup;
 select*from message;
+
+
+
 
