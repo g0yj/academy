@@ -26,6 +26,8 @@ public class SignupController {
 	
 	
 //2. 로그인---------------------------------------------
+	
+	
 	private int loginSession=0;
 	public int getLoginSession() {return loginSession;}
 	

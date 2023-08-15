@@ -83,7 +83,7 @@ public class MainPage {
 			}catch (Exception e) {
 				System.out.println("오류발생: "+e);
 				sc = new Scanner(System.in);
-				manager();}//catch
+				}//catch
 		}//if
 		else if(SignupController.getInstance().getLoginSession()>1) {
 					System.out.println("직원 로그인성공");
@@ -105,4 +105,7 @@ public class MainPage {
 	}
 
 
+
+	
+	
 }//class
