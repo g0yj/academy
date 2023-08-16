@@ -48,9 +48,8 @@ create table employee(  #직원
 	eno int auto_increment , #직원넘버
 	era varchar(10) not null, #직급
     ename varchar(10) not null, #직원이름
-    lname varchar(20) default null,
-    primary key(eno),
-    foreign key (lname) references lesson(lname)
+    primary key(eno)
+  
 );
 
 drop table if exists signup;
@@ -99,10 +98,10 @@ insert into attendance(sno,aday )values ('2','2023-11-25 12:12:12');
 
 insert into  employee(era,ename) value ('원장','고연진');
 insert into  employee(era,ename) value ('강사1','황기준');
-insert into  employee(era,ename) value ('강사2','이진형');
-insert into  employee(era,ename) value ('행정1','김근배');
-insert into  employee(era,ename) value ('행정2','정희락');
-insert into  employee(era,ename) value ('강사3','김규리');
+insert into  employee(era,ename) value ('행정1','이진형');
+insert into  employee(era,ename) value ('행정2','김근배');
+insert into  employee(era,ename) value ('행정3' ,'정희락');
+insert into  employee(era,ename) value ('강사2','김규리');
 select *from employee;
 
 
@@ -117,7 +116,6 @@ insert into message(mcontent,sno) value ('문자내용2',1);
 insert into message(mcontent,sno) value ('문자내용3',3);
 
 
-select*from signup;
 select*from student;
 select*from lesson;
 select*from board;
@@ -126,6 +124,7 @@ select*from employee;
 select*from signup;
 select*from message;
 
-
+# 무시-------------------------
+#select jno from employee natural join signup  where era like'강사%'
 
 

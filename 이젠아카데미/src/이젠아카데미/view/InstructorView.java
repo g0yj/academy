@@ -37,7 +37,9 @@ public class InstructorView {
 			}
 			
 	}//f()
+
 	
+//-----------------------------------------------------------------
 //2. 강사변 수업을 듣는 학생 전체를 보여주는 view
 	////sql문, select , 직급이 강xx로 되어있으면 , 강사와 맞는 학생 
 	public void SManagement() {//
