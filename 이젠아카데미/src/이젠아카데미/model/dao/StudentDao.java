@@ -53,9 +53,24 @@ public class StudentDao extends Dao {
 	}
 	
 //2-2. 학생별 상세 조회(고연진)------------------------------
-	public void studentInfo() {
+	public StudentDto studentInfo(int sno) {
+		try {
+			String sql= "select sno,sname,saddress,sphone,lno,lname from student natural join lesson where sno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, sno);
+			rs=ps.executeQuery();
 			
-		}	
+			if(rs.next()) {
+				StudentDto dto = new StudentDto(
+						rs.getInt(1), rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getInt(5),rs.getString(6) 
+						);
+				return dto;
+			}//if
+		}//try 
+		catch (Exception e) {System.out.println("dao오류: "+e);}
+		return null;
+		}//catch	
 	
 
 //3. 학생정보수정(고연진)------------------------------------------------------------------	

@@ -44,6 +44,7 @@ public class BoardView {
 		}
 	}
 	public void boardView() {
+		try {
 		System.out.println("----- POST VIEW -------");
 		// 1. 보고자하는 게시물의 게시물번호를 입력받기[식별번호]
 		System.out.println("게시물번호: "); int bno = sc.nextInt();
@@ -58,16 +59,16 @@ public class BoardView {
 		System.out.print("1.글삭제 2.뒤로가기"); int ch= sc.nextInt();
 		if(ch==1) {boardDelete(bno); }
 		if(ch==2) {boardPrint();}
-		
+		}catch (Exception e) {System.out.println(e);}
 	}
 	public void boardDelete(int bno) {
-			System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
+			System.out.print("1. 글삭제 2. 취소"); int ch = sc.nextInt();
 			
 			if( ch == 1) {
 			boolean result = BoardController.getInstance().boardDelete(bno);
 			
-				if(result) System.out.println("삭제 성공");
-				else {System.out.println("삭제 실패");}
+				if(result) System.out.println("글삭제 성공");
+				else {System.out.println("글삭제 실패");}
 			} else if ( ch == 2) {
 			}	
 		}

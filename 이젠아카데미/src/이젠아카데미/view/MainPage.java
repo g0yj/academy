@@ -12,6 +12,7 @@ public class MainPage {
 // 메인페이지-------------------------------------------------------------------
 	public void mainPage() {
 		while(true) {
+			System.out.println("EzenAcademy");
 			System.out.println("======================");
 			System.out.println("1. 직원 2. 학생");
 			System.out.println("======================");
@@ -61,4 +62,8 @@ public class MainPage {
 			else if(select==4){AttendanceView.getInstance().attendancePrint();}
 	}
 
+
+	
+	
+	
 }//class
