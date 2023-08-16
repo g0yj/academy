@@ -20,6 +20,13 @@ public class BoardDto {
 	}
 	
 	
+	
+	public BoardDto(int bno, String bday, int bview) {
+		super();
+		this.bno = bno;
+		this.bday = bday;
+		this.bview = bview;
+	}
 	public BoardDto(int sno, String btitle, String bcontent) {
 		super();
 		this.sno = sno;

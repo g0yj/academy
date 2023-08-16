@@ -15,7 +15,7 @@ public class BoardDao extends Dao{
 	public ArrayList<BoardDto> boardPrint() {
 		 ArrayList<BoardDto> list = new ArrayList<>();
 		 try {
-			 String sql = "select b.*,s.sno from student s natural join board b   order by b.bday desc;";
+			 String sql = "select * from board order by bday desc";
 			 ps = conn.prepareStatement(sql);
 			 rs=ps.executeQuery();
 			 
@@ -91,7 +91,7 @@ public class BoardDao extends Dao{
 	}
 	public boolean boardWrite(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(btitle,bcontent) values(?,?)";
+			String sql = "insert into board(btitle,bcontent,bday) values(?,?,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,boardDto.getBtitle());
