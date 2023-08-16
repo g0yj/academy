@@ -92,12 +92,12 @@ public class BoardDao extends Dao{
 	}
 	public boolean boardWrite(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(btitle,bcontent,bday) values(?,?,?)";
+			String sql = "insert into board(btitle,bcontent,sno) values(?,?,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,boardDto.getBtitle());
 			ps.setString(2,boardDto.getBcontent());
-			
+			ps.setInt(3, boardDto.getSno());
 			int row = ps.executeUpdate();
 			if(row==1) return true;
 		

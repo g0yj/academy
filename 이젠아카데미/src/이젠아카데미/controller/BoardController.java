@@ -46,7 +46,7 @@ public class BoardController {
 		if(title.length()==0 || title.length()>50) {return false;}
 		
 		// 2. Dto[ 입력받은제목 , 입력받은내용 , 로그인된회원번호]
-		BoardDto boardDto = new BoardDto(title,content);
+		BoardDto boardDto = new BoardDto(loginSession ,title,content);
 		
 		return BoardDao.getInstance().boardWrite(boardDto);
 	}
