@@ -42,9 +42,7 @@ public class MainPage {
                   else if(select==3){BoardView.getInstance().BoardMain();}
                   else if(select==4){}
                }
-            else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-                        
-                        System.out.print("회원이름입력: ");} 
+            else if(ch==2) { information(); } 
          
          } catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
             return ;
@@ -106,9 +104,7 @@ public class MainPage {
          System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
          InfoMation.getInstance().InfoMationMenu();
          }
-      else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");
-       mainPage();
-      }
+      else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");  }
    } // class e
 
 }//class
