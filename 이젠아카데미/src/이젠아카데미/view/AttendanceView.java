@@ -1,14 +1,7 @@
 package 이젠아카데미.view;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
-import 이젠아카데미.controller.BoardController;
-
-public class AttendanceView {
->>>>>>> branch 'main' of https://github.com/g0yj/2ji.git
-
-<<<<<<< HEAD
 
 import 이젠아카데미.controller.StudentController;
 import 이젠아카데미.model.dto.StudentDto;
@@ -38,21 +31,5 @@ public class AttendanceView {
 		}
 	
 	
-	
-		
-=======
-	private static AttendanceView adView = new AttendanceView();
-	
-	public static AttendanceView getInstance() { return adView;}
-	
-	private AttendanceView() {}
 
-	public void attendanceMain() {
-		
-		BoardController.getInstance().attendanceView();
-	}
-	
-	
-
->>>>>>> branch 'main' of https://github.com/g0yj/2ji.git
 }
