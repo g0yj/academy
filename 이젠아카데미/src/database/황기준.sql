@@ -48,6 +48,7 @@ create table employee(  #직원
 	eno int auto_increment , #직원넘버
 	era varchar(10) not null, #직급
     ename varchar(10) not null, #직원이름
+    epay decimal(20,3), #직원 급여     #기준수정
     primary key(eno)
   
 );
