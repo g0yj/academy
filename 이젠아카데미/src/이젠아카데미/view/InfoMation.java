@@ -45,10 +45,11 @@ public class InfoMation {
 		System.out.println("제목 >"); String title =sc.next();
 		System.out.println("내용 >"); String content =sc.next();
 		
+		BoardView.getInstance().boardPrint();
 		boolean result=
 		BoardController.getInstance().boardWrite(title, content);
 		if(result) {System.out.println("안내] 글쓰기 등록");}
 		else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}
-		BoardView.getInstance().boardPrint();
+		
 	}
 }

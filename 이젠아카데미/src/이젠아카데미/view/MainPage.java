@@ -14,6 +14,7 @@ public class MainPage {
 // 메인페이지-------------------------------------------------------------------
 	public void mainPage() {
 		while(true) {
+			System.out.println("EzenAcademy");
 			System.out.println("======================");
 			System.out.println("1. 직원 2. 학생");
 			System.out.println("======================");
@@ -41,9 +42,7 @@ public class MainPage {
 						else if(select==3){BoardView.getInstance().BoardMain();}
 						else if(select==4){}
 					}
-				else if(ch==2) {
-					information();
-				}
+				else if(ch==2) {}
 								
 				
 			} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
@@ -61,8 +60,8 @@ public class MainPage {
 		//BoardView 페이지로 보냄
 		//System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
 	
+		information();
 			
-			BoardView.getInstance().BoardMain();
 
 	}//f()
 	
@@ -87,8 +86,9 @@ public class MainPage {
 		
 	
 	}//f()
-
-	public void information() {
+	
+	// 학생 눌렀을때 학생 정보 받아서 로그인하는 메소드
+	public void information() { // class s
 		System.out.println("회원이름 : "); String name = sc.next();
 		System.out.println("회원전화번호 : "); String phone = sc.next();
 		boolean result=BoardController.getInstance().information(name,phone);
@@ -98,7 +98,7 @@ public class MainPage {
 			InfoMation.getInstance().InfoMationMenu();
 			}
 		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
-	}
+	} // class e
 
 
 }//class
