@@ -77,3 +77,16 @@ select*from student;
 select*from lesson;
 select*from board;
 select*from attendance;
+
+
+// 업데이트된 게시판 테이블
+create table board(
+	bno int auto_increment,
+    sno int,
+    btitle longtext not null,
+    bcontent longtext not null,
+    bday datetime default now(),
+    bview int default 0,
+    primary key(bno),
+    foreign key( sno) references student (sno) on delete cascade  
+);

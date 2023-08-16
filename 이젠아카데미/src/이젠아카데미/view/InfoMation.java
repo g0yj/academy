@@ -11,7 +11,7 @@ public class InfoMation {
 	
 	private Scanner sc = new Scanner(System.in);
 	public void InfoMationMenu() {
-		System.out.println("1.게시판 2.출석률 3. 뒤로가기"); int ch =sc.nextInt();
+		System.out.println("1.게시판 2.출석 3. 뒤로가기"); int ch =sc.nextInt();
 		
 		if(ch==1) {board();}
 		if(ch==2) {}
@@ -20,26 +20,23 @@ public class InfoMation {
 	
 	public void board() {
 		BoardView.getInstance().boardPrint();
-		System.out.println("1.내글보기 2. 글쓰기 3. 글수정 4. 글삭제"); int select = sc.nextInt();
+		System.out.println("1.내글보기 2. 글쓰기"); int select = sc.nextInt();
 		
-		if(select==1) {}
+		if(select==1) {myWriting();}
 		if(select==2) {boardWrite();}
-		if(select==3) {}
-		if(select==4) {
+	}
+	// 1. 내글보기 메소드
+	public void myWriting() {
+		BoardController.getInstance().myWriting();
+		System.out.println("1. 글수정 2. 글삭제 3. 뒤로가기"); int ch= sc.nextInt();
+		if(ch==1) {boardUpdate();}
+		if(ch==2) {
 			System.out.println("게시물번호: "); int bno = sc.nextInt();
 			boardDelete(bno);}
-	}
-	public void boardDelete(int bno) {
-		System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
+		if(ch==3) {board();}
+		}
 		
-		if( ch == 1) {
-		boolean result = BoardController.getInstance().boardDelete(bno);
-		
-			if(result) System.out.println("삭제 성공");
-			else {System.out.println("삭제 실패");}
-		} else if ( ch == 2) {
-		}	
-	}
+	
 	public void boardWrite() {
 		System.out.println("--------- post write ----------");
 		System.out.println("제목 >"); String title =sc.next();
@@ -48,8 +45,22 @@ public class InfoMation {
 		BoardView.getInstance().boardPrint();
 		boolean result=
 		BoardController.getInstance().boardWrite(title, content);
-		if(result) {System.out.println("안내] 글쓰기 등록");}
-		else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}
+		if(result) {System.out.println("안내] 글쓰기 등록");board();}
+		else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}	
+	}
+	
+	public void boardDelete(int bno) {
+		System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
+		
+		if( ch == 1) {
+		boolean result = BoardController.getInstance().boardDelete(bno);
+		
+			if(result) { System.out.println("삭제 성공");
+			InfoMationMenu();}
+			else {System.out.println("삭제 실패");}
+		} else if ( ch == 2) {InfoMationMenu();}	
+	}
+	public void boardUpdate() {
 		
 	}
 }

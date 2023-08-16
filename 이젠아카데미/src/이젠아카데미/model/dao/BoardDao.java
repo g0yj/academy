@@ -91,11 +91,12 @@ public class BoardDao extends Dao{
 	}
 	public boolean boardWrite(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(btitle,bcontent,bday) values(?,?,?)";
+			String sql = "insert into board(btitle,bcontent) values(?,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,boardDto.getBtitle());
 			ps.setString(2,boardDto.getBcontent());
+			
 			
 			int row = ps.executeUpdate();
 			if(row==1) return true;
@@ -103,5 +104,24 @@ public class BoardDao extends Dao{
 			
 		}catch (Exception e) {System.out.println(e);}
 		return false;
+	}
+	//  내글보기 
+	public boolean myWriting(int sno) {
+		try {
+			String sql = "select * from board where sno='?'";
+			
+			ps= conn.prepareStatement(sql);
+			ps.setInt(1, sno);
+			
+			
+			
+			
+			
+			
+		}catch (Exception e) {System.out.println(e);}
+		return false;	
+	}
+	public void boardUpdate() {
+		
 	}
 }

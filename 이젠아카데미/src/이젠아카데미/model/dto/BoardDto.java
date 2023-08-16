@@ -39,6 +39,9 @@ public class BoardDto {
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 	}
+	
+	
+	
 	public int getBno() {
 		return bno;
 	}
