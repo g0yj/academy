@@ -91,11 +91,13 @@ public class BoardDao extends Dao{
 	}
 	public boolean boardWrite(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(btitle,bcontent) values(?,?)";
+			String sql = "insert into board(btitle,bcontent,sno) values(?,?,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,boardDto.getBtitle());
 			ps.setString(2,boardDto.getBcontent());
+			ps.setInt(3, boardDto.getSno());
+			
 			
 			
 			int row = ps.executeUpdate();
@@ -106,21 +108,27 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	//  내글보기 
-	public boolean myWriting(int sno) {
-		try {
-			String sql = "select * from board where sno='?'";
-			
-			ps= conn.prepareStatement(sql);
-			ps.setInt(1, sno);
-			
-			
-			
-			
-			
-			
-		}catch (Exception e) {System.out.println(e);}
-		return false;	
+	public ArrayList<BoardDto> myWriting(int sno) {
+	    ArrayList<BoardDto> list = new ArrayList<>();
+	    try {
+	        String sql = "select * from board where sno =?";
+	        ps = conn.prepareStatement(sql);
+	        ps.setInt(1, sno);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            BoardDto dto = new BoardDto(
+	                rs.getInt(1), rs.getInt(2), rs.getString(3),
+	                rs.getString(4), rs.getString(5), rs.getInt(6));
+	            list.add(dto);
+	        }
+
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    }
+	    return list;
 	}
+
 	public void boardUpdate() {
 		
 	}

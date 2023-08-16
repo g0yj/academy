@@ -1,8 +1,10 @@
 package 이젠아카데미.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import 이젠아카데미.controller.BoardController;
+import 이젠아카데미.model.dto.BoardDto;
 
 public class InfoMation {
 	private static InfoMation infoMtion = new InfoMation();
@@ -27,14 +29,31 @@ public class InfoMation {
 	}
 	// 1. 내글보기 메소드
 	public void myWriting() {
-		BoardController.getInstance().myWriting();
+		System.out.println("----- MyWriting VIEW -------");
+		try {
+		
+			ArrayList<BoardDto> result=
+					BoardController.getInstance().myWriting();
+			System.out.println("---------------------------------------- MyWriting LIST -------------------------------------");
+			System.out.printf("%13s %13s %10s %26s %32s %25s \n","bno","sno","title","content","day","view");
+			for(int i =0; i<result.size(); i++) {
+				BoardDto dto = result.get(i);
+				
+				System.out.printf("%13s %13s %10s %30s %17s %25s \n",
+						dto.getBno(),dto.getSno(),dto.getBtitle(),dto.getBcontent(), dto.getBday(),dto.getBview());
+				System.out.println("------------------------------------------------------------------------------------------");
+				
+			}
+		
+		
 		System.out.println("1. 글수정 2. 글삭제 3. 뒤로가기"); int ch= sc.nextInt();
 		if(ch==1) {boardUpdate();}
 		if(ch==2) {
 			System.out.println("게시물번호: "); int bno = sc.nextInt();
 			boardDelete(bno);}
 		if(ch==3) {board();}
-		}
+		}catch (Exception e) {System.out.println("오류알려줘"+e);}
+	}
 		
 	
 	public void boardWrite() {

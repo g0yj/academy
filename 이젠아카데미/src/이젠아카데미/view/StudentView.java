@@ -27,7 +27,7 @@ public class StudentView {
 			else if(ch==3) {studentUpdate();}//학생수정
 			else if(ch==4) {studentDelete();}//학생삭제
 			else if(ch==5) {MainPage.getInstance().mainPage();}
-
+			
 			} catch (Exception e) {
 				System.out.println("숫자로 입력해주세요");
 				sc= new Scanner(System.in);}
@@ -62,14 +62,34 @@ public class StudentView {
 			   StudentDto dto = result.get(i);	// i번째 객체를 호출
 			   
 			   System.out.printf("%-3s %-4s %-15s %-10s %s \n", dto.getSno(), dto.getSname() , dto.getSaddress(), dto.getSphone(),dto.getLno());
-		   }
+		  
+		   }//f
+		   studentInfo();
+		   return;
 		
-	}
+	}//f()
 	
 //2-2. 학생별 상세 조회(고연진)------------------------------
 	public void studentInfo() {
+		try {
+			System.out.println("상세 조회를 원하는 학생의 코드: "); int sno=sc.nextInt();
+			StudentDto result=StudentController.getInstance().studentInfo(sno);
 			
-		}	
+			System.out.println("이름: "+result.getSname());
+			System.out.println("수업: "+result.getLname());
+			
+// ??????????????출석률 넣고 싶음-------------------------------------------------------
+			System.out.println("출석률: "+result.getLtotalday());
+			System.out.println("전화번호: "+result.getSphone());
+			System.out.println("주소: "+ result.getSaddress());
+			return;
+			
+		}catch (Exception e) {
+			System.out.println("숫자로 입력해주세요: ");
+			sc=new Scanner(System.in);
+			}//c
+		
+	}//f()	
 
 	
 //3. 학생정보수정(고연진)-----------------------------------------------------

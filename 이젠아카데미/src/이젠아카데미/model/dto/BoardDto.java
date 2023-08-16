@@ -18,9 +18,8 @@ public class BoardDto {
 		this.bday = bday;
 		this.bview = bview;
 	}
-	
-	
-	
+
+
 	public BoardDto(int bno, String bday, int bview) {
 		super();
 		this.bno = bno;
@@ -41,6 +40,13 @@ public class BoardDto {
 	}
 	
 	
+
+	public BoardDto(int sno) {
+		super();
+		this.sno = sno;
+	}
+	
+	
 	
 	public int getBno() {
 		return bno;
@@ -51,9 +57,11 @@ public class BoardDto {
 	public int getSno() {
 		return sno;
 	}
+	
 	public void setSno(int sno) {
 		this.sno = sno;
 	}
+	
 	public String getBtitle() {
 		return btitle;
 	}
