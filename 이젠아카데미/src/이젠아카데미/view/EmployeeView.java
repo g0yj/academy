@@ -57,7 +57,7 @@ public class EmployeeView {
 		ArrayList<EmployeeDto> result = EmployeeController.getInstance().employeeprintView();		
 			System.out.println("\n\n================직원조회================");
 			
-		System.out.printf("%3s %1s %1s %5s \n","직원코드", "직급", "이름","급여");
+		System.out.printf("%3s %1s %5s %13s \n","직원코드", "직급", "이름","급여");
 			for(int i = 0; i<result.size(); i++) {
 				EmployeeDto dto = result.get(i);	
 				
