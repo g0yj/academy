@@ -7,129 +7,88 @@ import 이젠아카데미.controller.SignupController;
 
 public class MainPage {
 
-	private static MainPage mainpage= new MainPage();
-	public static MainPage getInstance() {return mainpage;}
-	private MainPage() {}
-	
-	private Scanner sc= new Scanner(System.in);
+   private static MainPage mainpage= new MainPage();
+   public static MainPage getInstance() {return mainpage;}
+   private MainPage() {}
+   
+   private Scanner sc= new Scanner(System.in);
 // 메인페이지-------------------------------------------------------------------
-	public void mainPage() {
-		while(true) {
-			System.out.println("EzenAcademy");
-			System.out.println("======================");
-			System.out.println("1. 직원 2. 학생");
-			System.out.println("======================");
 
-			try {
-				System.out.print("선택:  "); int ch= sc.nextInt();
-		
-				if( ch == 1) {manager();} 
-				else if(ch ==2) {student();}
-				else {System.out.println("1번과 2번 중에 고르세요"); 
-						sc=new Scanner(System.in);}
-			} catch (Exception e) {
-				System.out.println("숫자로 입력하세요\n오류사유: "+e);
-				sc = new Scanner(System.in);}
-<<<<<<< HEAD
-			mainPage();
-			System.out.print("선택:  "); int ch= sc. nextInt();
+  
+
+
+		public void mainPage() {
+			while(true) {
+				System.out.println("======================");
+				System.out.println("1. 직원 2. 학생");
+				System.out.println("======================");
+
+				try {
+					System.out.print("선택:  "); int ch= sc.nextInt();
 			
-			try { 
-				if(ch==1) {
-					System.out.println(">>>>>1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리 5.직원관리<<<<<");
+					if( ch == 1) {manager();} 
+					else if(ch ==2) {student();}
+					else {System.out.println("1번과 2번 중에 고르세요"); 
+							sc=new Scanner(System.in);}
+				} catch (Exception e) {
+					System.out.println("숫자로 입력하세요\n오류사유: "+e);
+					sc = new Scanner(System.in);}
+					
+			}//while
+			
+		}//MainPage()
+
+		
+	// 학생 눌렀을 때 선택되는 창 (고연진)--------------------------------------------------------	
+		public void student() {
+				BoardView.getInstance().BoardMain();
+		}//f()
+		
+	// 직원 선택했을 때 띄워지는 창 (고연진) ------------------------------------------------------
+		public void manager() {//직원 (원장, 강사, 행정)
+		
+			
+			SignupView.getInstance().login();
+			if(SignupController.getInstance().getLoginSession()==1) {//직원이 원장일때만 수정 가능
+				System.out.println("관리자 로그인 성공");
+				System.out.println("-----------------------------------------------------");
+				System.out.println("1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리 5.직원관리");
+				System.out.println("------------------------------------------------------");
+				try {
 					System.out.print("선택: "); int select=sc.nextInt();
-						if(select==1) {StudentView.getStudentView().studentMain();}
-						else if(select==2){LessonView.getInstance().LessonMain();}
-						else if(select==3){BoardView.getInstance().BoardMain();}
-						else if(select==4){}
-						else if(select==5){EmployeeView.getInstance().EmployeeMain();}	// 기준추가
-					}
-				else if(ch==2) {System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-								
-								System.out.print("회원이름입력: ");} 
-			
-			} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
-				return ;
-			}	
-			
-=======
-				
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-		}//while
+					if(select==1) {StudentView.getStudentView().studentMain();}
+					else if(select==2){LessonView.getInstance().LessonMain();}
+					else if(select==3){BoardView.getInstance().BoardMain();}
+					else if(select==4){AttendanceView.getInstance().attendanceMain();}
+					else if(select==5) {SignupView.getInstance().signup();}
+				}catch (Exception e) {
+					System.out.println("오류발생: "+e);
+					sc = new Scanner(System.in);
+					}//catch
+			}//if
+			else if(SignupController.getInstance().getLoginSession()>1) {
+						System.out.println("직원 로그인성공");
+						//직원들 (행정 , 강사) 로그인 시 이동
+						InstructorView.getInstance().instructorMain();}
 		
-	}//MainPage()
+		}//f()
 
-	
-// 학생 눌렀을 때 선택되는 창 (고연진)--------------------------------------------------------	
-	public void student() {
-<<<<<<< HEAD
-	//해당 학생을 확인할 수 있는 로그인 페이지 만들어야될듯?	
-		//BoardView 페이지로 보냄
-		//System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-	
-		information();
+	// 처음 학생 선택했을 때 (박상빈)	
+		public void information() {
+			System.out.println("회원이름 : "); String name = sc.next();
+			System.out.println("회원전화번호 : "); String phone = sc.next();
+			boolean result=BoardController.getInstance().information(name,phone);
 			
+			if(result) {
+				System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
+				InfoMation.getInstance().InfoMationMenu();
+				}
+			else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
+		}//f()
 
-=======
-			BoardView.getInstance().BoardMain();
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-	}//f()
-	
-// 직원 선택했을 때 띄워지는 창 (고연진) ------------------------------------------------------
-	public void manager() {//직원 (원장, 강사, 행정)
-	
+   
+
+   }
+
 		
-		SignupView.getInstance().login();
-		if(SignupController.getInstance().getLoginSession()==1) {//직원이 원장일때만 수정 가능
-			System.out.println("관리자 로그인 성공");
-			System.out.println("-----------------------------------------------------");
-			System.out.println("1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리 5.직원관리");
-			System.out.println("------------------------------------------------------");
-			try {
-				System.out.print("선택: "); int select=sc.nextInt();
-				if(select==1) {StudentView.getStudentView().studentMain();}
-				else if(select==2){LessonView.getInstance().LessonMain();}
-				else if(select==3){BoardView.getInstance().BoardMain();}
-				else if(select==4){AttendanceView.getInstance().attendanceMain();}
-				else if(select==5) {SignupView.getInstance().signup();}
-			}catch (Exception e) {
-				System.out.println("오류발생: "+e);
-				sc = new Scanner(System.in);
-				
-				}//catch
-		}//if
-		else if(SignupController.getInstance().getLoginSession()>1) {
-					System.out.println("직원 로그인성공");
-					//직원들 (행정 , 강사) 로그인 시 이동
-					InstructorView.getInstance().instructorMain();}
-	
-	}//f()
-<<<<<<< HEAD
-	
-	// 학생 눌렀을때 학생 정보 받아서 로그인하는 메소드
-	public void information() { // class s
-=======
-
-// 처음 학생 선택했을 때 (박상빈)	
-	public void information() {
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-		System.out.println("회원이름 : "); String name = sc.next();
-		System.out.println("회원전화번호 : "); String phone = sc.next();
-		boolean result=BoardController.getInstance().information(name,phone);
-		
-		if(result) {
-			System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
-			InfoMation.getInstance().InfoMationMenu();
-			}
-<<<<<<< HEAD
-		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");
-		 mainPage();
-		}
-	} // class e
-=======
-		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
-	}//f()
-
->>>>>>> branch '고연진' of https://github.com/g0yj/2ji
-
-}//class
+	//class

@@ -3,6 +3,7 @@ package 이젠아카데미.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import 이젠아카데미.controller.AttendanceController;
 import 이젠아카데미.controller.BoardController;
 import 이젠아카데미.model.dto.BoardDto;
 
@@ -13,11 +14,12 @@ public class InfoMation {
 	
 	private Scanner sc = new Scanner(System.in);
 	public void InfoMationMenu() {
-		System.out.println("1.게시판 2.출석 3. 뒤로가기"); int ch =sc.nextInt();
+		System.out.println("1.게시판 2.출석하기 3.출석률확인 4. 뒤로가기"); int ch =sc.nextInt();
 		
 		if(ch==1) {board();}
-		if(ch==2) {}
-		if(ch==3) {}
+		if(ch==2) { 출석하기(); }
+		if(ch==3) { System.out.println("출석확인기능");}
+		if(ch==4) {}
 	}
 	
 	public void board() {
@@ -98,5 +100,14 @@ public class InfoMation {
 		else if(result==3) {System.out.println("경고] 본인 글만 수정 가능합니다.");}
 		else if(result==4) {System.out.println("경고] 수정할 제목을 1~50글자 사이로 입력해주세요.");}
 	
+		
+		 
 	}
+	
+	public void 출석하기() {
+		boolean result = AttendanceController.getInstance().출석하기();
+		if(result) {System.out.println(" 출석 완료 ");}
+		else {System.out.println("이미 출석 했습니다.");}
+	}
+	
 }

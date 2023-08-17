@@ -31,6 +31,7 @@ public class BoardController {
 		return result;
 	}
 	
+	
 	public void attendanceView() {}
 	public boolean information(String name,String phone) {
 		
@@ -47,7 +48,6 @@ public class BoardController {
 		
 		// 2. Dto[ 입력받은제목 , 입력받은내용 , 로그인된회원번호]
 		BoardDto boardDto = new BoardDto(loginSession , title,content  );	
-		
 		return BoardDao.getInstance().boardWrite(boardDto);
 	}
 	// 내글보기

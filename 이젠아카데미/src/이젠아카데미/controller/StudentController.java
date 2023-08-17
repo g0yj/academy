@@ -2,7 +2,9 @@ package 이젠아카데미.controller;
 
 import java.util.ArrayList;
 
+import 이젠아카데미.model.dao.BoardDao;
 import 이젠아카데미.model.dao.StudentDao;
+import 이젠아카데미.model.dto.BoardDto;
 import 이젠아카데미.model.dto.StudentDto;
 
 public class StudentController {
@@ -58,4 +60,9 @@ public boolean studentUpdate(int sno, String sname,String saddress, String sphon
 				  return result; 
 	}
 	
+	
+	public ArrayList<StudentDto> attendancePrint() {
+		return StudentDao.getInstance().attendancePrint();
+		
+	}
 }//class

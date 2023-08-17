@@ -1,8 +1,5 @@
 package 이젠아카데미.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import 이젠아카데미.model.dto.BoardDto;
@@ -76,6 +73,7 @@ public class BoardDao extends Dao{
 		
 		return false;
 	}
+	
 	public int information(String name, String phone) {
 		try {
 			String sql = "select * from student where sname=? and sphone=?";
@@ -100,9 +98,7 @@ public class BoardDao extends Dao{
 			ps.setString(1,boardDto.getBtitle());
 			ps.setString(2,boardDto.getBcontent());
 			ps.setInt(3, boardDto.getSno());
-			
-			
-			
+
 			int row = ps.executeUpdate();
 			if(row==1) return true;
 		
