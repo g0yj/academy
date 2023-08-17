@@ -41,6 +41,11 @@ public class BoardDto {
 	
 	
 
+	public BoardDto(int bno, int sno) {
+		super();
+		this.bno = bno;
+		this.sno = sno;
+	}
 	public BoardDto(int sno) {
 		super();
 		this.sno = sno;

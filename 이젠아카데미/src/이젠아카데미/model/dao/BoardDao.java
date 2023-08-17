@@ -1,5 +1,8 @@
 package 이젠아카데미.model.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import 이젠아카데미.model.dto.BoardDto;
@@ -129,7 +132,17 @@ public class BoardDao extends Dao{
 	    return list;
 	}
 
-	public void boardUpdate() {
-		
-	}
+	public boolean boardUpdate( BoardDto boardDto ) {
+		try {
+			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
+			ps = conn.prepareStatement(sql); // 2.	
+			ps.setString( 1 , boardDto.getBtitle());	 	
+			ps.setString( 2 , boardDto.getBcontent());
+			ps.setInt( 3 , boardDto.getBno()); 
+			
+			int row = ps.executeUpdate(); 
+			if( row == 1 ) return true;	
+		}catch (Exception e) {System.out.println(e);}
+		return false;    
+	} 
 }

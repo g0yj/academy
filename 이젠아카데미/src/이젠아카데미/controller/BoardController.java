@@ -1,5 +1,6 @@
 package 이젠아카데미.controller;
 
+
 import java.util.ArrayList;
 
 
@@ -55,7 +56,17 @@ public class BoardController {
 		return BoardDao.getInstance().myWriting(loginSession);
 		
 	}
-	public void boardUpdate() {
-		
+	public int boardUpdate( int bno , int sno , String title , String content ) {
+		// 1. 유효성 검사 
+			// 1. 게시물의 작성자학생번호 와 로그인된 회원번호 과 일치 하지 않으면 
+		if( sno != loginSession ) { return 3;}
+			// 2. 제목 글자 수 체크 
+		if( title.length() < 1 || title.length() > 50 ) { return 4; }
+		// 2. 
+		boolean result = 
+				BoardDao.getInstance().boardUpdate( new BoardDto(bno, title, content) );
+		if( result ) return 1;
+		else return 2;
 	}
 }
+
