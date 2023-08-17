@@ -36,6 +36,37 @@ public class AttendanceDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
+	
+	public int 출석횟수(int loginSession) {
+		try {
+			String sql = "select count(*) from attendance where sno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, loginSession);
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public int 총수강일(int loginSession) {
+		try {
+			String sql = "select ltotalday from student s natural join lesson l where s.sno = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, loginSession);
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				return rs.getInt(1);
+				
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
 }
 
 
@@ -44,11 +75,11 @@ public class AttendanceDao extends Dao{
  
 	 select * from attendance where sno = 1 and date_format(aday , '%Y-%m-%d') = curdate();
 	
-	select * from attendance where sno = ? and date_format(aday , '%Y-%m-%d') = curdate();
+		select * from attendance where sno = ? and date_format(aday , '%Y-%m-%d') = curdate();
 	
-	select count(*) from attendance where sno = 1; -- 출석횟수 
-	select ltotalday from student s natural join lesson l where s.sno = 1 ;
- 
+		select count(*) from attendance where sno = 1; -- 출석횟수 
+		select ltotalday from student s natural join lesson l where s.sno = 1 ;
+ 	
   
  */
 

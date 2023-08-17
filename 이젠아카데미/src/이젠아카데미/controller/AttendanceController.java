@@ -12,4 +12,12 @@ public class AttendanceController {
 		return AttendanceDao.getInstance().출석하기(BoardController.getInstance().getLoginSession());
 	}
 	
+	
+	public int 출석횟수() {
+			return AttendanceDao.getInstance().출석횟수(BoardController.getInstance().getLoginSession());
+		}
+	
+	public int 총수강일() {
+		return AttendanceDao.getInstance().총수강일(BoardController.getInstance().getLoginSession());
+	}
 }
