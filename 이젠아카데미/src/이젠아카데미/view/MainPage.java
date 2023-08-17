@@ -30,7 +30,7 @@ public class MainPage {
 			} catch (Exception e) {
 				System.out.println("숫자로 입력하세요\n오류사유: "+e);
 				sc = new Scanner(System.in);}
-
+			mainPage();
 			System.out.print("선택:  "); int ch= sc. nextInt();
 			
 			try { 
@@ -86,6 +86,7 @@ public class MainPage {
 			}catch (Exception e) {
 				System.out.println("오류발생: "+e);
 				sc = new Scanner(System.in);
+				
 				}//catch
 		}//if
 		else if(SignupController.getInstance().getLoginSession()>1) {
@@ -105,11 +106,9 @@ public class MainPage {
 			System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
 			InfoMation.getInstance().InfoMationMenu();
 			}
-		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
+		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");
+		 mainPage();
+		}
 	} // class e
 
-
-
-	
-	
 }//class

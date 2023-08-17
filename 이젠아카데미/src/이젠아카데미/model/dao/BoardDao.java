@@ -1,5 +1,8 @@
 package 이젠아카데미.model.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import 이젠아카데미.model.dto.BoardDto;
@@ -91,11 +94,14 @@ public class BoardDao extends Dao{
 	}
 	public boolean boardWrite(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(btitle,bcontent,bday) values(?,?,?)";
+			String sql = "insert into board(btitle,bcontent,sno) values(?,?,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,boardDto.getBtitle());
 			ps.setString(2,boardDto.getBcontent());
+			ps.setInt(3, boardDto.getSno());
+			
+			
 			
 			int row = ps.executeUpdate();
 			if(row==1) return true;
@@ -104,4 +110,39 @@ public class BoardDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
+	//  내글보기 
+	public ArrayList<BoardDto> myWriting(int sno) {
+	    ArrayList<BoardDto> list = new ArrayList<>();
+	    try {
+	        String sql = "select * from board where sno =?";
+	        ps = conn.prepareStatement(sql);
+	        ps.setInt(1, sno);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            BoardDto dto = new BoardDto(
+	                rs.getInt(1), rs.getInt(2), rs.getString(3),
+	                rs.getString(4), rs.getString(5), rs.getInt(6));
+	            list.add(dto);
+	        }
+
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    }
+	    return list;
+	}
+
+	public boolean boardUpdate( BoardDto boardDto ) {
+		try {
+			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
+			ps = conn.prepareStatement(sql); // 2.	
+			ps.setString( 1 , boardDto.getBtitle());	 	
+			ps.setString( 2 , boardDto.getBcontent());
+			ps.setInt( 3 , boardDto.getBno()); 
+			
+			int row = ps.executeUpdate(); 
+			if( row == 1 ) return true;	
+		}catch (Exception e) {System.out.println(e);}
+		return false;    
+	} 
 }
