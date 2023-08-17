@@ -3,7 +3,7 @@ package 이젠아카데미.view;
 
 import java.util.ArrayList;
 
-import 이젠아카데미.controller.StudentController;
+import 이젠아카데미.controller.AttendanceController;
 import 이젠아카데미.model.dto.StudentDto;
 
 public class AttendanceView {
@@ -17,7 +17,7 @@ public class AttendanceView {
 		
 		
 		public void attendancePrint() {
-			ArrayList<StudentDto> result = StudentController.getInstance().attendancePrint();
+			ArrayList<StudentDto> result = AttendanceController.getInstance().attendancePrint();
 			
 			System.out.println("\n\n ===== 출석여부 =====");
 			

@@ -61,8 +61,5 @@ public boolean studentUpdate(int sno, String sname,String saddress, String sphon
 	}
 	
 	
-	public ArrayList<StudentDto> attendancePrint() {
-		return StudentDao.getInstance().attendancePrint();
-		
-	}
+	
 }//class

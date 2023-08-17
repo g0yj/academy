@@ -1,8 +1,8 @@
 package 이젠아카데미.model.dao;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
-import 이젠아카데미.controller.AttendanceController;
+import 이젠아카데미.model.dto.StudentDto;
 
 public class AttendanceDao extends Dao{
 	private static AttendanceDao attendanceDao = new AttendanceDao();
@@ -67,6 +67,26 @@ public class AttendanceDao extends Dao{
 		}
 		return -1;
 	}
+	public ArrayList<StudentDto> attendancePrint() {
+		
+		 ArrayList<StudentDto> list = new ArrayList<>();
+		 try {
+			 String sql = "select * from student natural join attendance where DATE(aday) = CURDATE()";
+			 ps = conn.prepareStatement(sql);
+			
+			 rs=ps.executeQuery();
+			 
+			 while(rs.next()) {
+				 StudentDto dto = new StudentDto(
+						 rs.getInt(1),rs.getString(2),rs.getString(3),
+						 rs.getString(4),rs.getInt(5));
+						 list.add(dto);
+			 }
+			 
+		 }catch (Exception e) {System.out.println(e);}
+		 return list;
+	}
+
 }
 
 
