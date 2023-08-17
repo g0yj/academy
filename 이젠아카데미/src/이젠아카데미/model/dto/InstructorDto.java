@@ -2,25 +2,33 @@ package 이젠아카데미.model.dto;
 
 public class InstructorDto {
 	//필드
-	int eno;  //강사코드
-	String era;//직급
-	int jno; //로그인한 회원번호
+	int sno;
+	int eno;
+	String sname;
+	String saddress;
+	String sphone;
+	
 
+	//빈생성자
 	public InstructorDto() {}
 
-	public InstructorDto(int eno, String era, int jno) {
+	// 강사별 학생 정보 받아오기 위한 생성자
+	public InstructorDto(int sno, int eno, String sname, String saddress, String sphone) {
 		super();
+		this.sno = sno;
 		this.eno = eno;
-		this.era = era;
-		this.jno = jno;
+		this.sname = sname;
+		this.saddress = saddress;
+		this.sphone = sphone;
 	}
 
-	public InstructorDto(String era, int jno) {
-		super();
-		this.era = era;
-		this.jno = jno;
+	public int getSno() {
+		return sno;
 	}
-//메소드--------------------------------------------------------
+
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
 
 	public int getEno() {
 		return eno;
@@ -30,26 +38,38 @@ public class InstructorDto {
 		this.eno = eno;
 	}
 
-	public String getEra() {
-		return era;
+	public String getSname() {
+		return sname;
 	}
 
-	public void setEra(String era) {
-		this.era = era;
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
 
-	public int getJno() {
-		return jno;
+	public String getSaddress() {
+		return saddress;
 	}
 
-	public void setJno(int jno) {
-		this.jno = jno;
+	public void setSaddress(String saddress) {
+		this.saddress = saddress;
+	}
+
+	public String getSphone() {
+		return sphone;
+	}
+
+	public void setSphone(String sphone) {
+		this.sphone = sphone;
 	}
 
 	@Override
 	public String toString() {
-		return "InstructorDto [eno=" + eno + ", era=" + era + ", jno=" + jno + "]";
+		return "InstructorDto [sno=" + sno + ", eno=" + eno + ", sname=" + sname + ", saddress=" + saddress
+				+ ", sphone=" + sphone + "]";
 	}
+
+	
+	
 	
 	
 }//c

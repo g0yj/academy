@@ -19,7 +19,7 @@ public class SignupView {
 		
 	}
 	
-// 1.강사회원가입-----------------------------------------------
+// 1.강사회원가입(고연진)-----------------------------------------------
 	public void signup() {
 		System.out.print("직원코드: "); 		int eno = sc.nextInt();
 		System.out.print("아이디입력: "); 		String jid = sc.next();
@@ -33,7 +33,7 @@ public class SignupView {
 		
 	}//f()
 	
-//2. 로그인---------------------------------------------
+//2. 로그인(고연진)---------------------------------------------
 	public void login() {
 		System.out.print("아이디입력: ");	String jid = sc.next();
 		System.out.println("비밀번호: ");	String jpw = sc.next();
@@ -43,8 +43,6 @@ public class SignupView {
 		if(result) {System.out.println("로그인성공!");}
 		else{ System.out.println("로그인실패!");}
 		
-		
-			
 		}//f()
 
 	

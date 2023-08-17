@@ -10,7 +10,7 @@ public class SignupDao extends Dao {
 	
 	
 	
-// 1.강사회원가입-----------------------------------------------
+// 1.강사회원가입(고연진)-----------------------------------------------
 	public boolean signup(SignupDto dto) {
 		try {
 			String sql="insert into signup(eno,jid,jpw) values (?,?,?)";
@@ -24,7 +24,7 @@ public class SignupDao extends Dao {
 		return false;
 	}//f()	
 	
-//2. 로그인---------------------------------------------
+//2. 로그인(고연진)---------------------------------------------
 	public int login(SignupDto dto) {
 		try {
 			String sql = "select * from signup where jid= ?  and jpw= ? ";
