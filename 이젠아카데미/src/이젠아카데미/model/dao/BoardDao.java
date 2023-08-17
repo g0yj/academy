@@ -60,7 +60,7 @@ public class BoardDao extends Dao{
        
     }
 	// 게시글 번호 받아서 삭제
-	public boolean boardDelete(int bno) {
+	public boolean boardDelete(int bno ) {
 		try {
 			String sql = "delete from board where bno = ?";
 			ps = conn.prepareStatement(sql);
@@ -91,21 +91,21 @@ public class BoardDao extends Dao{
 		return 0;
 	}
 	public boolean boardWrite(BoardDto boardDto) {
-		try {
-			String sql = "insert into board(btitle,bcontent,sno) values(?,?,?)";
-			
-			ps = conn.prepareStatement(sql);
-			ps.setString(1,boardDto.getBtitle());
-			ps.setString(2,boardDto.getBcontent());
-			ps.setInt(3, boardDto.getSno());
+	      try {
+	         String sql = "insert into board(btitle,bcontent,sno) values(?,?,?)";
+	         
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1,boardDto.getBtitle());
+	         ps.setString(2,boardDto.getBcontent());
+	         ps.setInt(3, boardDto.getSno());
 
-			int row = ps.executeUpdate();
-			if(row==1) return true;
-		
-			
-		}catch (Exception e) {System.out.println(e);}
-		return false;
-	}
+	         int row = ps.executeUpdate();
+	         if(row==1) return true;
+	         
+	         
+	      }catch (Exception e) {System.out.println(e);}
+	      return false;
+	   }
 	//  내글보기 
 	public ArrayList<BoardDto> myWriting(int sno) {
 	    ArrayList<BoardDto> list = new ArrayList<>();
@@ -131,7 +131,7 @@ public class BoardDao extends Dao{
 	public boolean boardUpdate( BoardDto boardDto ) {
 		try {
 			String sql = "update board set btitle = ? , bcontent = ? where bno = ?";
-			ps = conn.prepareStatement(sql); // 2.	
+			ps = conn.prepareStatement(sql); 	
 			ps.setString( 1 , boardDto.getBtitle());	 	
 			ps.setString( 2 , boardDto.getBcontent());
 			ps.setInt( 3 , boardDto.getBno()); 

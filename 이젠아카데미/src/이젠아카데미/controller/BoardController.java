@@ -23,12 +23,50 @@ public class BoardController {
 	public BoardDto boardView(int bno) {
 		return BoardDao.getInstance().boardView(bno);
 	}
-	
-	// 4. 게시글 번호 받아서 삭제
-	public boolean boardDelete(int bno) {
+	// 6. 내 게시물 수정
+	public int boardUpdate(int bno, int sno, String title, String content) {
+	    // 로그인한 사용자의 회원번호 가져오기
+	    int loggedInUserSno = loginSession;
+	    
+	    // 게시글 정보 가져오기
+	    BoardDto boardDto = BoardDao.getInstance().boardView(bno);
+	    
+	    if (boardDto != null) {
+	        int authorSno = boardDto.getSno(); // 게시글 작성자의 회원번호
+	        
+	        // 본인 글인지 확인
+	        if (sno != authorSno) {
+	            return 3; // 본인 글이 아닌 경우
+	        }
+	        
+	        // 제목 글자 수 체크
+	        if (title.length() < 1 || title.length() > 50) {
+	            return 4; // 제목 글자 수 오류
+	        }
+	        
+	        // 게시글 수정
+	        boardDto.setBtitle(title);
+	        boardDto.setBcontent(content);
+	        
+	        boolean result = BoardDao.getInstance().boardUpdate(boardDto);
+	        
+	        if (result) {
+	            return 1; // 성공
+	        } else {
+	            return 2; // 실패
+	        }
+	    }
+	    
+	    return 2; // 게시글 정보가 없는 경우
+	}
+
+	// 5. 게시글 번호 받아서 삭제
+	public int boardDelete(int bno ) {
 		
+		if(bno !=loginSession) {return 3;}
 		boolean result = BoardDao.getInstance().boardDelete(bno);
-		return result;
+		if(result) return 1;
+		else return 2;
 	}
 	
 	
@@ -42,31 +80,21 @@ public class BoardController {
 	}
 	
 	public boolean boardWrite(String title , String content) {
-		
-		// 1. 유효성 검사
-		if(title.length()==0 || title.length()>50) {return false;}
-		
-		// 2. Dto[ 입력받은제목 , 입력받은내용 , 로그인된회원번호]
-		BoardDto boardDto = new BoardDto(loginSession , title,content  );	
-		return BoardDao.getInstance().boardWrite(boardDto);
-	}
+	      
+	      // 1. 유효성 검사
+	      if(title.length()==0 || title.length()>50) {return false;}
+	      
+	      // 2. Dto[ 입력받은제목 , 입력받은내용 , 로그인된회원번호]
+	      BoardDto boardDto = new BoardDto(loginSession , title,content  );   
+	      return BoardDao.getInstance().boardWrite(boardDto);
+	   }
+
 	// 내글보기
 	public ArrayList<BoardDto> myWriting() {
 		
 		return BoardDao.getInstance().myWriting(loginSession);
 		
 	}
-	public int boardUpdate( int bno , int sno , String title , String content ) {
-		// 1. 유효성 검사 
-			// 1. 게시물의 작성자학생번호 와 로그인된 회원번호 과 일치 하지 않으면 
-		if( sno != loginSession ) { return 3;}
-			// 2. 제목 글자 수 체크 
-		if( title.length() < 1 || title.length() > 50 ) { return 4; }
-		// 2. 
-		boolean result = 
-				BoardDao.getInstance().boardUpdate( new BoardDto(bno, title, content) );
-		if( result ) return 1;
-		else return 2;
-	}
+	
 }
 

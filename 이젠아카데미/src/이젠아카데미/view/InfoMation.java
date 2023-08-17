@@ -52,11 +52,12 @@ public class InfoMation {
 		if (ch == 1) {
 		    System.out.println("게시물번호: ");
 		    int bno = sc.nextInt();
-		    int sno = BoardController.getInstance().getLoginSession(); // 가정: 로그인된 사용자의 학번
+		    int sno = BoardController.getInstance().getLoginSession(); // 
 		    boardUpdate(bno, sno);
 		}
 		if(ch==2) {
 			System.out.println("게시물번호: "); int bno = sc.nextInt();
+			 int sno = BoardController.getInstance().getLoginSession();
 			boardDelete(bno);}
 		if(ch==3) {board();}
 		}catch (Exception e) {System.out.println("오류알려줘"+e);}
@@ -64,46 +65,48 @@ public class InfoMation {
 		
 	
 	public void boardWrite() {
-		System.out.println("--------- post write ----------");
-		System.out.println("제목 >"); String title =sc.next();
-		System.out.println("내용 >"); String content =sc.next();
-		
-		BoardView.getInstance().boardPrint();
-		boolean result=
-		BoardController.getInstance().boardWrite(title, content);
-		if(result) {System.out.println("안내] 글쓰기 등록");board();}
-		else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}	
-	}
+	      System.out.println("--------- post write ----------");
+	      System.out.println("제목 >"); String title =sc.next();
+	      System.out.println("내용 >"); String content =sc.next();
+	      
+	      BoardView.getInstance().boardPrint();
+	      boolean result=
+	      BoardController.getInstance().boardWrite(title, content);
+	      if(result) {System.out.println("안내] 글쓰기 등록");board();}
+	      else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}   
+	   }
+	   
 	
-	public void boardDelete(int bno) {
+	public void boardDelete(int bno ) {
 		System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
+	try {		
+		int result = 
+				BoardController.getInstance().boardDelete(bno);
 		
-		if( ch == 1) {
-		boolean result = BoardController.getInstance().boardDelete(bno);
-		
-			if(result) { System.out.println("삭제 성공");
-			InfoMationMenu();}
-			else {System.out.println("삭제 실패");}
-		} else if ( ch == 2) {InfoMationMenu();}	
+		if(result == 1) {System.out.println("안내] 글 삭제 성공");}
+		else if(result==2) {System.out.println("경고] 글 삭제 실패 : 관리자 오류");}
+		else if(result==3) {System.out.println("경고] 본인 글만 삭제 가능합니다.");}
+		}
+		catch (Exception e) {System.out.println();
+		}
 	}
 	public void boardUpdate(int bno, int sno) {
 	
 		System.out.println("수정할제목 >"); String title =sc.next();
 		System.out.println("수정할내용 >"); String content =sc.next();
 		
-		
+		try {
 		int result =
 				BoardController.getInstance().boardUpdate(bno, sno, title, content);
 		
-		if(result == 1) {System.out.println("안내] 글 수정 성공");}
-		else if(result==2) {System.out.println("경고] 글 수정 실패 : 관리자 오류");}
-		else if(result==3) {System.out.println("경고] 본인 글만 수정 가능합니다.");}
-		else if(result==4) {System.out.println("경고] 수정할 제목을 1~50글자 사이로 입력해주세요.");}
+		if(result == 1) {System.out.println("안내] 글 수정 성공"); InfoMationMenu() ;}
+		else if(result==2) {System.out.println("경고] 글 수정 실패 : 관리자 오류"); InfoMationMenu();}
+		else if(result==3) {System.out.println("경고] 본인 글만 수정 가능합니다."); InfoMationMenu();}
+		else if(result==4) {System.out.println("경고] 수정할 제목을 1~50글자 사이로 입력해주세요."); InfoMationMenu();}	 
 	
-		
-		 
+	} catch (Exception e){
+		e.printStackTrace(); }
 	}
-	
 	public void 출석하기() {
 		boolean result = AttendanceController.getInstance().출석하기();
 		if(result) {System.out.println(" 출석 완료 ");}
