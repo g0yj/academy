@@ -3,7 +3,6 @@ package 이젠아카데미.view;
 import java.util.Scanner;
 
 import 이젠아카데미.controller.BoardController;
-import 이젠아카데미.controller.EmployeeController;
 import 이젠아카데미.controller.SignupController;
 
 public class MainPage {
@@ -31,22 +30,6 @@ public class MainPage {
 				System.out.println("숫자로 입력하세요\n오류사유: "+e);
 				sc = new Scanner(System.in);}
 				
-
-/*			
-			System.out.print("선택:  "); int ch= sc. nextInt();
-			
-			try { 
-				if(ch==1) {manager();}
-				else if(ch==2) {
-					information();
-				}
-								
-				
-			} catch (Exception e) {System.out.println("숫자로 입력하세요\n오류사유: "+e);
-				return ;
-			}	
-
-*/
 		}//while
 		
 	}//MainPage()
@@ -54,17 +37,11 @@ public class MainPage {
 	
 // 학생 눌렀을 때 선택되는 창 (고연진)--------------------------------------------------------	
 	public void student() {
-	//해당 학생을 확인할 수 있는 로그인 페이지 만들어야될듯?	
-		//BoardView 페이지로 보냄
-		//System.out.println(">>>>1.내정보 2.내가 쓴 글<<<<<");
-	
-			
 			BoardView.getInstance().BoardMain();
-
 	}//f()
 	
 // 직원 선택했을 때 띄워지는 창 (고연진) ------------------------------------------------------
-	public void manager() {//원장 아이디, 비번
+	public void manager() {//직원 (원장, 강사, 행정)
 	
 		
 		SignupView.getInstance().login();
@@ -92,6 +69,7 @@ public class MainPage {
 	
 	}//f()
 
+// 처음 학생 선택했을 때 (박상빈)	
 	public void information() {
 		System.out.println("회원이름 : "); String name = sc.next();
 		System.out.println("회원전화번호 : "); String phone = sc.next();
@@ -102,7 +80,7 @@ public class MainPage {
 			InfoMation.getInstance().InfoMationMenu();
 			}
 		else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
-	}
+	}//f()
 
 
 
