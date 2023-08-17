@@ -37,13 +37,12 @@ public class EmployeeView {
 //1. 직원등록-----------------------------------------------------------------	
 
 	public void employeewriteView() {
-		System.out.println("직원코드 : ");		int eno = sc.nextInt();
 		sc.nextLine();
 		System.out.println("직급 : ");		String era = sc.nextLine(); 
 		System.out.println("이름 : ");		String ename = sc.nextLine();
-		System.out.println("급여 : ");		String epay = sc.nextLine();
+		System.out.println("급여 : ");		int epay = sc.nextInt();
 
-		boolean result = EmployeeController.getInstance().employeewriteView(eno,era,ename,epay);
+		boolean result = EmployeeController.getInstance().employeewriteView(era,ename,epay);
 
 		if(result) {System.out.println("직원등록 성공");}
 
@@ -75,8 +74,9 @@ public class EmployeeView {
 		sc.nextLine();
 		System.out.println("직급 : ");		String era = sc.nextLine(); 
 		System.out.println("이름 : ");		String ename = sc.nextLine();
-		System.out.println("급여 : ");		String epay = sc.nextLine();
-			
+		System.out.println("급여 : ");		int epay = sc.nextInt();
+		sc.nextLine();
+	
 		boolean result = 
 				EmployeeController.getInstance().employeeupdateView(eno,era,ename,epay);
 			

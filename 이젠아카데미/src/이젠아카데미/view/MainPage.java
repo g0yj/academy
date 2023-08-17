@@ -60,7 +60,7 @@ public class MainPage {
 					else if(select==2){LessonView.getInstance().LessonMain();}
 					else if(select==3){BoardView.getInstance().BoardMain();}
 					else if(select==4){AttendanceView.getInstance().attendancePrint();}
-					else if(select==5) {SignupView.getInstance().signup();}
+					else if(select==5) {EmployeeView.getInstance().EmployeeMain();}
 				}catch (Exception e) {
 					System.out.println("오류발생: "+e);
 					sc = new Scanner(System.in);

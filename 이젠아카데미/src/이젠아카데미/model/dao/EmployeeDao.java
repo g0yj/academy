@@ -18,19 +18,18 @@ public class EmployeeDao extends Dao{
 	public boolean employeewriteView(EmployeeDto employeeDto) {
 		
 		try {
-			String sql = "insert into lesson(eno, era, ename, epay) values(?,?,?,?)";
+			String sql = "insert into employee(era,ename,epay) values (?,?,?)";
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, employeeDto.getEno());
-			ps.setString(2, employeeDto.getEra());
-			ps.setString(3, employeeDto.getEname());
-			ps.setString(4, employeeDto.getEpay());
+			ps.setString(1, employeeDto.getEra());
+			ps.setString(2, employeeDto.getEname());
+			ps.setInt(3, employeeDto.getEpay());
 			int row = ps.executeUpdate();
 			if(row==1) return true;
 		}catch(Exception e) {System.out.println("dao오류: "+e);}
 		return false;
 		}
 
-//2. 직원전체조회------------------------------------------------------------------
+//2-1. 직원전체조회------------------------------------------------------------------
 	
 		public ArrayList<EmployeeDto> employeeprintView() {
 			ArrayList<EmployeeDto> list = new ArrayList<>();
@@ -42,7 +41,7 @@ public class EmployeeDao extends Dao{
 				
 				
 				while(rs.next()) {
-					EmployeeDto dto = new EmployeeDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+					EmployeeDto dto = new EmployeeDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
 					
 						list.add(dto);
 				}// while e
@@ -55,20 +54,49 @@ public class EmployeeDao extends Dao{
 			
 		}
 
+//2-2. 직원개별조회------------------------------------------------------------------
+		
+		
+		public EmployeeDto employeedetailView(int eno) {
+			
+			
+			try {
+				String sql = "select * from employee where eno = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, eno);
+				rs = ps.executeQuery();
+				
+				
+				if(rs.next()) {
+					EmployeeDto dto = new EmployeeDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+					
+					return dto;
+				}
+			
+			}catch(Exception e) {System.out.println("Dao 수업관리 실패 사유" +e);}
+			
+			return null;
+			}
+		
+		
 //3. 직원수정------------------------------------------------------------------		
 		
 		public boolean employeeupdateView(EmployeeDto dto) {
 			
+			
+			EmployeeDto oldDto = employeedetailView(dto.getEno());
 		
 			try {
-				String sql = "insert into lesson(eno, era, ename, epay) values(?,?,?,?)";
+				String sql = "update employee set era = ? , ename = ? , epay = ? where eno =?"; 
 				ps=conn.prepareStatement(sql);
-				ps.setInt(1, dto.getEno());
-				ps.setString(2, dto.getEra());
-				ps.setString(3, dto.getEname());
-				ps.setString(4, dto.getEpay());
+				ps.getConnection().prepareStatement(sql);
+				ps.setInt(1, dto.getEno()==-1 ? oldDto.getEno() : dto.getEno());
+				ps.setString(2, dto.getEra().equals("") ? oldDto.getEra() : dto.getEra());
+				ps.setString(3, dto.getEname().equals("") ? oldDto.getEname() : dto.getEname());
+				ps.setInt(4, dto.getEpay()==-1 ? oldDto.getEpay() : dto.getEpay());
 				ps.executeUpdate();
 				return true;
+				
 			}catch(Exception e) {System.out.println("employeeupdateView()Dao오류: "+e);}
 			
 			return false;

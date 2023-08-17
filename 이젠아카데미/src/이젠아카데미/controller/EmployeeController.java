@@ -19,8 +19,8 @@ public class EmployeeController {
 	
 //1. 직원등록-------------------------------------------------------------------
 	
-	public boolean employeewriteView(int eno, String era, String ename, String epay) {
-		EmployeeDto employeeDto = new EmployeeDto(eno, era, ename, epay);
+	public boolean employeewriteView(String era, String ename, int epay) {
+		EmployeeDto employeeDto = new EmployeeDto(era, ename, epay);
 		boolean result = EmployeeDao.getInstance().employeewriteView(employeeDto);
 		if(result) {return true;}
 		else {return false;}	
@@ -35,7 +35,7 @@ public class EmployeeController {
 	
 //3. 직원수정--------------------------------------------------------------------------
 
-	public boolean employeeupdateView(int eno, String era, String ename, String epay) {
+	public boolean employeeupdateView(int eno, String era, String ename, int epay) {
 		EmployeeDto employeeDto = new EmployeeDto(eno, era, ename, epay);
 		boolean result = EmployeeDao.getInstance().employeeupdateView(employeeDto);
 

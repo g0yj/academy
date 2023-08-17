@@ -7,6 +7,7 @@ public class AppStart {
 	
 		MainPage.getInstance().mainPage();
 	}
+	
 }
 
 
