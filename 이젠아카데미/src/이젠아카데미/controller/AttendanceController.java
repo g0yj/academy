@@ -1,6 +1,9 @@
 package 이젠아카데미.controller;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dao.AttendanceDao;
+import 이젠아카데미.model.dto.StudentDto;
 
 public class AttendanceController {
  
@@ -12,4 +15,17 @@ public class AttendanceController {
 		return AttendanceDao.getInstance().출석하기(BoardController.getInstance().getLoginSession());
 	}
 	
+	
+	public int 출석횟수() {
+			return AttendanceDao.getInstance().출석횟수(BoardController.getInstance().getLoginSession());
+		}
+	
+	public int 총수강일() {
+		return AttendanceDao.getInstance().총수강일(BoardController.getInstance().getLoginSession());
+	}
+	
+	public ArrayList<StudentDto> attendancePrint() {
+		return AttendanceDao.getInstance().attendancePrint();
+		
+	}
 }

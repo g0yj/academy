@@ -1,6 +1,7 @@
 package 이젠아카데미.model.dto;
 
 public class BoardDto {
+
     int bno; 
     int sno ;
     String btitle; 
@@ -46,6 +47,7 @@ public class BoardDto {
       this.bno = bno;
       this.sno = sno;
    }
+
    
    public BoardDto( String btitle, String bcontent,int bno) {
       super();
@@ -53,14 +55,6 @@ public class BoardDto {
       this.btitle = btitle;
       this.bcontent = bcontent;
    } 
-   
-   
-   
-   
-   public BoardDto(int bno) {
-	super();
-	this.bno = bno;
-}
    
    
 
