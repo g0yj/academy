@@ -18,7 +18,7 @@ public class InfoMation {
 		
 		if(ch==1) {board();}
 		if(ch==2) { 출석하기(); }
-		if(ch==3) { System.out.println("출석확인기능");}
+		if(ch==3) { 출석률();}
 		if(ch==4) {}
 	}
 	
@@ -115,5 +115,20 @@ public class InfoMation {
 		if(result) {System.out.println(" 출석 완료 ");}
 		else {System.out.println("이미 출석 했습니다.");}
 	}
-	
+	public void 출석률() {
+	      int 출석횟수 = AttendanceController.getInstance().출석횟수();
+	      System.out.println("나의 출석 횟수 : " + 출석횟수);
+	      int 총수강일 = AttendanceController.getInstance().총수강일();
+	      System.out.println("나의 총수강일 : " + 총수강일);
+	      System.out.println("--------- 출석률 확인 ----------");
+	      System.out.printf(
+	             BoardController.getInstance().getLoginSession() + "의 출석률 : %.2f%% \n",
+	             ((double)출석횟수 / 총수강일 * 100)
+	         );
+	      System.out.print("1. 뒤로가기 2. 초기화면");
+	      int ch = sc.nextInt();
+	      
+	      if(ch == 1) {InfoMationMenu();}
+	      else if( ch == 2) {}
+	   }
 }

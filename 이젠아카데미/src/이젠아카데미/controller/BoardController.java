@@ -78,14 +78,16 @@ public class BoardController {
 	}
 	
 	// 5. 게시글 번호 받아서 삭제
-	public int boardDelete(int bno) {
-		BoardDto boardDto = new BoardDto();
-		int sno = boardDto.getSno();
+		public int boardDelete(int bno) {
+		
+		int sno = boardView(bno).getSno();
+		
+		 if(sno != loginSession) return 3;
+		
 		boolean result = BoardDao.getInstance().boardDelete(bno);
 		
-		if(result) return 1; 
-		else if(sno != loginSession) return 2;
-		else return 3;
+		if(result) return 1;
+		else return 2;
 	}
 	
 	

@@ -91,17 +91,7 @@ public class AttendanceDao extends Dao{
 
 
 
-/*
- 
-	 select * from attendance where sno = 1 and date_format(aday , '%Y-%m-%d') = curdate();
-	
-		select * from attendance where sno = ? and date_format(aday , '%Y-%m-%d') = curdate();
-	
-		select count(*) from attendance where sno = 1; -- 출석횟수 
-		select ltotalday from student s natural join lesson l where s.sno = 1 ;
- 	
-  
- */
+
 
 
 
