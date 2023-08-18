@@ -72,6 +72,20 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	
+	public boolean MyboardDelete(int bno) {
+		try {
+			String sql="delete from board where bno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			int row = ps.executeUpdate();
+			if(row==1) {return true;}
+			
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+
+	
 	public int information(String name, String phone) {
 		try {
 			String sql = "select * from student where sname=? and sphone=?";

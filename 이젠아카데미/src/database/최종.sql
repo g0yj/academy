@@ -36,7 +36,7 @@ create table student(
 
 drop table if exists board;
 create table board(
-   bno int auto_increment,
+   	bno int auto_increment,
     sno int,
     btitle longtext not null,
     bcontent longtext not null,

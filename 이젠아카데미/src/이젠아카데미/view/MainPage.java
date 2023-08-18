@@ -13,12 +13,12 @@ public class MainPage {
    
    private Scanner sc= new Scanner(System.in);
 // 메인페이지-------------------------------------------------------------------
-
-  
+   	
 
 
 		public void mainPage() {
 			while(true) {
+				System.out.println();
 				System.out.println("======================");
 				System.out.println("1. 직원 2. 학생");
 				System.out.println("======================");

@@ -72,4 +72,21 @@ public class BoardView {
 			} else if ( ch == 2) {
 			}	
 		}
+	
+	public void boardView2() {
+		try {
+		System.out.println("----- POST VIEW -------");
+		// 1. 보고자하는 게시물의 게시물번호를 입력받기[식별번호]
+		System.out.println("게시물번호: "); int bno = sc.nextInt();
+		
+		BoardDto result = BoardController.getInstance().boardView(bno);
+		
+		System.out.printf("bno : %-3s view : %-3s day : %-19s \n" , 	result.getBno() , result.getBview() , result.getBday() );
+		
+		System.out.printf("title : %s \n",result.getBtitle());
+		System.out.printf("content : %s \n ",result.getBcontent());
+		System.out.println("--------------------------------------");
+		}catch (Exception e) {System.out.println("오류나는이유: "+e);}
+	}
+	
 }

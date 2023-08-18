@@ -59,10 +59,10 @@ public class BoardController {
 	    
 	    return 2; // 게시글 정보가 없는 경우
 	}
-	// 제목과 ㅈ내
+	// 글쓰기!!
 	public boolean boardWrite(String title , String content) {
 	      
-	      // 1. 제목이 0글자이거나 50글자 이상이면 글 쓰기 안됨!!
+	      // 1. 제목이 0글자이거나 50글자 이상이면 글 쓰기 실패
 	      if(title.length()==0 || title.length()>50) {return false;}
 	      
 	      // 2. Dto[ 입력받은제목 , 입력받은내용 , 로그인된회원번호]
@@ -70,7 +70,7 @@ public class BoardController {
 	      return BoardDao.getInstance().boardWrite(boardDto);
 	   }
 
-	// 내가쓴글보기
+	// 내글보기
 	public ArrayList<BoardDto> myWriting() {
 		
 		return BoardDao.getInstance().myWriting(loginSession);
@@ -83,14 +83,10 @@ public class BoardController {
 		int sno = boardDto.getSno();
 		boolean result = BoardDao.getInstance().boardDelete(bno);
 		
-		if(result) return 1;
-		else if(sno != loginSession) return 3;
-		else return 2;
+		if(result) return 1; 
+		else if(sno != loginSession) return 2;
+		else return 3;
 	}
-	
-	
-	
-	
 	
 	
 	public void attendanceView() {}

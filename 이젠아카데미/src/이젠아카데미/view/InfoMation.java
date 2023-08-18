@@ -18,16 +18,18 @@ public class InfoMation {
 		
 		if(ch==1) {board();}
 		if(ch==2) { 출석하기(); }
-		if(ch==3) { 출석률();}
+		if(ch==3) { System.out.println("출석확인기능");}
 		if(ch==4) {}
 	}
 	
 	public void board() {
 		BoardView.getInstance().boardPrint();
-		System.out.println("1.내글보기 2. 글쓰기"); int select = sc.nextInt();
+		System.out.println("1.내글보기 2. 글쓰기 3.다른사람글보기 4.뒤로가기"); int select = sc.nextInt();
 		
 		if(select==1) {myWriting();}
 		if(select==2) {boardWrite();}
+		if(select==3) {BoardView.getInstance().boardView2(); InfoMationMenu();}
+		if(select==4) {InfoMationMenu();}
 	}
 	// 1. 내글보기 메소드
 	public void myWriting() {
@@ -85,8 +87,8 @@ public class InfoMation {
 				BoardController.getInstance().boardDelete(bno);
 		
 		if(result == 1) {System.out.println("안내] 글 삭제 성공"); InfoMationMenu();}
-		else if(result==2) {System.out.println("경고] 글 삭제 실패 : 관리자 오류"); InfoMationMenu();}
-		else if(result==3) {System.out.println("경고] 본인 글만 삭제 가능합니다."); InfoMationMenu();}
+		else if(result==2) {System.out.println("경고] 본인 글만 삭제 가능합니다."); InfoMationMenu();}
+		else if(result==3) {System.out.println("경고] 글 삭제 실패 : 관리자 오류"); InfoMationMenu();}
 		}
 		catch (Exception e) {System.out.println();
 		}
@@ -114,22 +116,4 @@ public class InfoMation {
 		else {System.out.println("이미 출석 했습니다.");}
 	}
 	
-	public void 출석률() {
-		int 출석횟수 = AttendanceController.getInstance().출석횟수();
-		System.out.println("나의 출석 횟수 : " + 출석횟수);
-		int 총수강일 = AttendanceController.getInstance().총수강일();
-		System.out.println("나의 총수강일 : " + 총수강일);
-		System.out.println("--------- 출석률 확인 ----------");
-		System.out.printf(
-			    BoardController.getInstance().getLoginSession() + "의 출석률 : %.2f%% \n",
-			    ((double)출석횟수 / 총수강일 * 100)
-			);
-		System.out.print("1. 뒤로가기 2. 초기화면");
-		int ch = sc.nextInt();
-		
-		if(ch == 1) {InfoMationMenu();}
-		else if( ch == 2) {}
-		
-		
-	}
 }
