@@ -90,10 +90,10 @@ public class EmployeeDao extends Dao{
 				String sql = "update employee set era = ? , ename = ? , epay = ? where eno =?"; 
 				ps=conn.prepareStatement(sql);
 				ps.getConnection().prepareStatement(sql);
-				ps.setInt(1, dto.getEno());
-				ps.setString(2, dto.getEra().equals("") ? oldDto.getEra() : dto.getEra());
-				ps.setString(3, dto.getEname().equals("") ? oldDto.getEname() : dto.getEname());
-				ps.setInt(4, dto.getEpay());
+				ps.setInt(4, dto.getEno());
+				ps.setString(1, dto.getEra().equals("") ? oldDto.getEra() : dto.getEra());
+				ps.setString(2, dto.getEname().equals("") ? oldDto.getEname() : dto.getEname());
+				ps.setInt(3, dto.getEpay());
 				ps.executeUpdate();
 				return true;
 				
