@@ -3,6 +3,7 @@ package 이젠아카데미.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import 이젠아카데미.controller.BoardController;
 import 이젠아카데미.controller.MessageController;
 import 이젠아카데미.controller.SignupController;
 import 이젠아카데미.model.dto.MessageDto;
@@ -32,7 +33,7 @@ public class MessageView {
 		messageView();
 	}//f()
 	
-//보낸쪽지함(고연진)----------------------------------------------------------
+//직원=> 본인 학생이 받은 목록(쪽지전체보기)(고연진)----------------------------------------------------------
 	public void messageView() {
 		int eno = SignupController.getInstance().getLoginSession();
 		System.out.printf("%-5s %-10s\n","받는사람","메세지내용");
@@ -44,6 +45,23 @@ public class MessageView {
 		}
 	
 	}
+
+// 직원이 보낸 메시지 확인-----------------------------------------------
 	
+	
+//학생=> 본인 학생이 받은 목록(고연진)------------------------------------
+	public void messageCheck() {
+		int sno = BoardController.getInstance().getLoginSession();
+		System.out.printf("%-5s %-10s\n","보낸사람","메세지내용");
+		
+		ArrayList<MessageDto> result=
+				MessageController.getInstance().messageCheck(sno);
+		for(int i=0; i<result.size();i++) {
+			MessageDto dto= result.get(i);
+			System.out.printf("%-5s %-15s\n", dto.getEname(),dto.getMcontent());
+			
+		}
+		
+	}//f()
 	
 }//c

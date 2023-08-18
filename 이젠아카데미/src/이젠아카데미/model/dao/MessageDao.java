@@ -46,7 +46,27 @@ public class MessageDao extends Dao{
 		return list;
 	}	
 	
-	
+//학생=> 받은메세지함(고연진)------------------------------------
+	public ArrayList<MessageDto> messageCheck(int sno) {
+		
+		ArrayList<MessageDto>list=new ArrayList<>();
+		
+		try {
+			String sql="select ename,mcontent from Message natural join employee where sno=?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, sno);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				MessageDto dto = new MessageDto(rs.getString(1), rs.getString(2));
+				list.add(dto);				
+			}//
+			
+		}catch (Exception e) {System.out.println(e);}
+		
+		return list;
+	}//f()	
 	
 	
 }//c

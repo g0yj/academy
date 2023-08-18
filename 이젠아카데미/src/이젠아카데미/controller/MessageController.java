@@ -29,7 +29,12 @@ public class MessageController {
 		return result;
 		}
 	
-	
+
+//학생=> 받은메세지함(고연진)------------------------------------
+	public ArrayList<MessageDto> messageCheck(int sno) {
+		ArrayList<MessageDto> result=MessageDao.getInstance().messageCheck(sno);
+		return result;
+	}//f()	
 	
 	
 }//c

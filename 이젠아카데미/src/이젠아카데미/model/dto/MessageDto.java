@@ -1,19 +1,4 @@
 package 이젠아카데미.model.dto;
-
-/*
- drop table if exists message;
-create table message( 
-	mno int auto_increment,		#보낸메세지넘버
-    eno int
-    mcontent text not null, #보낼내용
-    sno int not null,  # 보낼사람
-	primary key (mno),
-    foreign key(sno) references student(sno)
-);
- 
- 
- */
-
 	
 	public class MessageDto {
 		//필드
@@ -22,6 +7,7 @@ create table message(
 		String sname;
 		String mcontent;
 		int sno;
+		String ename;
 
 //생성자----------------------------------------------------------------------		
 	//빈생성자
@@ -42,11 +28,31 @@ create table message(
 			this.mcontent = mcontent;
 			this.sno = sno;
 		}
-
-		public MessageDto(String sname,String mcontent) {
+		
+		//보낸메세지함
+		public MessageDto(String sname, String mcontent) {
 			super();
-			this.mcontent = mcontent;
 			this.sname = sname;
+			this.mcontent = mcontent;
+		}
+	
+		//받은메세지함
+		
+
+		
+		
+//메소드-------------------------------------------------------------
+
+
+
+
+		public String getEname() {
+			return ename;
+		}
+
+
+		public void setEname(String ename) {
+			this.ename = ename;
 		}
 
 		//메소드--------------------------------------------------------------
