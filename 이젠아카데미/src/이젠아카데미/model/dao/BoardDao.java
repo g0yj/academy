@@ -67,9 +67,7 @@ public class BoardDao extends Dao{
 			ps.setInt(1, bno);
 			int row = ps.executeUpdate();
 			if(row == 1) return true;
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		} catch (Exception e) {System.out.println("오류이유: "+e);}
 		
 		return false;
 	}

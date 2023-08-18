@@ -59,7 +59,7 @@ public class BoardView {
 		System.out.print("1.글삭제 2.뒤로가기"); int ch= sc.nextInt();
 		if(ch==1) {boardDelete(bno); }
 		if(ch==2) {boardPrint();}
-		}catch (Exception e) {System.out.println(e);}
+		}catch (Exception e) {System.out.println("오류나는이유: "+e);}
 	}
 	public void boardDelete(int bno) {
 			System.out.print("1. 글삭제 2. 취소"); int ch = sc.nextInt();

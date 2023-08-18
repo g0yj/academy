@@ -57,7 +57,8 @@ public class InfoMation {
 		}
 		if(ch==2) {
 			System.out.println("게시물번호: "); int bno = sc.nextInt();
-			 int sno = BoardController.getInstance().getLoginSession();
+			System.out.print("1. 삭제 2. 취소"); int select = sc.nextInt();
+			
 			boardDelete(bno);}
 		if(ch==3) {board();}
 		}catch (Exception e) {System.out.println("오류알려줘"+e);}
@@ -72,20 +73,20 @@ public class InfoMation {
 	      BoardView.getInstance().boardPrint();
 	      boolean result=
 	      BoardController.getInstance().boardWrite(title, content);
-	      if(result) {System.out.println("안내] 글쓰기 등록");board();}
+	      if(result) {System.out.println("안내] 글쓰기 등록");InfoMationMenu();}
 	      else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}   
 	   }
 	   
+	 
+	public void boardDelete(int bno) {
 	
-	public void boardDelete(int bno ) {
-		System.out.print("1. 삭제 2. 취소"); int ch = sc.nextInt();
 	try {		
 		int result = 
 				BoardController.getInstance().boardDelete(bno);
 		
-		if(result == 1) {System.out.println("안내] 글 삭제 성공");}
-		else if(result==2) {System.out.println("경고] 글 삭제 실패 : 관리자 오류");}
-		else if(result==3) {System.out.println("경고] 본인 글만 삭제 가능합니다.");}
+		if(result == 1) {System.out.println("안내] 글 삭제 성공"); InfoMationMenu();}
+		else if(result==2) {System.out.println("경고] 글 삭제 실패 : 관리자 오류"); InfoMationMenu();}
+		else if(result==3) {System.out.println("경고] 본인 글만 삭제 가능합니다."); InfoMationMenu();}
 		}
 		catch (Exception e) {System.out.println();
 		}
@@ -99,7 +100,7 @@ public class InfoMation {
 		int result =
 				BoardController.getInstance().boardUpdate(bno, sno, title, content);
 		
-		if(result == 1) {System.out.println("안내] 글 수정 성공"); InfoMationMenu() ;}
+		if(result == 1) {System.out.println("안내] 글 수정 성공"); InfoMationMenu();}
 		else if(result==2) {System.out.println("경고] 글 수정 실패 : 관리자 오류"); InfoMationMenu();}
 		else if(result==3) {System.out.println("경고] 본인 글만 수정 가능합니다."); InfoMationMenu();}
 		else if(result==4) {System.out.println("경고] 수정할 제목을 1~50글자 사이로 입력해주세요."); InfoMationMenu();}	 
