@@ -14,13 +14,15 @@ public class InfoMation {
 	
 	private Scanner sc = new Scanner(System.in);
 	public void InfoMationMenu() {
-		System.out.println("1.자유 게시판 2.출석하기 3.출석률확인 4.후기 게시판 5. 뒤로가기"); int ch =sc.nextInt();
+		System.out.println("1.자유 게시판 2.후기 게시판 3.출석하기 4. 출석률 5. 훈련장려금 6.뒤로가기"); int ch =sc.nextInt();
 		// 기준 수정
 		if(ch==1) {board();}
-		if(ch==2) { 출석하기(); }
-		if(ch==3) { 출석률();}
-		if(ch==4) {}
-		if(ch==5) {}
+		if(ch==2) { }
+		if(ch==3) { 출석하기();}
+		if(ch==4) {출석률();}
+		if(ch==5) {훈련장려금();}
+		if(ch==6) {}
+		
 	}
 	
 	public void board() {
@@ -132,4 +134,8 @@ public class InfoMation {
 	      if(ch == 1) {InfoMationMenu();}
 	      else if( ch == 2) {}
 	   }
+	
+	public void 훈련장려금() {
+		
+	}
 }

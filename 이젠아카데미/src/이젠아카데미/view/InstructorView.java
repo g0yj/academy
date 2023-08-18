@@ -5,6 +5,7 @@ package 이젠아카데미.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import 이젠아카데미.controller.IncentivesController;
 import 이젠아카데미.controller.InstructorController;
 import 이젠아카데미.controller.SignupController;
 import 이젠아카데미.model.dto.InstructorDto;
@@ -48,8 +49,8 @@ public class InstructorView {
 		}
 		else {// 행정으로 로그인하면 학생 전체 출력
 			System.out.println("행정 로그인 성공");
-			StudentView.getStudentView().studentAllSelect();
-			StudentView.getStudentView().studentInfo();
+			IncentivesController.getInstance().훈련장려금목록();
+			IncentivesController.getInstance().훈련장려금지급();
 			
 			}
 			

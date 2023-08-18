@@ -4,16 +4,18 @@ use ezenacademy;
 
 drop table if exists employee;
 create table employee(  #직원
-	eno int auto_increment , #직원넘버
-	era varchar(10) not null, #직급
+   eno int auto_increment , #직원넘버
+   era varchar(10) not null, #직급
     ename varchar(10) not null, #직원이름
     epay int not null, # 직원월급
     primary key(eno)
 );
+select format (epay,0) from employee; 
+
 
 drop table if exists lesson;
 create table lesson(
-	lno int auto_increment not null, #수업코드
+   lno int auto_increment not null, #수업코드
     lname varchar(20) not null unique,  #수업명
     ltotalday int not null,  #총수강일
     lopenday date not null,  # 개강일
@@ -25,18 +27,18 @@ create table lesson(
 
 drop table if exists student;
 create table student(
-	sno int auto_increment not null,
+   sno int auto_increment not null,
     sname varchar(10) not null,
-	saddress varchar(10) not null,
+   saddress varchar(10) not null,
     sphone varchar(13) not null unique,
-	lno int, 
+   lno int, 
     primary key(sno),
     foreign key( lno ) references lesson (lno)
 );
 
 drop table if exists board;
 create table board(
-   	bno int auto_increment,
+   bno int auto_increment,
     sno int,
     btitle longtext not null,
     bcontent longtext not null,
@@ -48,7 +50,7 @@ create table board(
 
 drop table if exists attendance;
 create table attendance( 
-	ano int auto_increment, 
+   ano int auto_increment, 
     sno int,
     aday datetime,
     primary key(ano),
@@ -60,9 +62,9 @@ create table attendance(
 
 drop table if exists signup;
 create table signup( # 강사회원가입
-	jno int auto_increment, #회원가입 시 등록되는 강사 no
+   jno int auto_increment, #회원가입 시 등록되는 강사 no
     jid varchar(20) unique, #회원가입 시 강사 아이디
-    jpw varchar(20) ,	#회원가입 시 강사 비밀번호
+    jpw varchar(20) ,   #회원가입 시 강사 비밀번호
     eno int default 0,    #강사번호              # 추후 자바에서 유효성 검사.
     primary key(jno),
     foreign key( eno) references employee (eno)
@@ -70,22 +72,33 @@ create table signup( # 강사회원가입
 
 drop table if exists message;
 create table message( 
-	mno int auto_increment,		#보낸메세지넘버
-    eno int null,	#메세지보내는 사람(직원만가능)
+   mno int auto_increment,      #보낸메세지넘버
+    eno int null,   #메세지보내는 사람(직원만가능)
     mcontent text not null, #보낼내용
     sno int not null,  # 메세지 받을 사람
-	primary key (mno),
+   primary key (mno),
     foreign key(sno) references student(sno),
     foreign key(eno) references employee(eno)
 );
 
+drop table if exists T_incentives;
+create table T_incentives (
+   tno int,
+   sno int,
+    tday datetime default now(),
+    tepisode int,
+    
+    primary key (tno),
+    foreign key (sno ) references student (sno)
+);
 
-insert into  employee(era,ename,epay) values ('원장','고연진',40);
-insert into  employee(era,ename,epay) values ('강사','이진형',30);
-insert into  employee(era,ename,epay) values ('강사','황기준',20);
-insert into  employee(era,ename,epay) values ('행정','이성호',20);
-insert into  employee(era,ename,epay) values ('강사','정희락',20);
-insert into  employee(era,ename,epay) values ('강사','고명섭',20);
+#기준 내용추가(08/18 수정)
+insert into  employee(era,ename,epay) values ('원장','고연진',5690000);
+insert into  employee(era,ename,epay) values ('강사','이진형',4454500);
+insert into  employee(era,ename,epay) values ('강사','황기준',4162400);
+insert into  employee(era,ename,epay) values ('행정','이성호',3159100);
+insert into  employee(era,ename,epay) values ('강사','정희락',4545600);
+insert into  employee(era,ename,epay) values ('강사','고명섭',3532200);
 
 
 
