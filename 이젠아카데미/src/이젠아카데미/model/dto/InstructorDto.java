@@ -3,7 +3,7 @@ package 이젠아카데미.model.dto;
 public class InstructorDto {
 	//필드
 	int sno;
-	int eno;
+	int lno;
 	String sname;
 	String saddress;
 	String sphone;
@@ -12,16 +12,18 @@ public class InstructorDto {
 	//빈생성자
 	public InstructorDto() {}
 
-	// 강사별 학생 정보 받아오기 위한 생성자
-	public InstructorDto(int sno, int eno, String sname, String saddress, String sphone) {
+	//풀생성자
+	public InstructorDto(int sno, int lno, String sname, String saddress, String sphone) {
 		super();
 		this.sno = sno;
-		this.eno = eno;
+		this.lno = lno;
 		this.sname = sname;
 		this.saddress = saddress;
 		this.sphone = sphone;
 	}
 
+	
+// 메소드----------------------------------------------------------------------------------	
 	public int getSno() {
 		return sno;
 	}
@@ -30,12 +32,12 @@ public class InstructorDto {
 		this.sno = sno;
 	}
 
-	public int getEno() {
-		return eno;
+	public int getLno() {
+		return lno;
 	}
 
-	public void setEno(int eno) {
-		this.eno = eno;
+	public void setLno(int lno) {
+		this.lno = lno;
 	}
 
 	public String getSname() {
@@ -64,11 +66,10 @@ public class InstructorDto {
 
 	@Override
 	public String toString() {
-		return "InstructorDto [sno=" + sno + ", eno=" + eno + ", sname=" + sname + ", saddress=" + saddress
+		return "InstructorDto [sno=" + sno + ", lno=" + lno + ", sname=" + sname + ", saddress=" + saddress
 				+ ", sphone=" + sphone + "]";
 	}
 
-	
 	
 	
 	

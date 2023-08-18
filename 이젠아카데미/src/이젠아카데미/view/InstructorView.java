@@ -31,8 +31,20 @@ public class InstructorView {
 		
 		if(result) {//만약 강사로 들어왔으면 수강 중인 학생 정보만 보여주기
 			System.out.println("강사로 로그인 성공");
+			//수강생 조회
 			SManagement(jno);
-			StudentView.getStudentView().studentInfo();
+	
+			System.out.println("------------------------------");
+			System.out.println("1.학생조회  2.쪽지보내기");
+			System.out.println("------------------------------");
+			System.out.println(">>선택: "); int ch=sc.nextInt();
+			
+			if(ch==1) {// 개별학생조회
+				StudentView.getStudentView().studentInfo();}
+			else if(ch==2) {
+				MessageView.getInstance().messageSend();
+			}//else if
+			//Me
 		}
 		else {// 행정으로 로그인하면 학생 전체 출력
 			System.out.println("행정 로그인 성공");

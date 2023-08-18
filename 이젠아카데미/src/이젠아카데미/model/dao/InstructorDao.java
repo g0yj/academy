@@ -14,7 +14,7 @@ public class InstructorDao extends Dao {
 // 1. 강사vs행정을 구분하는 함수(고연진)----------------------------	
 		public boolean instructorMain(int jno){
 			try {
-				String sql = "select * from employee natural join signup  where era like'강사%' and eno = ?";
+				String sql = "select * from employee natural join signup  where era like'강사%' and jno = ?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, jno);
 				rs= ps.executeQuery();
@@ -32,7 +32,7 @@ public class InstructorDao extends Dao {
 	public ArrayList<InstructorDto> SManagement(int jno) {
 		ArrayList<InstructorDto>list=new ArrayList<>();
 			try {
-				String sql="select sno, eno, sname, saddress, sphone from student natural join employee where eno = ?  ";
+				String sql="select sno, lno, sname, saddress, sphone from student natural join lesson where lno =?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, jno);
 				rs=ps.executeQuery();
