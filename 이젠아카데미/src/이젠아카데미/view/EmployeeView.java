@@ -37,13 +37,12 @@ public class EmployeeView {
 //1. 직원등록-----------------------------------------------------------------	
 
 	public void employeewriteView() {
-		System.out.println("직원코드 : ");		int eno = sc.nextInt();
 		sc.nextLine();
 		System.out.println("직급 : ");		String era = sc.nextLine(); 
 		System.out.println("이름 : ");		String ename = sc.nextLine();
-		System.out.println("급여 : ");		String epay = sc.nextLine();
+		System.out.println("급여 : ");		int epay = sc.nextInt();
 
-		boolean result = EmployeeController.getInstance().employeewriteView(eno,era,ename,epay);
+		boolean result = EmployeeController.getInstance().employeewriteView(era,ename,epay);
 
 		if(result) {System.out.println("직원등록 성공");}
 
@@ -57,7 +56,7 @@ public class EmployeeView {
 		ArrayList<EmployeeDto> result = EmployeeController.getInstance().employeeprintView();		
 			System.out.println("\n\n================직원조회================");
 			
-		System.out.printf("%3s %1s %1s %5s \n","직원코드", "직급", "이름","급여");
+		System.out.printf("%3s %1s %5s %13s \n","직원코드", "직급", "이름","급여");
 			for(int i = 0; i<result.size(); i++) {
 				EmployeeDto dto = result.get(i);	
 				
@@ -75,8 +74,9 @@ public class EmployeeView {
 		sc.nextLine();
 		System.out.println("직급 : ");		String era = sc.nextLine(); 
 		System.out.println("이름 : ");		String ename = sc.nextLine();
-		System.out.println("급여 : ");		String epay = sc.nextLine();
-			
+		System.out.println("급여 : ");		int epay = sc.nextInt();
+		sc.nextLine();
+	
 		boolean result = 
 				EmployeeController.getInstance().employeeupdateView(eno,era,ename,epay);
 			
