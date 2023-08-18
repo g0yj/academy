@@ -14,12 +14,13 @@ public class InfoMation {
 	
 	private Scanner sc = new Scanner(System.in);
 	public void InfoMationMenu() {
-		System.out.println("1.게시판 2.출석하기 3.출석률확인 4. 뒤로가기"); int ch =sc.nextInt();
-		
+		System.out.println("1.자유 게시판 2.출석하기 3.출석률확인 4.후기 게시판 5. 뒤로가기"); int ch =sc.nextInt();
+		// 기준 수정
 		if(ch==1) {board();}
 		if(ch==2) { 출석하기(); }
 		if(ch==3) { 출석률();}
 		if(ch==4) {}
+		if(ch==5) {}
 	}
 	
 	public void board() {
