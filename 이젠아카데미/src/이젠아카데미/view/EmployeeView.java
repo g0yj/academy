@@ -75,7 +75,6 @@ public class EmployeeView {
 		System.out.println("직급 : ");		String era = sc.nextLine(); 
 		System.out.println("이름 : ");		String ename = sc.nextLine();
 		System.out.println("급여 : ");		int epay = sc.nextInt();
-		sc.nextLine();
 	
 		boolean result = 
 				EmployeeController.getInstance().employeeupdateView(eno,era,ename,epay);
