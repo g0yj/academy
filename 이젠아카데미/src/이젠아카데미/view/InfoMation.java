@@ -19,7 +19,7 @@ public class InfoMation {
 		if(ch==1) {board();}
 		if(ch==2) { 출석하기(); }
 		if(ch==3) { 출석률();}
-		if(ch==4) {}
+		if(ch==4) {ReviewBoardView.getInstance().ReviewBoardMain();}//기준꺼넣기
 		if(ch==5) {}
 	}
 	
