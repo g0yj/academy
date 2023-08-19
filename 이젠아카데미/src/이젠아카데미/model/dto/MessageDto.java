@@ -30,13 +30,21 @@ package 이젠아카데미.model.dto;
 		}
 		
 		//보낸메세지함
+		public MessageDto(int mon, String sname, String mcontent) {
+			super();
+			this.mon = mon;
+			this.sname = sname;
+			this.mcontent = mcontent;
+		}
+	
+		//개별메세지출력
+
 		public MessageDto(String sname, String mcontent) {
 			super();
 			this.sname = sname;
 			this.mcontent = mcontent;
 		}
-	
-		//받은메세지함
+
 		
 
 		
@@ -49,6 +57,7 @@ package 이젠아카데미.model.dto;
 		public String getEname() {
 			return ename;
 		}
+
 
 
 		public void setEname(String ename) {

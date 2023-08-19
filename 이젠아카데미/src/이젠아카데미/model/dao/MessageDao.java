@@ -10,63 +10,67 @@ public class MessageDao extends Dao{
 	public static MessageDao getInstance() {return M;}
 	private MessageDao() {}
 	
-	
-//메세지보내기(고연진)------------------------------------------------------	
+//1. 메세지 보내기--------------------------------------------------------------
 	public boolean messageSend(MessageDto dto) {
-		
 		try {
-			String sql = "insert into Message(eno,mcontent,sno)values(?,?,?) ";
+			String sql="insert into Message (eno,mcontent,sno) values (?,?,?);";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, dto.getEno());
 			ps.setString(2, dto.getMcontent());
 			ps.setInt(3, dto.getSno());
-			ps.executeUpdate();
-			return true;
-		}catch (Exception e) {System.out.println("dao오류:"+e);}
-		 	return false;
-		}//f()	
-//보낸쪽지함(고연진)----------------------------------------------------------
-	public ArrayList<MessageDto> messageView(int eno) {
-		
-			ArrayList<MessageDto>list=new ArrayList<>();
-		
-			try {
-				String sql = "select sno,sname,mcontent from student natural join message where eno=?";
-				ps=conn.prepareStatement(sql);
-				ps.setInt(1, eno);
-				rs = ps.executeQuery();
-				while(rs.next()) {
-					MessageDto dto = new MessageDto(rs.getString(2), rs.getString(3)) ;   
-					list.add(dto);
-				}//w
-			
-			}//t
-			catch (Exception e) {System.out.println("dao오류: "+e);
-			}//cat
-		return list;
-	}	
+			int row= ps.executeUpdate();
+			if(row==1) {return true;}
+		} catch (Exception e) {System.out.println("Dao오류:"+e);}
+		return false;
+	}
 	
-//학생=> 받은메세지함(고연진)------------------------------------
-	public ArrayList<MessageDto> messageCheck(int sno) {
-		
-		ArrayList<MessageDto>list=new ArrayList<>();
-		
+
+//2. 메세지 보기----------------------------------------------------
+	public MessageDto messageView(int mno) {
 		try {
-			String sql="select ename,mcontent from Message natural join employee where sno=?";
-			
+			String sql = "select sname,mcontent from student natural join message where mno=?";
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, sno);
+			ps.setInt(1, mno);
+			rs= ps.executeQuery();
+			if(rs.next()) {
+				
+			MessageDto dto = new MessageDto(rs.getString(1), rs.getString(2));
+			return dto;
+			}
+		}catch (Exception e) {System.out.println("dao이유: "+e);}
+		return null;
+	}
+	
+	
+//3. 전체 메세지 보기 -------------------------------------------------
+	public ArrayList<MessageDto> messageAllView(int eno) {
+		ArrayList<MessageDto>list = new ArrayList<>();
+		try {
+			String sql="select mno,eno,sname,mcontent,mday from student natural join message where eno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, eno);
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				MessageDto dto = new MessageDto(rs.getString(1), rs.getString(2));
-				list.add(dto);				
-			}//
-			
-		}catch (Exception e) {System.out.println(e);}
+				MessageDto dto = new MessageDto(rs.getInt(1), rs.getString(3), rs.getString(4));
+				list.add(dto);
+				
+			}//w
+			return list;
+		}catch (Exception e) {System.out.println("dao오류:"+e);}
+		return null;
+	}
+	
+	
+//4. 메세지 수정
+	public void messageUpdate() {
 		
-		return list;
-	}//f()	
+	}
 	
-	
+//5. 메세지 삭제
+	public void messageDelete() {
+		
+	}
+
+
 }//c

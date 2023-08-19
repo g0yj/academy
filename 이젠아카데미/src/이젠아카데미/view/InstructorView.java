@@ -28,23 +28,25 @@ public class InstructorView {
 		
 		boolean result= InstructorController.getInstance().instructorMain(jno);
 		
-		
+
+			
 		if(result) {//만약 강사로 들어왔으면 수강 중인 학생 정보만 보여주기
 			System.out.println("강사로 로그인 성공");
 			//수강생 조회
 			SManagement(jno);
-	
-			System.out.println("------------------------------");
-			System.out.println("1.학생조회  2.쪽지보내기");
-			System.out.println("------------------------------");
-			System.out.println(">>선택: "); int ch=sc.nextInt();
+		
+			System.out.println("--------------------------------");
+			System.out.println("1.학생조회  2.쪽지보내기 3.보낸쪽지함 ");
+			System.out.println("--------------------------------");
+			System.out.print(">>선택: "); int ch=sc.nextInt();
 			
 			if(ch==1) {// 개별학생조회
 				StudentView.getStudentView().studentInfo();}
 			else if(ch==2) {
-				MessageView.getInstance().messageSend();
-			}//else if
-			//Me
+				MessageView.getInstance().messageSend();}
+			else if(ch==3) {MessageView.getInstance().messageAllView();}
+	
+	
 		}
 		else {// 행정으로 로그인하면 학생 전체 출력
 			System.out.println("행정 로그인 성공");
@@ -52,6 +54,7 @@ public class InstructorView {
 			StudentView.getStudentView().studentInfo();
 			
 			}
+		
 			
 	}//f()
 
