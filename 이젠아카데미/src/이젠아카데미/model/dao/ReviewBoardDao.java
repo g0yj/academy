@@ -1,5 +1,7 @@
 package 이젠아카데미.model.dao;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dto.BoardDto;
 import 이젠아카데미.model.dto.ReviewBoardDto;
 
@@ -24,7 +26,7 @@ public class ReviewBoardDao extends Dao{
 			
 			int row = ps.executeUpdate();
 			if(row==1) return true;
-		}catch(Exception e) {System.out.println(e);}
+		}catch(Exception e) {System.out.println("Dao 글쓰기 실패사유: "+e);}
 		return false;
 		
 		/*public boolean boardWrite(BoardDto boardDto) {
@@ -50,8 +52,44 @@ public class ReviewBoardDao extends Dao{
 		
 // 2. 글 전체조회-----------------------------------------------------------------	
 
-	public void reviewTotalView() {
+	public ArrayList<ReviewBoardDto> reviewTotalView() {
 		
+		ArrayList<ReviewBoardDto> list = new ArrayList<>();
+		try {
+			String sql = "select * from reviewboard";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ReviewBoardDto dto = new ReviewBoardDto(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4));
+				list.add(dto);
+				
+			}
+		
+		}catch(Exception e) {System.out.println("Dao 글 전체조회 실패사유: "+e);}
+		return list;
+		
+		/*
+		 ArrayList<BoardDto> list = new ArrayList<>();
+		 try {
+			 String sql = "select * from board order by bday desc";
+			 ps = conn.prepareStatement(sql);
+			 rs=ps.executeQuery();
+			 
+			 while(rs.next()) {
+				 BoardDto dto = new BoardDto(
+						 rs.getInt(1),rs.getInt(2),rs.getString(3),
+						 rs.getString(4),rs.getString(5),rs.getInt(6));
+						 list.add(dto);
+			 }
+			 
+		 }catch (Exception e) {System.out.println(e);}
+		 return list;
+		 
+		 
+		 
+		 
+		 */
 			
 	}
 		

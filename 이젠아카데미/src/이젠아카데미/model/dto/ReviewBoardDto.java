@@ -26,6 +26,14 @@ public class ReviewBoardDto {
 	}
 	
 	
+// 글 전체조회 
+	public ReviewBoardDto(int rno, int sno, String rtitle, int rgrade) {
+		super();
+		this.rno = rno;
+		this.sno = sno;
+		this.rtitle = rtitle;
+		this.rgrade = rgrade;
+	}
 
 	public ReviewBoardDto(String rtitle, String rcontent, int rgrade) {
 		super();

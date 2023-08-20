@@ -1,9 +1,12 @@
 package 이젠아카데미.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import 이젠아카데미.controller.BoardController;
 import 이젠아카데미.controller.ReviewBoardController;
+import 이젠아카데미.model.dto.BoardDto;
+import 이젠아카데미.model.dto.ReviewBoardDto;
 
 public class ReviewBoardView {
 	private static ReviewBoardView ReviewBoardView= new ReviewBoardView();
@@ -43,7 +46,7 @@ public class ReviewBoardView {
 		reviewTotalView(); // 글 전체조회 보여주기
 		
 		boolean result = ReviewBoardController.getInstance().reviewWrite(rtitle,rcontent,rgrade);
-		if(result) {System.out.println("안내] 글쓰기 등록");InfoMation.getInstance().InfoMationMenu();}
+		if(result) {System.out.println("안내] 글쓰기 등록 성공");InfoMation.getInstance().InfoMationMenu();}
 		else {System.out.println("안내] 글쓰기 실패 : 제목 1~50 사이로 필수 입력");}
 		
 		
@@ -55,8 +58,38 @@ public class ReviewBoardView {
 // 2. 글 전체조회-----------------------------------------------------------------	
 
 	public void reviewTotalView() {
-	
 		
+		ArrayList<ReviewBoardDto> result =
+				ReviewBoardController.getInstance().reviewTotalView();
+
+		System.out.println("------------------------------ Review List ---------------------------");
+		System.out.printf("%3s %4s %13s %3s \n","rno","sno","rtitle","rgrade");
+		for(int i=0;i<result.size();i++) {
+			ReviewBoardDto dto = result.get(i);
+			
+			System.out.printf("%3s %4s %13s %3s \n",
+					dto.getRno(), dto.getSno(), dto.getRtitle(), dto.getRgrade());
+			System.out.println("---------------------------------------------------------------------");
+		}
+		
+		
+		
+	/*ArrayList<BoardDto> result=
+			BoardController.getInstance().boardPrint();
+	System.out.println("---------------------------------------- POST LIST -------------------------------------");
+	System.out.printf("%13s %13s %10s %26s %32s \n","bno","sno","title","day","view");
+	for(int i =0; i<result.size(); i++) {
+		BoardDto dto = result.get(i);
+		
+		System.out.printf("%13s %13s %10s %30s %17s\n",
+				dto.getBno(),dto.getSno(),dto.getBtitle(),dto.getBday(),dto.getBview());
+		System.out.println("------------------------------------------------------------------------------------------");
+		
+	}
+		
+		
+		
+	*/	
 	}
 	
 	

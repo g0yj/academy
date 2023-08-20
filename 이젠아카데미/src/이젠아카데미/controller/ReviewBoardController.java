@@ -1,5 +1,7 @@
 package 이젠아카데미.controller;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dao.BoardDao;
 import 이젠아카데미.model.dao.LessonDao;
 import 이젠아카데미.model.dao.ReviewBoardDao;
@@ -32,8 +34,9 @@ public class ReviewBoardController {
 		
 // 2. 글 전체조회-----------------------------------------------------------------	
 
-	public void reviewTotalView() {
+	public ArrayList<ReviewBoardDto> reviewTotalView() {
 		
+		return ReviewBoardDao.getInstance().reviewTotalView();
 			
 	}
 		
