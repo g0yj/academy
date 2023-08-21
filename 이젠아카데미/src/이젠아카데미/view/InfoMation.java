@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 import 이젠아카데미.controller.AttendanceController;
 import 이젠아카데미.controller.BoardController;
-import 이젠아카데미.controller.IncentivesController;
 import 이젠아카데미.model.dto.BoardDto;
-import 이젠아카데미.model.dto.StudentDto;
 
 public class InfoMation {
 	private static InfoMation infoMtion = new InfoMation();
@@ -22,7 +20,7 @@ public class InfoMation {
 		if(ch==2) {ReviewBoardView.getInstance().ReviewBoardMain();}
 		if(ch==3) { 출석하기();}
 		if(ch==4) {출석률();}
-		if(ch==5) {훈련장려금();}
+		//if(ch==5) {훈련장려금();}
 		if(ch==6) {}
 		
 	}
