@@ -13,7 +13,7 @@ public class LessonController {
 
 
 
-//1. 수업등록(황기준)---------------------------------------------------------------------------	
+//1. 수업등록---------------------------------------------------------------------------	
 	public boolean lessonWriteView(String lname,String ltname,String ltdate,String lopenday) {
 		LessonDto lessonDto = new LessonDto(0,lname, ltname, ltdate, lopenday);
 		boolean result = LessonDao.getInstance().lessonWriteView(lessonDto);
