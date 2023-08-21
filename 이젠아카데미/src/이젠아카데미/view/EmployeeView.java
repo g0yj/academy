@@ -88,10 +88,10 @@ public class EmployeeView {
 	public void employeedeleteView() {
 		employeeprintView();
 		System.out.println("\n\n================수업삭제================");
-		System.out.println("삭제할 수업을 선택하세요."); int eno = sc.nextInt();
+		System.out.println("삭제할 직원을 선택하세요."); int eno = sc.nextInt();
 		
 		sc.nextLine();
-		System.out.println("해당 수업을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
+		System.out.println("해당 직원항목을 삭제하시겠습니까? 1.예 2.아니요 :"); int ch = sc.nextInt();
 		if(ch==1) {
 			boolean result = EmployeeController.getInstance().employeedeleteView(eno);
 			if(result) {

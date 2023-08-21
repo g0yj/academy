@@ -42,11 +42,21 @@ public class ReviewBoardDto {
 		this.rgrade = rgrade;
 	}
 
+// 글 개별조회	
+	public ReviewBoardDto(int rno, int sno, String rtitle, String rcontent, int rgrade) {
+		super();
+		this.rno = rno;
+		this.sno = sno;
+		this.rtitle = rtitle;
+		this.rcontent = rcontent;
+		this.rgrade = rgrade;
+	}
+	
+	
 	//메소드
 	public int getRno() {
 		return rno;
 	}
-
 	public void setRno(int rno) {
 		this.rno = rno;
 	}

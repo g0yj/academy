@@ -108,7 +108,7 @@ public class EmployeeDao extends Dao{
 	
 			try {
 			
-				String sql = "delete from employee where lno = ?";
+				String sql = "delete from employee where eno = ?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, eno);
 				

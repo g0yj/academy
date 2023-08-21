@@ -57,16 +57,44 @@ public class ReviewBoardDao extends Dao{
 		
 // 3. 내글 조회-----------------------------------------------------------------
 
-	public void reviewIndividualView() {
+	public ArrayList<ReviewBoardDto> reviewIndividualView(int sno) {
+		ArrayList<ReviewBoardDto> list = new ArrayList<>();
+		
+		try {
+			String sql = "select * from reviewboard where sno= ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, sno);
+			rs = ps.executeQuery();
 			
+			while(rs.next()) {
+				ReviewBoardDto dto = new ReviewBoardDto(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+				list.add(dto);	
+			}
+		}catch(Exception e) {System.out.println("Dao 내글 조회 실패사유 :"+e);}
+		return list;
+		
+	
+		
 			
 	}
 		
 		
 // 4. 글 수정-----------------------------------------------------------------
 
-	public void reviewUpdate() {
+	public boolean reviewUpdate(ReviewBoardDto reviewBoardDto) {
+		
+		try {
+			String sql = "update reviewboard set rtitle = ?, rcontent = ? where rno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, reviewBoardDto.getRtitle());
+			ps.setString(2, reviewBoardDto.getRcontent());
+			ps.setInt(3, reviewBoardDto.getRno());
 			
+			int row = ps.executeUpdate();
+			if(row == 1) return true;
+		}catch(Exception e) {System.out.println("Dao 내글 수정 실패사유 :"+e);}
+		return false;
+	
 			
 	}
 		
