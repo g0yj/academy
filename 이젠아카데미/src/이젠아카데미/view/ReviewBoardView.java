@@ -62,14 +62,14 @@ public class ReviewBoardView {
 		ArrayList<ReviewBoardDto> result =
 				ReviewBoardController.getInstance().reviewTotalView();
 
-		System.out.println("------------------------------ Review List ---------------------------");
+		System.out.println("--------------- Review List -------------");
 		System.out.printf("%3s %4s %13s %3s \n","rno","sno","rtitle","rgrade");
 		for(int i=0;i<result.size();i++) {
 			ReviewBoardDto dto = result.get(i);
 			
 			System.out.printf("%3s %4s %13s %3s \n",
 					dto.getRno(), dto.getSno(), dto.getRtitle(), dto.getRgrade());
-			System.out.println("---------------------------------------------------------------------");
+			System.out.println("-----------------------------------------");
 		}
 		
 		
