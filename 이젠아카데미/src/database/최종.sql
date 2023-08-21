@@ -4,17 +4,20 @@ use ezenacademy;
 
 drop table if exists employee;
 create table employee(  #직원
-	eno int auto_increment , #직원넘버
-	era varchar(10) not null, #직급
+   eno int auto_increment , #직원넘버
+   era varchar(10) not null, #직급
     ename varchar(10) not null, #직원이름
     epay int not null, # 직원월급
     primary key(eno)
 );
+select format (epay,0) from employee; 
+
 
 drop table if exists lesson;
 create table lesson(
-	lno int auto_increment not null, #수업코드
+   lno int auto_increment not null, #수업코드
     lname varchar(20) not null unique,  #수업명
+    ltname varchar(20) not null unique,  #선생님명
     ltotalday int not null,  #총수강일
     lopenday date not null,  # 개강일
     eno int, # 직원코드
@@ -25,18 +28,18 @@ create table lesson(
 
 drop table if exists student;
 create table student(
-	sno int auto_increment not null,
+   sno int auto_increment not null,
     sname varchar(10) not null,
-	saddress varchar(10) not null,
+   saddress varchar(10) not null,
     sphone varchar(13) not null unique,
-	lno int, 
+   lno int, 
     primary key(sno),
     foreign key( lno ) references lesson (lno)
 );
 
 drop table if exists board;
 create table board(
-   	bno int auto_increment,
+   bno int auto_increment,
     sno int,
     btitle longtext not null,
     bcontent longtext not null,
@@ -46,11 +49,29 @@ create table board(
     foreign key( sno) references student (sno) on delete cascade  
 );
 
+#기준 추가 08/19
+#후기게시판
+drop table if exists reviewboard;
+create table reviewboard(
+   rno int auto_increment,      # 후기게시판번호
+   sno int, # 작성코드fk
+   rtitle longtext not null, #제목
+    rcontent longtext not null, # 내용
+   lno int, #수업코드  
+   rgrade int not null, # 평점
+   primary key(rno),
+   foreign key(sno) references student (sno) on delete cascade,
+   foreign key(lno) references lesson (lno) on delete cascade
+);
+select format (rgrade,1) from reviewboard; 
+
+
+
 drop table if exists attendance;
 create table attendance( 
-	ano int auto_increment, 
+   ano int auto_increment, 
     sno int,
-    aday datetime,
+    aday datetime default now(),
     primary key(ano),
     foreign key( sno) references student (sno)
 );
@@ -60,9 +81,9 @@ create table attendance(
 
 drop table if exists signup;
 create table signup( # 강사회원가입
-	jno int auto_increment, #회원가입 시 등록되는 강사 no
+   jno int auto_increment, #회원가입 시 등록되는 강사 no
     jid varchar(20) unique, #회원가입 시 강사 아이디
-    jpw varchar(20) ,	#회원가입 시 강사 비밀번호
+    jpw varchar(20) ,   #회원가입 시 강사 비밀번호
     eno int default 0,    #강사번호              # 추후 자바에서 유효성 검사.
     primary key(jno),
     foreign key( eno) references employee (eno)
@@ -70,31 +91,42 @@ create table signup( # 강사회원가입
 
 drop table if exists message;
 create table message( 
-	mno int auto_increment,		#보낸메세지넘버
-    eno int null,	#메세지보내는 사람(직원만가능)
+   mno int auto_increment,      #보낸메세지넘버
+    eno int null,   #메세지보내는 사람(직원만가능)
     mcontent text not null, #보낼내용
     sno int not null,  # 메세지 받을 사람
-	primary key (mno),
+   primary key (mno),
     foreign key(sno) references student(sno),
     foreign key(eno) references employee(eno)
 );
 
+drop table if exists T_incentives;
+create table T_incentives (
+   tno int auto_increment,
+   sno int,
+    tday datetime default now() ,
+    tepisode int not null,
+    
+    primary key (tno),
+    foreign key (sno ) references student (sno)
+);
 
-insert into  employee(era,ename,epay) values ('원장','고연진',40);
-insert into  employee(era,ename,epay) values ('강사','이진형',30);
-insert into  employee(era,ename,epay) values ('강사','황기준',20);
-insert into  employee(era,ename,epay) values ('행정','이성호',20);
-insert into  employee(era,ename,epay) values ('강사','정희락',20);
-insert into  employee(era,ename,epay) values ('강사','고명섭',20);
+#기준 내용추가(08/18 수정)
+insert into  employee(era,ename,epay) values ('원장','고연진',5690000);
+insert into  employee(era,ename,epay) values ('강사','이진형',4454500);
+insert into  employee(era,ename,epay) values ('강사','황기준',4162400);
+insert into  employee(era,ename,epay) values ('행정','이성호',3159100);
+insert into  employee(era,ename,epay) values ('강사','정희락',4545600);
+insert into  employee(era,ename,epay) values ('강사','고명섭',3532200);
 
 
 
 
 
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('자바', 120,'2023-07-14',2);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('파이썬', 100, '2023-08-14',3);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('빅데이터', 200, '2023-09-14',5);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('AI', 130, '2023-10-14',6);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('자바','황태자', 120,'2023-07-14',2);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('파이썬','김근육', 100, '2023-08-14',3);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('빅데이터','박찬희', 200, '2023-09-14',5);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('AI','최선', 130, '2023-10-14',6);
 
 
 
@@ -109,15 +141,21 @@ insert into board (sno,btitle,bcontent,bday) values(1,'박상빈','고연진짱�
 insert into board (sno,btitle,bcontent,bday) values(2,'이진형','고연진짱짱','2023-03-13 21:20');
 insert into board (sno,btitle,bcontent,bday) values(2,'황기준','고연진짱짱짱짱','2023-05-13 19:40');
 
+#기준 내용추가(08/19)
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(1,'이런 반도 없음','선생님이 우리를 waiting',1,4.5);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(2,'왜 수업 안끝내줌','학교종이 쌩쌩쌩',3,4.1);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(3,'우리 강사님 최고임','어서모이자',2,3.4);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(4,'있잖아','어그로끌었다',1,3.1);
+
 
 insert into attendance(sno,aday )values ('1','2023-11-23 20:20:20');
 insert into attendance(sno,aday )values ('2','2023-12-23 19:19:19');
 insert into attendance(sno,aday )values ('2','2023-11-25 12:12:12');
 
 
-insert into signup(jid,jpw,eno) values ('아이디1','1234',1);
-insert into signup(jid,jpw,eno) values ('아이디2','1234',2);
-insert into signup(jid,jpw,eno) values ('아이디3','1234',4);
+insert into signup(jid,jpw,eno) values ('아이디1','1234',1); #원장
+insert into signup(jid,jpw,eno) values ('아이디2','1234',2); #강사
+insert into signup(jid,jpw,eno) values ('아이디3','1234',4); #행정
 
 
 
@@ -133,3 +171,5 @@ select*from attendance;
 select*from signup;
 select*from Message;
 select*from employee;
+#기준추가(08/19)
+select*from reviewboard;
