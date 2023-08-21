@@ -17,6 +17,7 @@ drop table if exists lesson;
 create table lesson(
    lno int auto_increment not null, #수업코드
     lname varchar(20) not null unique,  #수업명
+    ltname varchar(20) not null unique,  #선생님명
     ltotalday int not null,  #총수강일
     lopenday date not null,  # 개강일
     eno int, # 직원코드
@@ -48,11 +49,28 @@ create table board(
     foreign key( sno) references student (sno) on delete cascade  
 );
 
+#기준 추가 08/19
+#후기게시판
+drop table if exists reviewboard;
+create table reviewboard(
+   rno int auto_increment,      # 후기게시판번호
+   sno int, # 작성코드fk
+   rtitle longtext not null, #제목
+    rcontent longtext not null, # 내용
+   lno int, #수업코드  
+   rgrade int not null, # 평점
+   primary key(rno),
+   foreign key(sno) references student (sno) on delete cascade,
+   foreign key(lno) references lesson (lno) on delete cascade
+);
+select format (rgrade,1) from reviewboard; 
+
+
 drop table if exists attendance;
 create table attendance( 
    ano int auto_increment, 
     sno int,
-    aday datetime,
+    aday datetime default now(),
     primary key(ano),
     foreign key( sno) references student (sno)
 );
@@ -83,11 +101,10 @@ create table message(
 
 drop table if exists T_incentives;
 create table T_incentives (
-   tno int,
-   sno int,
-    tday datetime default now(),
-    tepisode int,
-    
+	tno int auto_increment,
+	sno int,
+    tday datetime default now() ,
+    tepisode int not null,
     primary key (tno),
     foreign key (sno ) references student (sno)
 );
@@ -104,10 +121,10 @@ insert into  employee(era,ename,epay) values ('강사','고명섭',3532200);
 
 
 
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('자바', 120,'2023-07-14',2);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('파이썬', 100, '2023-08-14',3);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('빅데이터', 200, '2023-09-14',5);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('AI', 130, '2023-10-14',6);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('자바','황태자', 120,'2023-07-14',2);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('파이썬','김근육', 100, '2023-08-14',3);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('빅데이터','박찬희', 200, '2023-09-14',5);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('AI','최선', 130, '2023-10-14',6);
 
 
 
@@ -122,15 +139,20 @@ insert into board (sno,btitle,bcontent,bday) values(1,'박상빈','고연진짱�
 insert into board (sno,btitle,bcontent,bday) values(2,'이진형','고연진짱짱','2023-03-13 21:20');
 insert into board (sno,btitle,bcontent,bday) values(2,'황기준','고연진짱짱짱짱','2023-05-13 19:40');
 
+#기준 내용추가(08/19)
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(1,'이런 반도 없음','선생님이 우리를 waiting',1,4.5);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(2,'왜 수업 안끝내줌','학교종이 쌩쌩쌩',3,4.1);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(3,'우리 강사님 최고임','어서모이자',2,3.4);
+insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(4,'있잖아','어그로끌었다',1,3.1);
 
 insert into attendance(sno,aday )values ('1','2023-11-23 20:20:20');
 insert into attendance(sno,aday )values ('2','2023-12-23 19:19:19');
 insert into attendance(sno,aday )values ('2','2023-11-25 12:12:12');
 
 
-insert into signup(jid,jpw,eno) values ('아이디1','1234',1);
-insert into signup(jid,jpw,eno) values ('아이디2','1234',2);
-insert into signup(jid,jpw,eno) values ('아이디3','1234',4);
+insert into signup(jid,jpw,eno) values ('아이디1','1234',1); #원장
+insert into signup(jid,jpw,eno) values ('아이디2','1234',2); #강사
+insert into signup(jid,jpw,eno) values ('아이디3','1234',4); #행정
 
 
 

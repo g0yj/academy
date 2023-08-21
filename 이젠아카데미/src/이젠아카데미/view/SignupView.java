@@ -40,7 +40,7 @@ public class SignupView {
 		
 		boolean result = SignupController.getInstance().login(jid, jpw);
 		
-		if(result) {System.out.println("로그인성공!");}
+		if(result) {}
 		else{ System.out.println("로그인실패!");}
 		
 		}//f()
