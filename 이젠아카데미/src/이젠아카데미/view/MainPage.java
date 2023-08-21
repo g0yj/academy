@@ -83,7 +83,7 @@ public class MainPage {
 				System.out.println("안내] 로그인 성공했습니다. 감사합니다!!");
 				InfoMation.getInstance().InfoMationMenu();
 				}
-			else {System.out.println("경고] 로그인실패. 다시확인해주세요!!");}
+			else {System.err.println("경고] 로그인실패. 다시확인해주세요!!");}
 		}//f()
 
    

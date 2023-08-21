@@ -25,8 +25,7 @@ public class BoardController {
 	}
 	// 6. 내 게시물 수정
 	public int boardUpdate(int bno, int sno, String title, String content) {
-	    // 로그인한 사용자의 회원번호 가져오기
-	    int loggedInUserSno = loginSession;
+	    
 	    
 	    // 게시글 정보 가져오기
 	    BoardDto boardDto = BoardDao.getInstance().boardView(bno);
@@ -77,17 +76,33 @@ public class BoardController {
 		
 	}
 	
-	// 5. 게시글 번호 받아서 삭제
-		public int boardDelete(int bno) {
-		
-		int sno = boardView(bno).getSno();
-		
-		 if(sno != loginSession) return 3;
-		
-		boolean result = BoardDao.getInstance().boardDelete(bno);
-		
-		if(result) return 1;
-		else return 2;
+	public int boardDelete(int bno) {
+	    try {
+	        // 게시글 정보 조회
+	        BoardDto boardDto = boardView(bno);
+
+	        // 게시글 작성자의 회원번호(sno) 확인
+	        int authorSno = boardDto.getSno();
+
+	        
+
+	        // 게시글 작성자와 로그인 세션의 회원번호 비교
+	        if (authorSno != loginSession) {
+	            return 3; // 작성자가 아닌 경우 삭제 불가 상태 코드 반환
+	        }
+
+	        // 게시글 삭제 진행
+	        boolean result = BoardDao.getInstance().boardDelete(bno);
+
+	        // 삭제 결과에 따른 반환 코드 설정
+	        if (result) {
+	            return 1; // 삭제 성공 상태 코드 반환
+	        } else {
+	            return 2; // 삭제 실패 상태 코드 반환
+	        }
+	    } catch (NullPointerException e) {
+	        return 4; // 게시글 번호가 없는 경우 오류 상태 코드 반환
+	    }
 	}
 	
 	
