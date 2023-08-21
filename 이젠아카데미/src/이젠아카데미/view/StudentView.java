@@ -19,14 +19,15 @@ public class StudentView {
 		while(true) {
 			try {
 
-			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.초기화면");
+			System.out.println("1.학생등록 2.학생정보조회 3.학생정보수정 4.학생삭제 5.훈련장려금 6.초기화면");
 
 			System.out.print("선택: "); int ch= sc.nextInt();
 			if(ch==1) {studentJoin();}//학생등록
 			else if (ch==2) {studentAllSelect();}//학생조회
 			else if(ch==3) {studentUpdate();}//학생수정
 			else if(ch==4) {studentDelete();}//학생삭제
-			else if(ch==5) {MainPage.getInstance().mainPage();}
+			//else if(ch==5) {InfoMation.getInstance().훈련장려금();}//학생삭제
+			else if(ch==6) {MainPage.getInstance().mainPage();}
 			
 			} catch (Exception e) {
 				System.out.println("숫자로 입력해주세요");
@@ -65,7 +66,7 @@ public class StudentView {
 			   System.out.printf("%-3s %-4s %-15s %-10s %s \n", dto.getSno(), dto.getSname() , dto.getSaddress(), dto.getSphone(),dto.getLno());
 		  
 		   }//f
-		   studentInfo();
+	
 		   return;
 		
 	}//f()
@@ -78,11 +79,13 @@ public class StudentView {
 			
 			System.out.println("이름: "+result.getSname());
 			System.out.println("수업: "+result.getLname());
-			
-// ??????????????출석률 넣고 싶음-------------------------------------------------------
-			System.out.println("출석률: "+result.getLtotalday());
 			System.out.println("전화번호: "+result.getSphone());
 			System.out.println("주소: "+ result.getSaddress());
+			
+			
+			System.out.print("1. 뒤로가기 ");
+			int ch = sc.nextInt(); 
+			if(ch ==1) {InstructorView.getInstance().instructorMain();}
 			return;
 			
 		}catch (Exception e) {

@@ -37,7 +37,7 @@ public class InstructorView {
 			SManagement(jno);
 		
 			System.out.println("--------------------------------");
-			System.out.println("1.학생조회  2.쪽지보내기 3.보낸쪽지함 ");
+			System.out.println("1.학생조회  2.쪽지보내기");
 			System.out.println("--------------------------------");
 			System.out.print(">>선택: "); int ch=sc.nextInt();
 			
@@ -45,15 +45,16 @@ public class InstructorView {
 				StudentView.getStudentView().studentInfo();}
 			else if(ch==2) {
 				MessageView.getInstance().messageSend();}
-			else if(ch==3) {MessageView.getInstance().messageAllView();}
+		
 	
 	
 		}
 		else {// 행정으로 로그인하면 학생 전체 출력
-			System.out.println("행정 로그인 성공");
-			IncentivesController.getInstance().훈련장려금목록();
-			IncentivesController.getInstance().훈련장려금지급();
-			
+			/*
+			 * System.out.println("행정 로그인 성공");
+			 * IncentivesController.getInstance().훈련장려금목록();
+			 * IncentivesController.getInstance().훈련장려금지급();
+			 */
 			}
 		
 			

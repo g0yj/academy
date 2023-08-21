@@ -1,6 +1,9 @@
 package 이젠아카데미.controller;
 
+import java.util.ArrayList;
+
 import 이젠아카데미.model.dao.IncentivesDao;
+import 이젠아카데미.model.dto.StudentDto;
 
 public class IncentivesController {
 
@@ -9,9 +12,9 @@ public class IncentivesController {
 	private IncentivesController() {}
 
 	
-	public void 훈련장려금목록() {
+	public ArrayList<StudentDto> 훈련장려금목록() {
 		
-	 IncentivesDao.getInstance().훈련장려금목록();
+	 return IncentivesDao.getInstance().훈련장려금목록();
 	
 	}
 	

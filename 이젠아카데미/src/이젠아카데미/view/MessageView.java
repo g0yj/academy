@@ -56,16 +56,7 @@ public class MessageView {
 		messageView();
 	}
 	
-	
-//4. 메세지 수정
-	public void messageUpdate() {
-		
-	}
-	
-//5. 메세지 삭제
-	public void messageDelete() {
-		
-	}
+
 
 
 }//c

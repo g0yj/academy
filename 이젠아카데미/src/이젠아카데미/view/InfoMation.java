@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 import 이젠아카데미.controller.AttendanceController;
 import 이젠아카데미.controller.BoardController;
+import 이젠아카데미.controller.IncentivesController;
 import 이젠아카데미.model.dto.BoardDto;
+import 이젠아카데미.model.dto.StudentDto;
 
 public class InfoMation {
 	private static InfoMation infoMtion = new InfoMation();
@@ -17,10 +19,10 @@ public class InfoMation {
 		System.out.println("1.자유 게시판 2.후기 게시판 3.출석하기 4. 출석률 5. 훈련장려금 6.뒤로가기"); int ch =sc.nextInt();
 		// 기준 수정
 		if(ch==1) {board();}
-		if(ch==2) { }
-		if(ch==3) { 출석하기();}
+		if(ch==2) {}
+		if(ch==3) {출석하기();}
 		if(ch==4) {출석률();}
-		if(ch==5) {훈련장려금();}
+		//if(ch==5) {훈련장려금();}
 		if(ch==6) {}
 		
 	}
@@ -135,7 +137,15 @@ public class InfoMation {
 	      else if( ch == 2) {}
 	   }
 	
-	public void 훈련장려금() {
-		
-	}
+		/*
+		 * public void 훈련장려금() { System.out.println("--------- 훈련 장려금 ----------");
+		 * 
+		 * int 출석횟수 = AttendanceController.getInstance().출석횟수();
+		 * 
+		 * 
+		 * ArrayList<StudentDto> result= IncentivesController.getInstance().훈련장려금목록();
+		 * if(출석횟수 >= 12) {System.out.println (result);}
+		 * 
+		 * IncentivesController.getInstance().훈련장려금지급(); }
+		 */
 }

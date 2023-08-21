@@ -56,12 +56,18 @@ public class BoardView {
 		System.out.printf("title : %s \n",result.getBtitle());
 		System.out.printf("content : %s \n ",result.getBcontent());
 		System.out.println("--------------------------------------");
-		System.out.print("1.글삭제 2.뒤로가기"); int ch= sc.nextInt();
+		System.out.print("1.글삭제 2.뒤로가기"); 
+		
+	
+		int ch= sc.nextInt();
+		
+		
 		if(ch==1) {boardDelete(bno); }
 		if(ch==2) {boardPrint();}
 		}catch (Exception e) {System.out.println("오류나는이유: "+e);}
 	}
 	public void boardDelete(int bno) {
+			try {
 			System.out.print("1. 글삭제 2. 취소"); int ch = sc.nextInt();
 			
 			if( ch == 1) {
@@ -69,8 +75,10 @@ public class BoardView {
 			
 				if(result==1) System.out.println("글삭제 성공");
 				else {System.out.println("글삭제 실패");}
-			} else if ( ch == 2) {
-			}	
+			} else if ( ch == 2) {}	
+			} catch (Exception e) {
+				System.out.println("오류나는이유: "+e);
+			}
 		}
 	
 	public void boardView2() {
@@ -82,7 +90,7 @@ public class BoardView {
 		BoardDto result = BoardController.getInstance().boardView(bno);
 		
 		System.out.printf("bno : %-3s view : %-3s day : %-19s \n" , 	result.getBno() , result.getBview() , result.getBday() );
-		
+		 
 		System.out.printf("title : %s \n",result.getBtitle());
 		System.out.printf("content : %s \n ",result.getBcontent());
 		System.out.println("--------------------------------------");
