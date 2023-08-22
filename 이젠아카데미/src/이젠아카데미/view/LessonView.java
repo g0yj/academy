@@ -17,7 +17,7 @@ public class LessonView {
 	public void LessonMain(){	
 	while(true) {
 		System.out.println("================수업관리===============");
-		System.out.println("1.수업 등록 2.수업 조회 3.수업 수정 4.수업 삭제");
+		System.out.println("1.수업 등록 2.수업 조회 3.수업 수정 4.수업 삭제 5. 뒤로가기");
 		System.out.println("선택>>>");
 		int ch = sc.nextInt();
 		
@@ -26,7 +26,7 @@ public class LessonView {
 		if(ch==2) {lessonprintView();}//수업조회
 		if(ch==3) {lessonupdateView();}//수업수정
 		if(ch==4) {lessondeleteView();}//수업삭제
-
+		if(ch==5) {MainPage.getInstance().manager2();}//뒤로가기
 
 		}// while e
 	}

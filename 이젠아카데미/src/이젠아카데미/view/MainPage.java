@@ -85,10 +85,25 @@ public class MainPage {
 				}
 			else {System.err.println("경고] 로그인실패. 다시확인해주세요!!");}
 		}//f()
-
-   
-
-   }
-
+//----------------------------------------------------------------------------------------
+	public void manager2() {//직원 (원장, 강사, 행정)
+				System.out.println("-----------------------------------------------------");
+				System.out.println("1. 학생관리 2. 수업관리 3. 게시판관리 4.출결관리 5.직원관리");
+				System.out.println("------------------------------------------------------");
+				try {
+					System.out.print("선택: "); int select=sc.nextInt();
+					if(select==1) {StudentView.getStudentView().studentMain();}
+					else if(select==2){LessonView.getInstance().LessonMain();}
+					else if(select==3){BoardView.getInstance().BoardMain();}
+					else if(select==4){AttendanceView.getInstance().attendancePrint();}
+					else if(select==5) {EmployeeView.getInstance().EmployeeMain();}
+				}catch (Exception e) {
+					System.out.println("오류발생: "+e);
+					sc = new Scanner(System.in);
+					}//catch
+			}//if
+			
 		
+		}//f()
+
 	//class

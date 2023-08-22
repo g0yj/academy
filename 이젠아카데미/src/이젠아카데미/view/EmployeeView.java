@@ -21,7 +21,7 @@ public class EmployeeView {
 	
 		while(true) {
 			System.out.println("================직원관리===============");
-			System.out.println("1.직원 등록 2.직원 조회 3.직원 수정 4.직원 삭제");
+			System.out.println("1.직원 등록 2.직원 조회 3.직원 수정 4.직원 삭제 5. 뒤로가기");
 			System.out.println(">>> 선택");
 			int ch = sc.nextInt();
 			
@@ -29,7 +29,7 @@ public class EmployeeView {
 			if(ch==2) {employeeprintView();}//직원조회
 			if(ch==3) {employeeupdateView();}//직원수정
 			if(ch==4) {employeedeleteView();}//직원삭제
-			
+			if(ch==5) {MainPage.getInstance().manager2();}//뒤로가기
 			
 		}// while e	
 	}

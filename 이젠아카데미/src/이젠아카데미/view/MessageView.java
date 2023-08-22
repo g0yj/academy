@@ -15,7 +15,7 @@ public class MessageView {
 	
 	private Scanner sc = new Scanner(System.in);
 
-//1. 메세지 보내기(고연진)-----------------------------------------------------------
+//1. 메세지 보내기-----------------------------------------------------------
 	public void messageSend() {
 		int eno=SignupController.getInstance().getLoginSession();
 		
@@ -32,8 +32,8 @@ public class MessageView {
 		messageAllView();
 	}
 	
-
-//2. 메세지 보기(고연진) 출력----------------------------------------------------
+  
+//2. 메세지 보내기 출력----------------------------------------------------
 	public void messageView() {
 		System.out.print("번호 선택>>"); int mno=sc.nextInt();
 		MessageDto result= MessageController.getInstance().messageView(mno);

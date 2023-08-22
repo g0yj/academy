@@ -11,7 +11,7 @@ public class MessageController {
 	public static MessageController getInstance() {return M;}
 	private MessageController() {}
 
-//1. 메세지 보내기(고연진)-----------------------------------------------
+//1. 메세지 보내기-----------------------------------------------
 	public boolean messageSend(MessageDto dto) {
 		
 	boolean result=
@@ -22,7 +22,7 @@ public class MessageController {
 	}
 	
 
-//2. 메세지 보기(고연진)--------------------------------------
+//2. 메세지 보기--------------------------------------
 	public MessageDto messageView(int mno) {
 		MessageDto result=
 				MessageDao.getInstance().messageView(mno);
