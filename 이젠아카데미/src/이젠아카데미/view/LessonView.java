@@ -27,7 +27,6 @@ public class LessonView {
 		if(ch==3) {lessonupdateView();}//수업수정
 		if(ch==4) {lessondeleteView();}//수업삭제
 		if(ch==5) {MainPage.getInstance().manager2();}//뒤로가기
-
 		}// while e
 	}
 //1. 수업등록-----------------------------------------------------------------	
@@ -44,15 +43,7 @@ public class LessonView {
 		if(result) {System.out.println("수업등록 성공");}
 
 		else {System.out.println("수업등록 실패");}
-
-
-
-	
 	}
-	
-
-	
-
 //2. 수업조회-----------------------------------------------------------------	
 public void lessonprintView() {
 		ArrayList<LessonDto> result = LessonController.getInstance().lessonprintView();		
@@ -63,11 +54,8 @@ public void lessonprintView() {
 				LessonDto dto = result.get(i);	
 				
 				System.out.printf("%3s %5s %5s %6s %13s \n", dto.getLno(), dto.getLname(),dto.getLtname(),dto.getLtotalday(),dto.getLopenday());
-			}
-		
-		
+			}	
 	}
-
 //3. 수업수정--------------------------------------------------------------	
 	public void lessonupdateView() {
 	
@@ -87,7 +75,6 @@ public void lessonprintView() {
 		lessonprintView();
 	}
 
-
 //4. 수업삭제------------------------------------------------------------------
 	
 	public void lessondeleteView() {
@@ -104,10 +91,8 @@ public void lessonprintView() {
 				System.out.println(" 안내] 수업 삭제성공");
 			} else {
 				System.out.println(" 안내] 수업 삭제실패");
-			}
-			
+			}			
 		}
-
 	
 	}
 	

@@ -68,7 +68,7 @@ public class LessonDto {
 		return "LessonDto [lname=" + lname + ", ltname=" + ltname + ", ltotalday=" + ltotalday + ", lopenday="
 				+ lopenday + "]";
 	}
-	
+	 
 
 	
 	
