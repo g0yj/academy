@@ -86,10 +86,10 @@ public class StudentDao extends Dao {
 			ps.setInt(5, dto.getSno());
 			ps.executeUpdate(); 
 			return true;
-		}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
+			}catch (Exception e) {System.out.println("studentUpdate()DAO 오류: "+e);
 		}
 		return false;
-		}//f()
+	}//f()
 	
 	
 //4. 학생삭제(이진형)---------------------------------------------------------------------

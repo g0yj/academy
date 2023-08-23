@@ -112,7 +112,7 @@ public class StudentView {
 		
 		if(result) {System.out.println("학생정보수정성공");}
 		
-		studentAllSelect();
+
 	}//f()
 	
 	

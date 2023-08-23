@@ -17,11 +17,13 @@ drop table if exists lesson;
 create table lesson(
    lno int auto_increment not null, #수업코드
     lname varchar(20) not null unique,  #수업명
+    ltname varchar(20) not null unique,
     ltotalday int not null,  #총수강일
     lopenday date not null,  # 개강일
+    
     eno int, # 직원코드
     primary key(lno),
-    foreign key (eno) references employee(eno)
+    foreign key (eno) references employee(eno) on delete cascade  
 );
 
 
@@ -33,7 +35,7 @@ create table student(
     sphone varchar(13) not null unique,
    lno int, 
     primary key(sno),
-    foreign key( lno ) references lesson (lno)
+    foreign key( lno ) references lesson (lno) on delete cascade  
 );
 
 drop table if exists board;
@@ -65,7 +67,7 @@ create table signup( # 강사회원가입
     jpw varchar(20) ,   #회원가입 시 강사 비밀번호
     eno int default 0,    #강사번호              # 추후 자바에서 유효성 검사.
     primary key(jno),
-    foreign key( eno) references employee (eno)
+    foreign key( eno) references employee (eno) on delete cascade  
 );
 
 drop table if exists message;
@@ -76,8 +78,8 @@ create table message(
     sno int not null,  # 메세지 받을 사람
     mday datetime default now(),
    primary key (mno),
-    foreign key(sno) references student(sno),
-    foreign key(eno) references employee(eno)
+    foreign key(sno) references student(sno) on delete cascade  ,
+    foreign key(eno) references employee(eno) on delete cascade  
 );
 
 /* drop table if exists T_incentives;
@@ -129,14 +131,10 @@ insert into reviewboard (sno,rtitle,rcontent,lno,rgrade) values(4,'있잖아','�
 select*from reviewboard;
 
 
-
-
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('자바', 120,'2023-07-14',2);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('파이썬', 100, '2023-08-14',3);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('빅데이터', 200, '2023-09-14',5);
-insert into lesson(lname, ltotalday,lopenday,eno ) values ('AI', 130, '2023-10-14',6);
-
-
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('자바','황태자', 120,'2023-07-14',2);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('파이썬','김근육', 100, '2023-08-14',3);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('빅데이터','박찬희', 200, '2023-09-14',5);
+insert into lesson(lname,ltname,ltotalday,lopenday,eno ) values ('AI','최선', 130, '2023-10-14',6);
 
 insert into student(sname,saddress,sphone,lno)values ('김규리', '시흥', '010-1111-1111', 1);
 insert into student(sname,saddress,sphone,lno)values ('황태웅', '안양', '010-2222-2222', 1);
